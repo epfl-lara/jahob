@@ -1,0 +1,1 @@
+/usr/bin/time ../../../../bin/jahob.opt Hashtable.java -hidden -sastvc -method Hashtable.add -failfast -usedp spass:SpassSortGuards=no:OrderAxioms:ArithAxioms:TimeOut=30 e:SpassSortGuards=no:OrderAxioms:ArithAxioms isa cvcl

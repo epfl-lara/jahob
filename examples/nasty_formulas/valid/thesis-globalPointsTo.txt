@@ -1,0 +1,21 @@
+[|
+(Library_valid = (Library_notNull & Library_booksDomain & Library_personsDomain & Library_globalPointsTo & Library_uniqueOwner & Library_availabilityPolicy));
+(Library_notNull = ((Library_persons ~= null) & (Library_books ~= null) & (Library_borrows ~= null)));
+(Library_booksDomain = ((fieldRead Set_content Library_books) \<subseteq> ((Object_alloc Int Book) \<setminus> {null})));
+(Library_personsDomain = ((fieldRead Set_content Library_persons) \<subseteq> ((Object_alloc Int Person) \<setminus> {null})));
+(Library_globalPointsTo = (ALL p b. (((p, b) : (fieldRead Relation_content Library_borrows)) --> ((p : (fieldRead Set_content Library_persons)) & (b : (fieldRead Set_content Library_books))))));
+(Library_uniqueOwner = (ALL b. ((card {p. ((p, b) : (fieldRead Relation_content Library_borrows))}) <= 1)));
+((Book Int Person) = {null});
+(Library_persons : Object_alloc);
+(Library_persons : Set);
+comment ''ProcedurePrecondition'' Library_valid;
+comment ''Library.currentReader_Postcondition'' ((tmp_1_25 ~= null) --> ((tmp_1_25, b) : (fieldRead Relation_content Library_borrows)));
+comment ''Library.currentReader_Postcondition'' (Object_alloc \<subseteq> Object_alloc_29);
+comment ''Set.remove_Postcondition'' ((fieldRead Set_content_21 Library_books) = ((fieldRead Set_content Library_books) \<setminus> {b}));
+comment ''Set.remove_Postcondition'' (ALL framedObj. (((framedObj : Object_alloc_29) & (framedObj : Set) & (framedObj ~= Library_books)) --> ((fieldRead Set_content_21 framedObj) = (fieldRead Set_content framedObj))));
+comment ''TrueBranch'' (tmp_1_25 ~= null);
+(Library_globalPointsTo_8 = (ALL p__5 b. (((p__5, b) : (fieldRead Relation_content_12 Library_borrows)) --> 
+                                          ((p__5 : (fieldRead Set_content_21 Library_persons)) & (b : (fieldRead Set_content_21 Library_books))))));
+comment ''Relation.remove_Postcondition'' ((fieldRead Relation_content_12 Library_borrows) = ((fieldRead Relation_content Library_borrows) \<setminus> {(tmp_1_25, b)}))
+|] ==>
+    Library_globalPointsTo_8

@@ -1,0 +1,1 @@
+../../../bin/jahob.opt Node.java -nobackground -method Node.qsort $@ -usedp z3 spass:OrderAxioms

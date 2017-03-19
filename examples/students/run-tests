@@ -1,0 +1,2 @@
+../../bin/jahob.opt Students.java -method Students.addStudent -usedp mona
+ensure_verifies $? "Students.addStudent"

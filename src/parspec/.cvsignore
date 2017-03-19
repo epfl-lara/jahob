@@ -1,0 +1,6 @@
+lexSpec.ml
+yaccSpec.ml
+yaccSpec.mli
+*.cmx
+*.cmi
+*.o

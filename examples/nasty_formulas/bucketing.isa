@@ -1,0 +1,3 @@
+{x. EX jj. ((i_1 <= (jj::int)) & (P jj x))} \<subseteq>
+{x. (P i_1 x)} Un
+{x. (P i_1 x | (EX (j::int). (((intplus i_1 1) <= j) & (P j x))))}

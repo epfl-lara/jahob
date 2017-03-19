@@ -1,0 +1,1 @@
+../../bin/jahob.opt -nobackground -sast List.java -sastvc -method List.mergeWith -usedp spass:SpassSortGuards=no:TimeOut=10 bapa:fullbapa isa:TimeOut=10 | tee out-clone.txt

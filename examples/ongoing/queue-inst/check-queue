@@ -1,0 +1,2 @@
+# DOES NOT VERIFY YET
+../../../bin/jahob.opt -class Queue Queue.java -failfast -usedp mona spass

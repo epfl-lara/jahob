@@ -1,0 +1,2 @@
+mona -gw $1 | dot -Tps > output.ps
+okular output.ps

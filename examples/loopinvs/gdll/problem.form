@@ -1,0 +1,28 @@
+([|comment ''DLL.content_def'' ((DLL_content :: obj set) = ({x. (((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((Node_next :: (obj => obj)) x) :: obj) = (y :: obj))) (DLL_root :: obj) x) & ((x :: obj) ~= (null :: obj)))} :: obj set));
+(((fieldRead Node_next null) :: obj) = (null :: obj));
+(((fieldRead Node_prev null) :: obj) = (null :: obj));
+(ALL (xObj::obj). ((xObj :: obj) : (Object :: obj set)));
+(((DLL Int Array) :: obj set) = ({null} :: obj set));
+(((Node Int Array) :: obj set) = ({null} :: obj set));
+(((Node Int DLL) :: obj set) = ({null} :: obj set));
+((null :: obj) : (Object_alloc :: obj set));
+((DLL_root :: obj) : (Object_alloc :: obj set));
+(pointsto Node Node_next Node);
+(pointsto Node Node_prev Node);
+comment ''unalloc_lonely'' (ALL (x::obj). (((x :: obj) ~: (Object_alloc :: obj set)) --> ((ALL (y::obj). (((fieldRead Node_next y) :: obj) ~= (x :: obj))) & (ALL (y::obj). (((fieldRead Node_prev y) :: obj) ~= (x :: obj))) & (ALL (z::obj) (i::int). (((arrayRead Array_arrayState z i) :: obj) ~= (x :: obj))) & (((fieldRead Node_next x) :: obj) = (null :: obj)) & (((fieldRead Node_prev x) :: obj) = (null :: obj)) & (ALL (j::int). (((arrayRead Array_arrayState x j) :: obj) = (null :: obj))))));
+((DLL_root :: obj) : (Node :: obj set));
+comment ''DLL_PrivateInvTreeInvProcedurePrecondition'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_next :: (obj => obj))]);
+comment ''DLL_PrivateInvProcedurePrecondition'' (((DLL_root :: obj) = (null :: obj)) | (ALL (n::obj). (((fieldRead (Node_next :: (obj => obj)) n) :: obj) ~= (DLL_root :: obj))));
+comment ''DLL_PrivateInvProcedurePrecondition'' (ALL (x::obj) (y::obj). ((((x :: obj) ~= (null :: obj)) & ((y :: obj) ~= (null :: obj)) & (((fieldRead (Node_next :: (obj => obj)) x) :: obj) = (y :: obj))) --> ((y :: obj) : (DLL_content :: obj set))));
+comment ''DLL_PrivateInvProcedurePrecondition'' (ALL (x::obj) (y::obj). (((((Node_prev :: (obj => obj)) x) :: obj) = (y :: obj)) --> (((((x :: obj) ~= (null :: obj)) & (EX (z::obj). ((((Node_next :: (obj => obj)) z) :: obj) = (x :: obj)))) --> ((((Node_next :: (obj => obj)) y) :: obj) = (x :: obj))) & (((ALL (z::obj). ((((Node_next :: (obj => obj)) z) :: obj) ~= (x :: obj))) | ((x :: obj) = (null :: obj))) --> ((y :: obj) = (null :: obj))))));
+comment ''DLL.lsize_def'' ((DLL_lsize_22 :: int) = (DLL_size_30 :: int));
+comment ''DLL.content_def'' ((DLL_content_23 :: obj set) = ({x. (((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((Node_next_29 :: (obj => obj)) x) :: obj) = (y :: obj))) (DLL_root_31 :: obj) x) & ((x :: obj) ~= (null :: obj)))} :: obj set));
+comment ''alloc_loop_monotone'' ((Object_alloc :: obj set) \<subseteq> (Object_alloc_33 :: obj set));
+comment ''tmp_2_alloced_loop'' ((tmp_2_25 :: obj) : (Object_alloc_33 :: obj set));
+comment ''DLL.root_alloced_loop'' ((DLL_root_31 :: obj) : (Object_alloc_33 :: obj set));
+comment ''TreeInvAssumingLoopInv'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_next_29 :: (obj => obj))]);
+comment ''AssumingLoopInv'' (((DLL_root_31 :: obj) = (null :: obj)) | (ALL (n::obj). (((fieldRead (Node_next_29 :: (obj => obj)) n) :: obj) ~= (DLL_root_31 :: obj))));
+comment ''AssumingLoopInv'' (ALL (x::obj) (y::obj). ((((x :: obj) ~= (null :: obj)) & ((y :: obj) ~= (null :: obj)) & (((fieldRead (Node_next_29 :: (obj => obj)) x) :: obj) = (y :: obj))) --> ((y :: obj) : (DLL_content_23 :: obj set))));
+comment ''AssumingLoopInv'' (ALL (x::obj) (y::obj). (((((Node_prev_28 :: (obj => obj)) x) :: obj) = (y :: obj)) --> (((((x :: obj) ~= (null :: obj)) & (EX (z::obj). ((((Node_next_29 :: (obj => obj)) z) :: obj) = (x :: obj)))) --> ((((Node_next_29 :: (obj => obj)) y) :: obj) = (x :: obj))) & (((ALL (z::obj). ((((Node_next_29 :: (obj => obj)) z) :: obj) ~= (x :: obj))) | ((x :: obj) = (null :: obj))) --> ((y :: obj) = (null :: obj))))));
+comment ''LoopConditionHolds'' (((DLL_root_31 :: obj) ~= (null :: obj)) :: bool)|] ==>
+    comment ''DLL.removeFirst_Precondition'' ((DLL_content_23 :: obj set) ~= ({} :: obj set)))

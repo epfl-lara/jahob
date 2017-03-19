@@ -1,0 +1,1 @@
+../../bin/jahob.opt -nobackground ../../lib/String.java Library.java Set.java Relation.java Book.java Person.java FuncList.java AssocList.java -sastvc   -method Library.checkOutBookBroken -sast -usedp isa:TimeOut=0:CompactSave spass 

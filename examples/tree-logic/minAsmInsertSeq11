@@ -1,0 +1,4 @@
+([|(comment ''AssumingLoopInv'' (e~:Tree_content));
+(comment '': ProcedurePrecondition'' ((fieldRead Node_parent Tree_root) = null));
+(comment ''Tree.content_def'' (Tree_content = {x. ((x=null) | ((Tree_root~=null) & (rtrancl_pt (% x y. ((fieldRead Node_parent x) = y)) x Tree_root)))}))|] ==>
+    (comment '': _ProcedureEndPostcondition'' ((fieldRead (fieldWrite Node_parent e p_2) Tree_root) = null)))

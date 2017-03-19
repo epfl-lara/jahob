@@ -1,0 +1,1 @@
+card x = 1 & x Int A = {} --> card (A Un x) = card A + 1

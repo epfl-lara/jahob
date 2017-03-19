@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt MultiMap.java -sastvc -failfast -class Map -usedp spass:SpassSortGuards=no:TimeOut=30 2>>multi.out | tee -a multi.out
+ensure_verifies $? "loopinvs:primes:MultiMap"

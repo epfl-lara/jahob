@@ -1,0 +1,6 @@
+. check-one Hashtable.add
+ensure_verifies $? "Hash Table add"
+. check-one Hashtable.remove
+ensure_verifies $? "Hash Table remove"
+. check-one Hashtable.update
+ensure_verifies $? "Hash Table update"

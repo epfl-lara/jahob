@@ -1,0 +1,22 @@
+m2l-str;
+var2 $NullSet where ex1 v : v in $NullSet & (all1 v' : v' ~= v + 1);
+pred null(var1 v) = v in $NullSet;
+pred $Eq1(var1 v1, v2) = null(v2) & null(v1) | v1 = v2;
+pred $Elem(var1 v1, var2 S) = ex1 v2 : v2 in S & $Eq1(v1, v2);
+pred $Sub(var2 S1, S2) = all1 v1 : $Elem(v1, S1) => $Elem(v1, S2);
+pred $Eq2(var2 S1, S2) = $Sub(S2, S1) & $Sub(S1, S2);
+pred $Union(var2 S1, S2, S3) = all1 v1 : $Elem(v1, S2) | $Elem(v1, S1) <=> $Elem(v1, S3);
+pred $Inter(var2 S1, S2, S3) = all1 v1 : $Elem(v1, S2) & $Elem(v1, S1) <=> $Elem(v1, S3);
+pred $Diff(var2 S1, S2, S3) = all1 v1 : $Elem(v1, S1) & ~ $Elem(v1, S2) <=> $Elem(v1, S3);
+var1 r_2 where true;
+var1 n where true;
+var1 SLL_root where true;
+var2 Array where true;
+var2 Object_alloc where true;
+var2 Node where true;
+var2 Object where true;
+var2 SLL where true;
+
+pred Node_next(var1 v1, v2) = null(v2) & (null(v1) | ~ $Elem(v1, Node)) | $Eq1(v1 + 1, v2) & $Elem(v1, Node) & ~ null(v1);
+
+(ex1 $v_327 : Node_next(r_2, $v_327) & null($v_327)) & ~ null(r_2) & (all2 $S : $Elem(SLL_root, $S) & (all1 $v1 : $Elem($v1, $S) => (ex1 v_202 : $Elem(v_202, $S) & Node_next($v1, v_202))) => $Elem(r_2, $S)) & $Elem(r_2, Node) & $Elem(r_2, Object_alloc) & ~ null(SLL_root) & $Elem(n, Object_alloc) & $Elem(n, Node) & (null(SLL_root) | ~ (ex1 n_6 : Node_next(n_6, SLL_root))) & ~ (ex1 m : Node_next(m, n)) & (ex1 $v_315 : Node_next(n, $v_315) & null($v_315)) & ~ null(n) & ~ (~ null(n) & (all2 $S : $Elem(SLL_root, $S) & (all1 $v1 : $Elem($v1, $S) => (ex1 v_198 : $Elem(v_198, $S) & Node_next($v1, v_198))) => $Elem(n, $S))) & $Elem(SLL_root, Node) & (all1 x : ~ $Elem(x, Object_alloc) => ~ (ex1 y : Node_next(y, x)) & (ex1 b__8 : ~ $Eq1(b__8, x)) & ~ $Eq1(SLL_root, x) & (ex1 $v_306 : Node_next(x, $v_306) & null($v_306))) & $Elem(SLL_root, Object_alloc) & (ex1 $v_304 : Node_next($v_304, $v_304) & null($v_304)) & (all1 xObj : $Elem(xObj, Object)) & (all1 v_184 : $Elem(v_184, SLL) & $Elem(v_184, Array) <=> null(v_184)) & (all1 v_183 : $Elem(v_183, Node) & $Elem(v_183, Array) <=> null(v_183)) & (all1 v_182 : $Elem(v_182, Node) & $Elem(v_182, SLL) <=> null(v_182)) & (ex1 $v : null($v) & $Elem($v, Object_alloc)) & (all1 x_1 : $Elem(x_1, Node) => (ex1 v_194 : $Elem(v_194, Node) & Node_next(x_1, v_194))) => null(SLL_root) | ~ ($Eq1(n, SLL_root) | (ex1 n_1 : Node_next(n_1, SLL_root) & ~ $Eq1(r_2, n_1)));

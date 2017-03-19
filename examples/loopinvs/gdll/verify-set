@@ -1,0 +1,1 @@
+../../../bin/jahob.opt -failfast -v -debug -debugmodules Decider -debugmodules Analyze -debugmodules Mona -debuglevel 5 -nobackground DLL.java Node.java -method DLL.set -timeout 10 -usedp mona | tee out

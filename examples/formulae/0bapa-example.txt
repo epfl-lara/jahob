@@ -1,0 +1,1 @@
+(A :: obj set) Int (B :: obj set) = {} --> card (A Un B) = card A + card B

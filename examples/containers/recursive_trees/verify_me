@@ -1,0 +1,2 @@
+../../../bin/jahob.opt Tree.java -simpcall -sastvc -method Tree.add1 -failfast -usedp spass:TimeOut=120 spass:OrderAxioms coq:TimeOut=0 isa:TimeOut=0 
+

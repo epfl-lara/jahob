@@ -1,0 +1,1 @@
+../../bin/jahob.opt Platoons.norefine.java -method Platoons.world -v -bohne -nobackground -norefine -nocontext -nosplitting -nocaching -debuglevel 3 -debugmodules Bohne,BohneRefine,BohneAbstraction $* -usedp z3 spass

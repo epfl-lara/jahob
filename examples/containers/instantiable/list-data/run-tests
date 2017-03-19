@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt List.java -failfast -class List -usedp spass 2>&1 | tee list-data.out
+ensure_verifies $? "InstantiatableSinglyLinkedListWithGhostVar"

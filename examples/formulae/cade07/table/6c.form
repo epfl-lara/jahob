@@ -1,0 +1,28 @@
+([|
+comment ''ProcedurePrecondition'' (l1 ~= null);
+comment ''ProcedurePrecondition'' (l1 ~= this);
+comment ''thisNotNull'' (this ~= null);
+comment ''thisType'' (this : List);
+comment ''thisType'' (this : Object_alloc);
+comment ''l1_type'' (l1 : List);
+comment ''l1_type'' (l1 : Object_alloc);
+comment ''List.isEmpty_Postcondition'' (Object_alloc_74 = Object_alloc);
+comment ''List.isEmpty_Postcondition'' (List_content_73 = List_content);
+comment ''List.isEmpty_Postcondition'' (Object_alloc \<subseteq> Object_alloc_74);
+comment ''TrueBranch'' (~tmp_1_71);
+comment ''List.getOne_Postcondition'' (Object_alloc_60 = Object_alloc_74);
+comment ''List.getOne_Postcondition'' (List_content_59 = List_content_73);
+comment ''List.getOne_Postcondition'' (Object_alloc_74 \<subseteq> Object_alloc_60);
+comment ''tmp_3_type'' (tmp_3_57 : Object);
+comment ''tmp_3_type'' (tmp_3_57 : Object_alloc_60);
+comment ''List.remove_Postcondition'' (Object_alloc_45 = Object_alloc_60);
+comment ''List.remove_Postcondition'' (Object_alloc_60 \<subseteq> Object_alloc_45);
+comment ''noAlloc1'' (Object_alloc_45 = Object_alloc);
+comment ''o1_was_there_Removed(tmp_3_57 : S1_42)'' True;
+comment ''o1_removed'' (S2_41 = (S1_42 \<setminus> {tmp_3_57}));
+comment ''List.add_Postcondition'' ((cardinality (Object_alloc_30 \<setminus> Object_alloc_45)) <= 1);
+comment ''List.add_Postcondition'' (Object_alloc_45 \<subseteq> Object_alloc_30);
+comment ''oneAlloc'' ((cardinality (Object_alloc_30 \<setminus> Object_alloc)) <= 1);
+comment ''List.mergeWith_Postcondition'' (Object_alloc_30 \<subseteq> Object_alloc_16);
+comment ''recursiveCase'' ((cardinality (Object_alloc_16 \<setminus> Object_alloc_30)) <= (cardinality S2_41))|] ==>
+    comment ''addingUp'' ((cardinality (Object_alloc_16 \<setminus> Object_alloc)) <= (cardinality S1_42)))

@@ -1,0 +1,3 @@
+/usr/bin/time ../../../../bin/jahob.opt PriorityQueue.java -hidden -timeout 30 -sastvc -class PriorityQueue -usedp z3 spass cvcl isa
+ensure_verifies $? "encap:PriorityQueue"
+

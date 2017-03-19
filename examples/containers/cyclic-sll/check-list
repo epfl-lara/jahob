@@ -1,0 +1,3 @@
+../../../bin/jahob.opt -method List.init cyclic_list.java -failfast -usedp mona
+../../../bin/jahob.opt -method List.add cyclic_list.java -failfast -usedp mona
+../../../bin/jahob.opt -method List.member cyclic_list.java -failfast -usedp mona

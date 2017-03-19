@@ -1,0 +1,139 @@
+class WNode {
+//    private static int nnid = 0;
+
+    public WNode[] edges = null;
+    public int[] weight = null; // double -> int
+    public int maxEdges;
+    public int numEdges = 0;
+    public int dist = 2000000000; // should be  Double.POSITIVE_INFINITY
+
+    /*:
+      public specvar neighbours :: objset;
+      public ghost specvar init :: bool = "False";
+      private vardefs "neighbours == {n. \<exists> j.
+                       (0 <= j & j < numEdges & edges.[j] = n)}";
+
+      private invariant maxEdges : "init --> maxEdges >= 0";
+      private invariant posEdges : "numEdges >= 0";
+      private invariant numberEdges : "numEdges = Card neighbours";
+      private invariant definedNeighbours :
+          "init --> (ALL j.((0 <= j & j < numEdges) -->
+          (edges[j] ~= null & weight[j] < Double.POSITIVE_INFINITY)))";
+     */
+
+
+    public WNode(int maxArity)
+    /*:
+      requires "maxArity > 0"
+      modifies maxEdges, edges, weight, numEdges
+      ensures "neighbours = {} & maxEdges = maxArity"
+     */
+    {
+        maxEdges = maxArity;
+	edges = new /*: hidden */ WNode[maxEdges];
+	weight = new /*: hidden */ int[maxEdges];
+	numEdges = 0;
+        //: init := "True";
+    }
+
+    public void addEdge(WNode n, int w)
+    /*:
+      requires "init & n ~= null & n..init & numEdges < maxEdges"
+      modifies edges, weight, numEdges
+      ensures "neighbours = old neighbours Un {n}
+               & (\<exists> j. (edges.[j] = n & weight.[j] = w))"
+     */
+    {
+        edges[numEdges] = n;
+        weight[numEdges] = w;
+        numEdges = numEdges + 1;
+    }
+
+    public void compute()
+    /*:
+      requires "init"
+      modifies dist
+      ensures "True"
+     */
+    {
+        span(0);
+    }
+
+    public boolean set_dist(int d)
+    /*:
+      requires "init"
+      modifies dist
+      ensures "dist <= d & dist <= old dist"
+     */
+    {
+	if (d < dist) {
+	    dist = d;
+	    return true;
+	}
+	return false;
+    }
+
+    public void span(int d)
+    /*:
+      requires "init"
+      modifies dist
+      ensures "dist <= d & dist <= old dist
+               & (ALL n. (n : neighbours --> n..dist <= (dist + length(n))))"
+     */
+    {
+	if (set_dist(d)) {
+            int i = 0;
+            
+            while (i < numEdges()) {
+                edges(i).span(dist() + weight(i));
+                i = i + 1;
+            }
+        }
+    }
+
+    public int numEdges()
+    /*:
+      requires "init"
+      ensures "numEdges"
+     */
+    {
+	return numEdges;
+    }
+
+    public int dist()
+    /*:
+      requires "init"
+      ensures "result = dist"
+     */
+    {
+	return dist;
+    }
+
+    public WNode edges(int i)
+    /*:
+      requires "init"
+      ensures "result = edges[i]"
+     */
+    {
+	return edges[i];
+    }
+
+    public int weight(int i)
+    /*:
+      requires "init"
+      ensures "result = weight[i]"
+     */
+    {
+	return weight[i];
+    }
+    public int length(Node n)
+    /*:
+      requires "init & n : neighbours"
+      ensures "\<exists> i. edges(i) = n & result = weight(i)"
+     */
+    {
+        int i = 0;
+        while (edges(i) < n) i = i + 1;
+	return weight[i];
+    }
+}

@@ -1,0 +1,1 @@
+/usr/bin/time ../../../bin/jahob.opt FuncTreeBalanced.java -failfast -method FuncTree.remove_max -usedp spass:SpassSortGuards=no:OrderAxioms:TimeOut=10 spass:SpassSortGuards=no:TimeOut=10:Sorting:Filtering=75

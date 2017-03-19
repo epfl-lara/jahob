@@ -1,0 +1,1 @@
+((m \<setminus> g) \<subseteq> w) & cardinality (m Int g) = card(u \<setminus> g) & cardinality (w \<setminus> g) = card(m Int w Int g) --> card((m Int g) \<setminus> w) = card(u \<setminus> (m Un w Un g))

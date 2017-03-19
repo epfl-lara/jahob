@@ -1,0 +1,3 @@
+. check-one Hashtable.add
+. check-one Hashtable.remove
+. check-one Hashtable.update

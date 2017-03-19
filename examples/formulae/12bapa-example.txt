@@ -1,0 +1,2 @@
+card A <= (2 * card B) - 2 & card {x} = 1 -->
+card (A \<setminus> {x}) <= 2 * card (B \<setminus> {x})

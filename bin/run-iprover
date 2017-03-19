@@ -1,0 +1,5 @@
+# Note: when compiling iprover, put had to do this change in iprover Makefile:
+# OCAMLLIB=/usr/lib/ocaml/3.09.2
+#
+# Also note that you must include trailing / in eprover path:
+iproveropt --eprover_path /home/vkuncak/software/bin/ $*

@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt ArrayList.java -timeout 30 -sastvc -hidden -class ArrayList -printcounts -failfast -usedp z3 spass:ArithAxioms:OrderAxioms cvcl isa
+ensure_verifies $? "pldi09:ArrayList"

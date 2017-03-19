@@ -1,0 +1,5 @@
+ card e = 1 & 
+ e \<subseteq> iter & 
+ iter1 = iter \<setminus> e  
+ --> 
+  card iter1 < card iter

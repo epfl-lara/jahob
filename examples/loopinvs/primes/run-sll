@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt SLL.java -sastvc -failfast -class Set -usedp spass e 2>&1 | tee sll.out
+ensure_verifies $? "loopinvs:java.util:SLL:SLL"

@@ -1,0 +1,7 @@
+Proceed to export...
+pause
+cd ~vkuncak/tmp
+cvs -d/home/vkuncak/ana/cvs export -D TODAY jahob
+cd jahob
+rm TODO
+rm design.txt

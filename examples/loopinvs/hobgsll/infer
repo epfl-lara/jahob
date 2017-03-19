@@ -1,0 +1,1 @@
+/usr/bin/time ../../../bin/jahob.opt List.java Node.java -nobackground -method List.reverse -infer Interpret=List.test -usedp mona 2>&1 | tee infer.out

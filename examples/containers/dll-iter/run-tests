@@ -1,0 +1,14 @@
+../../../bin/jahob.opt DLLIter.java -method DLLIter.add -usedp mona
+ensure_verifies $? "DLLIter.add"
+
+../../../bin/jahob.opt DLLIter.java -method DLLIter.remove -usedp mona
+ensure_verifies $? "DLLIter.remove"
+
+../../../bin/jahob.opt DLLIter.java -method DLLIter.initIter -usedp mona
+ensure_verifies $? "DLLIter.initIter"
+
+../../../bin/jahob.opt DLLIter.java -method DLLIter.nextIter -usedp mona
+ensure_verifies $? "DLLIter.nextIter"
+
+../../../bin/jahob.opt DLLIter.java -method DLLIter.lastIter -usedp mona
+ensure_verifies $? "DLLIter.lastIter"

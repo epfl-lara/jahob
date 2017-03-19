@@ -1,0 +1,2 @@
+../../../bin/jahob.opt List.java -nobackground -method List.reverse -bohne -usedp mona
+ensure_verifies $? "List.reverse"

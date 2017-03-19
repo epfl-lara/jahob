@@ -1,0 +1,4 @@
+/usr/bin/time ../../../bin/jahob.opt -failfast -simpcall Hashtable.java AssocList.java -class Hashtable -hidden -sastvc -usedp z3 spass:SpassSortGuards=no:TimeOut=30 spass:OrderAxioms:ArithAxioms:SpassSortGuards=no:TimeOut=10 spass:OrderAxioms:SpassSortGuards=no:TimeOut=130 isa:TimeOut=0 2>&1 | tee hashtable.out
+ensure_verifies $? "containers:vs_hashtable:Hashtable"
+/usr/bin/time ../../../bin/jahob.opt AssocList.java -failfast -class AssocList -sastvc -usedp z3 spass:TimeOut=5 spass:ArithAxioms:OrderAxioms 2>&1 | tee assoclist.out
+ensure_verifies $? "containers:vs_hashtable:AssocList"

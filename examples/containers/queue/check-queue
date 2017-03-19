@@ -1,0 +1,3 @@
+/usr/bin/time ../../../bin/jahob.opt -class List queue.java -failfast -usedp mona 2>&1 | tee queue.out
+ensure_verifies $? "containers::queue:queue"
+

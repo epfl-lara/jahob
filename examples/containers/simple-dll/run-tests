@@ -1,0 +1,1 @@
+../../../bin/jahob.opt simple.java -method Simple.add -usedp z3

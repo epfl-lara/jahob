@@ -1,0 +1,1 @@
+../../../bin/jahob.opt HashtableNR.java -simpcall AssocList.java -method $* -hidden -sastvc -usedp spass:OrderAxioms:TimeOut=5:SpassSortGuards=no:Sorting:Filtering=50 spass:OrderAxioms:ArithAxioms:TimeOut=5:SpassSortGuards=no

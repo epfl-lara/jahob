@@ -1,0 +1,10 @@
+([|(comment ''TrueBranch'' wentLeft_3);
+(comment ''LoopConditionFalse'' (~(n_3~=null)));
+(comment ''AssumingLoopInv'' (e~:Tree_content));
+(comment ''AssumingLoopInv'' (((p_2~=null) & wentLeft_3) --> ((fieldRead Node_left p_2) = n_3)));
+(comment ''AssumingLoopInv'' (p_2:Tree_content));
+(comment ''AssumingLoopInv'' (ptree Node_parent [Node_left, Node_right]));
+(comment '': ProcedurePrecondition'' (ALL x y. (((y~=null) & ((fieldRead Node_parent x) = y)) --> (x:Tree_content))));
+(comment '': ProcedurePrecondition'' ((fieldRead Node_parent Tree_root) = null));
+(comment ''Tree.content_def'' (Tree_content = {x. ((x=null) | ((Tree_root~=null) & (rtrancl_pt (% x y. ((fieldRead Node_parent x) = y)) x Tree_root)))}))|] ==>
+    (comment '': _ProcedureEndPostcondition'' (ptree (fieldWrite Node_parent e p_2) [(fieldWrite Node_left p_2 e), Node_right])))

@@ -1,0 +1,2 @@
+#!/bin/sh
+../../../bin/jahob.opt -v Client.java List.java -method $@ -sastvc -usedp z3 spass  paradox

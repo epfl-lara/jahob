@@ -1,0 +1,8 @@
+[|((List_root :: obj) : List);
+comment ''xFreshProcedurePrecondition'' ((x :: obj) ~: List_content);
+comment ''List_PrivateInvsizeInvProcedurePrecondition'' (List_size = (cardinality List_content));
+comment ''List_PrivateInvcontentAllocProcedurePrecondition'' (List_content \<subseteq> Object_alloc);
+comment ''x_type'' (x : Object);
+comment ''x_type'' (x : Object_alloc)
+|] ==>
+    comment ''List_PrivateInvsizeInv_ProcedureEndPostcondition'' (List_size + (1 :: int) = cardinality ({x} Un List_content))

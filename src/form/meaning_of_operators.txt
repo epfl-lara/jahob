@@ -1,0 +1,8 @@
+The intended meaning of different operations on cardinalities is the following:
+
+cardinality(S) is just the cardinality of a set S.
+cardeq(S,k) (where S is a set and k is an integer constant) holds if and only if the cardinality of S is exactly k.
+cardleq(S,k) (where S is a set and k is an integer constant) holds if and only if the cardinality of S is at most k.
+cardgeq(S,k) (where S is a set and k is an integer constant) holds if and only if the cardinality of S is at least k.
+
+The meaning of Binder(Comprehension,[x1;...;xn],f) is {(x1,...,xn) | f}.

@@ -1,0 +1,1 @@
+((EX (u::obj). ALL (v::obj). F u v) --> (ALL (x::obj). EX (y::obj). F y x))

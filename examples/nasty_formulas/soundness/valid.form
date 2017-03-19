@@ -1,0 +1,3 @@
+([|comment ''ArrayList.add_at_Postcondition'' (ALL j e. ((((0 <= j) & (intless j ArrayList_size_12)) --> (((j, e) : ArrayList_content_7) = ((j, e) : ArrayList_content))) & ((ArrayList_size_12, element) : ArrayList_content_7) & (((intless ArrayList_size_12 j) & (intless j ArrayList_csize_6)) --> (((j, e) : ArrayList_content_7) = (((j - 1), e) : ArrayList_content)))));
+comment ''ArrayList.content_def'' (ArrayList_content_7 = {p__6. (EX i n. ((p__6 = (i, n)) & (0 <= i) & (intless i ArrayList_size_12) & (n = (arrayRead Array_arrayState ArrayList_elementData_11 i))))})|] ==>
+    False)

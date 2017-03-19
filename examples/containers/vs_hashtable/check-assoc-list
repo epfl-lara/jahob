@@ -1,0 +1,1 @@
+~/jahob/bin/jahob.opt AssocList.java -class AssocList -sastvc -usedp spass:TimeOut=5 spass:ArithAxioms:OrderAxioms

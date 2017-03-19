@@ -1,0 +1,247 @@
+\documentclass{article}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage {mathpartir}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{stmaryrd}
+\usepackage{enumerate}
+
+% special for mac OS !
+\usepackage{graphicx}
+
+%\usepackage[latin1]{inputenc}  % accents 8 bits dans le source
+%\usepackage[T1]{fontenc}       % accents dans le DVI
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Pre}{\mathcal{P}}
+
+\newcommand{\evaluation}[2][]{\ensuremath{\llbracket #2\rrbracket^{#1}}}
+
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\DeclareMathOperator{\Null}{null}
+
+\definecolor{LightGray}{gray}{0.8}
+\definecolor{LightOrange}{rgb}{0.9, 0.8, 0.5}
+
+\title{Why you can  drop sorts}
+\author{}
+
+\begin{document}
+\maketitle
+
+
+In this document, we will consider that there is not sub-sorting, no sort overloading, no parametric polymorphism, etc. but just a finite number of pairwise disjoint sorts. We are interested in the satisfiability/validity of a formula $\phi$  in multi-sorted logic over a given signature $\Sigma$. We claim that the satisfiability of $\phi$ is equivalent to the satisfiability of $\phi^{*}$ in the signature $\Sigma^{*}$, i.e. with all the sorts information losts.
+The proof relies on the completeness of resolution : if there exist a derivation of the empty clause from $\phi^{*}$, it is possible to ``lift'' the derivation to the multi-sorted world. The key to this process is the fact that, in this context, if to terms are unifiable, then they are of the same sort.
+
+\section{formalities}
+
+\subsection{Tarski semantics for unisorted logic}
+
+\begin{description}
+\item[signature] A unisorted signature $\Sigma$ is given by :
+\begin{itemize}
+\item a set $\V$ of variables 
+\item a set $\Pre$ of predicates, with their arity.
+\item a set $\F$ of function symbols, with their arity.
+\end{itemize}
+
+\item[structure] A unisorted $\Sigma$-structure $\I$ is given by :
+\begin{itemize}
+\item a domain set $X$
+\item a environment, which maps every variables of $\V$ to an element of the domain $X$.
+\item for every predicate $P$ in $\Pre$, of arity $n$, a set of tuples included in $X^{n}$, defining the tuples on which $P$ is true.
+\item for every function symbol $f$ in $\F$, of arity $n$, the function graph of $f$, that is a set of tuples included in $X^{n+1}$, such that for all $(x_1, \hdots, x_n)$, there exists one and only one $x$ such that  $(x_1, \hdots, x_n, x) \in f$ (which means that  $f(x_1, \hdots, x_n) = x$). 
+\end{itemize}
+
+Now, let's fix a a uni-sorted $\Sigma$-structure $\I$.
+
+\item[interpretation of terms] A term is either a constant, a variable or a function symbol
+\begin{itemize}                                                                                          
+  \item[constants] $\evaluation{c}{\rho} = c \in X$
+  \item[variables] if $x \in \V$, then $\evaluation{x}{\rho} = \rho(x)$
+  \item[function symbols] if $f \in \F$, then $\evaluation{f(x_1,\ldots,x_n)}{\rho} = f(\evaluation{x_1}{\rho},\ldots,\evaluation{x_2}{\rho})$
+\end{itemize}
+
+\item[interpretation of formulas] 
+
+\begin{itemize}
+\item $\evaluation{P(x_1, \hdots, x_n)}{\rho} = (\evaluation{x_1}{\rho},\ldots,\evaluation{x_n}{\rho}) \in P$.
+\item $\evaluation{\varphi_1 \land \varphi_2}{\rho} = \evaluation{\varphi_1}{\rho} \land \evaluation{\varphi_2}{\rho}$
+\item $\evaluation{\varphi_1 \lor \varphi_2}{\rho} = \evaluation{\varphi_1}{\rho} \lor \evaluation{\varphi_2}{\rho}$
+\item $\evaluation{¬ \varphi_1}{\rho} = ¬ \evaluation{\varphi_1}{\rho}$
+\item $\evaluation{\exists x. \varphi}{\rho} = \exists x \in X. \evaluation{\varphi}{\rho[x \to a]}$
+\item $\evaluation{\forall x. \varphi}{\rho} = \forall x \in X. \evaluation{\varphi}{\rho[x \to a]}$
+\end{itemize}
+
+\end{description}
+
+
+\subsection{Tarski semantics for multi-sorted logic}
+
+We will consider the case of an arbitrary number of paiwise disjoint sorts $S_1, \hdots, S_n$. If $n=2$, we will call the sorts $O$ and $I$.
+
+\begin{description}
+\item[signature] A multi-sorted signature $\Sigma$ is given by :
+\begin{itemize}
+\item a set $\V$ of variable, along with their sort
+\item a set $\Pre$ of predicates, with their types (i.e. the type of the tuples they accept). A type is an expresion of the form $s_1 * \hdots * s_k$, for a predicate of arity $k$. This means that the argument of $P$ must me a tuple in the set $S_{s_1} * \ldots * S_{s_k}$.
+\item a set $\F$ of function symbols, with their types. The type of a function describes the sort of its arguments and of its result. It's an expression of the form  $s_1 * \hdots * s_k \to s_{k+1}$
+\end{itemize}
+
+\item[structure] A multi-sorted $\Sigma$-structure $\I$ is given by :
+\begin{itemize}
+\item for each sort, a domain set $S_i$
+\item a well-sorted environment $\rho$, which map every variable with a element of the domain of the corresponding sort.
+\item for every predicate $P$ in $\Pre$, of type  $s_1 * \hdots * s_k$, a set of tuples included in  $s_1 * \hdots * s_k$, defining the tuples on which $P$ is true.
+
+\item for every function symbol $f$ in $\F$, of type $s_1 * \hdots * s_k \to s_{k+1}$, the function graph of $f$, that is a set of tuples included in $S_{s_1} * \hdots * S_{s_k} * S_{s_{k+1}}$.
+\end{itemize}
+
+Terms are interpreted the same way as in uni-sorted logics, except that the sort constraints hold.
+
+\item[Interpretation of formulas] All the cases are similar to the uni-sorted case, except : 
+\begin{itemize}
+\item $\evaluation{\exists (x : S_u). \varphi}{\rho} = \exists x \in S_u. \evaluation{\varphi}{\rho[x \to a]}$
+\item $\evaluation{\forall (x : S_u). \varphi}{\rho} = \forall x \in S_u. \evaluation{\varphi}{\rho[x \to a]}$
+\end{itemize}
+
+\end{description}
+
+Note that we may want to consider an equality predicate per sort, to avoid equality overloading.
+
+\section{Dropping sorts : the case without equality}
+
+We are presenting here a weak version of the result, which holds only if sorts are not sharing any symbol. This means that we cannot have an overloaded equality predicate. In these condition, a simple remark can be made : terms that are unifiable are of the same sort. We are now proving this claim. This will allow use to show that forgetting sorts is sound with a purely syntactic argument. We first present rapidly the unification algorithm.
+
+\subsection{the unification algorithm}
+
+\begin{definition}
+A \emph{unification problem} is a set of pair of terms of the form : $\Pre = \left\{ s_{1} \doteq t_{1}, \dots, s_{n} \doteq t_{n}\right\}$.
+\end{definition}
+
+\begin{definition}
+$\sigma$ is a \emph{unifier} for a problem $\Pre$ if $\sigma(s_{i}) = \sigma(t_{i})$ for all contraint $s_{i} \doteq t_{i}$ in $\Pre$. 
+\end{definition}
+
+\begin{definition}
+A problem $\Pre$ is in \emph{resolved form} iff it is of the form $\left\{ x_{1} \doteq t_{1}, \dots, x_{n} \doteq t_{n}\right\}$, where \begin{enumerate}
+\item all the $x_{i}$ are pairwise distinct variables ($i \neq j \to x_{i} \neq x_{j}$).
+\item $x_{i}$ does not appear in $t_{i}$ ($x_{i} \notin FV(t_{i})$).
+\end{enumerate}
+\end{definition}
+
+
+\begin{definition}
+Let $\Pre = \left\{ x_{1} \doteq t_{1}, \dots, x_{n} \doteq t_{n}\right\}$ be a problem in resolved form. The \emph{unifier associated with $\Pre$} is the substitution $\sigma_{\Pre} = \left\{ x_{1} \mapsto t_{1}, \dots, x_{n} \mapsto t_{n}\right\}$.
+\end{definition}
+
+We now define the unification algorithm as a set of rewriting rules.
+
+\begin{mathpar}
+ \colorbox{LightGray}{  \inferrule[Erase]{\Pre \cup \left\{ s \doteq s \right\} }{\Pre} } 
+ \and
+ \colorbox{LightGray}{  \inferrule[Orient]{\Pre \cup \left\{ t \doteq x \right\} \\ t \notin \V }{\Pre \cup \left\{ x \doteq t \right\} } }\and
+ 
+ \colorbox{LightGray}{  \inferrule[Decompose]{\Pre \cup \left\{ f(s_{1}, \dots, s_{n}) \doteq f(t_{1}, \dots, t_{n}) \right\} }{\Pre \cup \left\{ s_{1} \doteq t_{1}, \dots, s_{n} \doteq t_{n} \right\} } } \and
+  \colorbox{LightGray}{  \inferrule[Replace]{\Pre \cup \left\{ x \doteq s \right\} \\ x \in Var(\Pre) \\ x \notin FV(s)}{\Pre\left\{ x \mapsto s\right\} \cup \left\{ x \doteq s \right\} }}
+ \end{mathpar}
+
+These rules are both complete and sound : starting from a problem $\Pre$, repeatedly apply the rules. When it's no longer possible, if the resulting problem $\Pre'$ is in resolved form, then $\Pre$ is unifiable and $\sigma_{\Pre'}$ is a most general unifier for $\Pre$.
+
+\subsection{Sorts and unification}
+
+We want to prove that the mgu for a given problem preserves sorts.
+
+% , where $s_{i} : s_{i}$ and $y_{i} : S_{i}$, for all $i$ (this means that the problem is \emph{well-sorted}). 
+
+% (ie. if $t \doteq s$ appear in $\Pre$, then $t$ and $s$ are of the same sort)
+
+\begin{lemma}
+let $\sigma_{\Pre}$ be the most general unifier of a (unifiable) \emph{well-sorted} problem $\Pre = \left\{s_{1} \doteq t_{1}, \dots, s_{n} \doteq t_{n}\right\}$
+Then for all term $t :s $, $\sigma_{\Pre}(t) : s$.
+\end{lemma}
+
+\begin{proof}
+Since $\Pre$ is unifiable, the application of the rules of the unification algorithm will eventually lead to s problem $\Pre' = \left\{ x_{1} \doteq u_{1}, \dots, x_{m} \doteq u_{m}\right\}$ in resolved form.
+
+We first prove that if a unification problem $\Pre$ is \emph{well-sorted} , then the application of a rule of the unification algorithm leads to a new well-sorted problem $\Pre'$. 
+
+\begin{itemize}
+\item The case of the \TirName{Erase} and \TirName{Orient} rules are straightforward.
+\item The new constraints introduced by the \TirName{Decompose} rule are well-sorted : the original problem is well-sorted, so every argument of $f$ is compliant with the signature of $f$.
+\item The \TirName{Replace} rule substitues an equality $x = s$ into $\Pre$. Since the original problem is well-sorted, $x$ and $s$ are of the same sort. Thus, $\Pre \left\{ x \mapsto s \right\}$ is well-sorted. 
+\end{itemize}
+
+Thus, by an immediate induction on the derivation of $\Pre'$ (in resolved form) from the original unification problem $\Pre$, $\Pre'$ is well-sorted.
+$\sigma_{\Pre'}$ is then a \emph{sort-preserving} mgu of $\Pre$ (which maps variables to term of the same sort).
+
+Another immediate induction on the structure of a well-sorted term $t$ gives us the final result.
+\end{proof}
+
+
+\subsection{Sorts and resolution}
+
+We now use resolution to complete the argument. We show that if a resolution prov is found for an clause set with striped , then this proof is valid for the original clause set.
+
+\begin{definition}
+Let $\phi$ be a decorated formula in multi-sorted logic. Then $\phi^{*}$ is the same formula, in unsorted logic, without decorations. This notation is extended to clause sets and to signatures in a straightforward way.
+\end{definition}
+
+\begin{definition}
+A clause set in unsorted logic over the signature $\Sigma^{*}$ is \emph{well sorted} if it is possible to assign sorts to all its variables, such that is becomes well-sorted with regard to $\Sigma$.
+\end{definition}
+
+Until the end of this section, we fix a signature $\Sigma$ for multi-sorted structures, and the corresponding $\Sigma^{*}$. All the formulas are considered with respect to these signatures.
+
+This is the main result :
+
+\begin{theorem}
+$\phi$ is valid (w.r.t. $\Sigma$) if ond only if $\phi^{*}$ is valid (w.r.t. $\Sigma^{*}$).
+\end{theorem}
+
+%In order to prove this result, we will first state an intermediate lemma :
+
+%\begin{lemma}
+%Let $A$ and $A'$ be two (implicitly well-sorted) atoms in the multi-sorted world. Then $A$ and $A'$ are unifiable if and only if $A^{*}$ and $A'^{*}$ are (in the uni-sorted world).
+%\end{lemma}
+
+%\begin{proof}
+%Since the only difference between $A$ and $A^{*}$ is the presence of sort decorations, the result is straightforward\ldots
+%\end{proof}
+
+Before completing the proof of theorem 2, let us recall the rules of binary resolution :
+
+\begin{mathpar}
+   \colorbox{LightGray}{  \inferrule[Resolution]{C \lor +A \\ C' \lor -A'}{C \sigma \lor C' \sigma} } \quad \colorbox{LightOrange}{$\sigma=mgu(A \doteq A')$}
+   \and
+   	\colorbox{LightGray}{  \inferrule[Factorisation]{C \lor +A \lor + A'}{C \sigma \lor +A \sigma} } \quad \colorbox{LightOrange}{$\sigma=mgu(A \doteq A')$}
+\end{mathpar}
+
+\begin{proof}[proof of theorem 2]
+We will prove that the empty clause can be derived from $S$ using a finite number of resolution or factorisation steps if and only if it can be from $S^{*}$. As long as resolution is correct and complete in both the unsorted world and the multi-sorted world, this ensures theorem 2. 
+For this purpose, we prove that if $S$ is a well-sorted set of clauses in uni-sorted logic, then the clause derived from $S$ by a resolution or factorisation step is well-sorted. This would allow us to conclude by a simple induction on the sequence of resolution/factorisation steps.
+
+Here again, the multi-sorted $\Longrightarrow$ unsorted implication is trivial. We will now consider the case where we have a deduction step in the unsorted world, and we will show that it can be lifted to the multi-sorted world.
+
+In both the cases of \TirName{Resolution} or \TirName{Factorisation}, assuming that the premises are well-sorted clauses and atoms, we want the conclusion and the unification problem to be well-sorted. Lemma 1 garantee than only the later is required, since it implies the former. And the unification problem is well-sorted, since $A^{*}$ and $A'^{*}$ are.
+\end{proof}
+
+
+\end{document}

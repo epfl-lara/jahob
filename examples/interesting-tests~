@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#loopinvs/gtree/run-mona
+#loopinvs/gtree/run-tests
+
+TEST_SCRIPTS="
+containers/instantiable/assoc-list/run-tests
+containers/global/circular-list/run-tests
+containers/queue/check-queue
+# containers/vs_hashtable/run-tests
+containers/hobgsll/run-annot
+sorting/insertionsort/run-tests
+# containers/functional/list/run-tests
+# containers/functional/assoc-list/run-tests
+# containers/functional/tree/run-tests
+# containers/instantiable/list-data/run-tests
+containers/instantiable/list-cursor/run-tests
+loopinvs/BH/run-tests
+# loopinvs/gdll/run-tests
+# loopinvs/gtree/run-tests
+# loopinvs/gtree/run-mona
+loopinvs/java.util/ArrayList/run-tests
+# loopinvs/java.util/AssocList/run-tests
+# loopinvs/java.util/Hashtable/run-global-tests
+loopinvs/pqueue/run-ordered
+loopinvs/pqueue/run-tests
+loopinvs/primes/run-span
+loopinvs/sll/run-tests
+"
+time ./run-one-test "$TEST_SCRIPTS"
+

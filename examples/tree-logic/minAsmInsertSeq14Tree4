@@ -1,0 +1,5 @@
+([|(ALL t1_1 t2_1. ((((Node_parent t1_1) = null) & ((Node_left t2_1) = t1_1)) --> (t1_1=null)));
+(ALL t_1. (((Node_parent (Node_left t_1)) = t_1) | ((Node_left t_1) = null)));
+(ALL x y. (((y~=null) & ((Node_parent x) = y)) --> ((x=null) | ((Tree_root~=null) & (fol_reach_1 x Tree_root) & (fol_reach_1 Tree_root (bp_q2_1 x))))));
+(~((Tree_root~=null) & (fol_reach_1 e Tree_root) & (fol_reach_1 Tree_root (bp_q2_1 e))))|] ==>
+    ((((fieldWrite Node_parent e p_2) (Node_left v_5_60)) = v_5_60) | ((Node_left v_5_60) = null)))

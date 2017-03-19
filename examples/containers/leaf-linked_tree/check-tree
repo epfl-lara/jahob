@@ -1,0 +1,7 @@
+../../../bin/jahob.opt -method Tree.isEmpty -usedp mona spass
+../../../bin/jahob.opt Tree.java -method Tree.isLeaf -usedp mona spass
+../../../bin/jahob.opt Tree.java -method Tree.findSmallestLeaf -usedp mona spass
+../../../bin/jahob.opt Tree.java -method Tree.leafUpdate -usedp mona spass
+../../../bin/jahob.opt Tree.java -method Tree.add -usedp mona spass
+../../../bin/jahob.opt Tree.java -method Tree.getRoot -usedp mona spass
+

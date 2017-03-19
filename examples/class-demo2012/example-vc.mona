@@ -1,0 +1,18 @@
+m2l-str;
+var2 $NullSet where ex1 v : v in $NullSet & (all1 v' : v' ~= v + 1);
+pred null(var1 v) = v in $NullSet;
+pred $Eq1(var1 v1, v2) = null(v2) & null(v1) | v1 = v2;
+pred $Elem(var1 v1, var2 S) = ex1 v2 : v2 in S & $Eq1(v1, v2);
+pred $Sub(var2 S1, S2) = all1 v1 : $Elem(v1, S1) => $Elem(v1, S2);
+pred $Eq2(var2 S1, S2) = $Sub(S2, S1) & $Sub(S1, S2);
+pred $Union(var2 S1, S2, S3) = all1 v1 : $Elem(v1, S2) | $Elem(v1, S1) <=> $Elem(v1, S3);
+pred $Inter(var2 S1, S2, S3) = all1 v1 : $Elem(v1, S2) & $Elem(v1, S1) <=> $Elem(v1, S3);
+pred $Diff(var2 S1, S2, S3) = all1 v1 : $Elem(v1, S1) & ~ $Elem(v1, S2) <=> $Elem(v1, S3);
+var1 r_2 where true;
+var1 n where true;
+var1 x_2 where true;
+var1 c__69 where true;
+var1 c__70 where true;
+pred Node_next(var1 v1, v2) = null(v2) & null(v1) | $Eq1(v1 + 1, v2) & ~ null(v1);
+pred Node_prev(var1 x, y) = (~ null(x) & (ex1 z : Node_next(z, x)) => Node_next(y, x)) & (~ (ex1 z : Node_next(z, x)) | null(x) => null(y)) & (null(x) => null(y));
+(ex1 $v_938 : Node_prev($v_938, c__69) & null($v_938)) & Node_prev(x_2, c__70) & (null(x_2) => $Eq1(c__70, c__69)) & (ex1 $v_936 : Node_next(r_2, $v_936) & null($v_936)) & ~ null(n) & (~ ($Eq1(n, x_2) | (ex1 z : Node_next(z, x_2) & ~ $Eq1(r_2, z))) | null(x_2)) & (ex1 $v_934 : Node_next($v_934, $v_934) & null($v_934)) & null(c__69) => ~ $Eq1(n, x_2) & null(c__70) | $Eq1(n, x_2) & null(r_2);

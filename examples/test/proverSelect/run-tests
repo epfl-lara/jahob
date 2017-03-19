@@ -1,0 +1,4 @@
+# First running in the good order, this should take less than 10 seconds
+/usr/bin/time ../../../bin/jahob.opt ListPick.java -method List.removeCurrent -jast -ast -sastvc -sast -usedp z3 spass
+# First running in bad order, this should take over 60 seconds
+/usr/bin/time ../../../bin/jahob.opt ListPick.java -method List.removeCurrent -jast -ast -sastvc -sast -usedp spass z3

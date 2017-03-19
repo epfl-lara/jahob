@@ -1,0 +1,1 @@
+/usr/bin/time ../../../../bin/jahob.opt ArrayList.java -timeout 30 -sastvc -hidden -method ArrayList.remove2 -usedp z3 spass:ArithAxioms:OrderAxioms cvcl isa

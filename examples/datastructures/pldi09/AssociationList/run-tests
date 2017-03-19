@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt AssociationList.java -class AssociationList -timeout 30 -printcounts -usedp z3 spass
+ensure_verifies $? "pldi09:AssociationList"

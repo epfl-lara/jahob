@@ -1,0 +1,8 @@
+ocamlc -c scTypes.ml
+ocamllex scLexer.mll       
+ocamlyacc -v scParser.mly     
+ocamlc -c scParser.mli
+ocamlc -c scLexer.ml
+ocamlc -c scParser.ml
+ocamlc -c speccomp.ml
+ocamlc -o speccomp scTypes.cmo scLexer.cmo scParser.cmo speccomp.cmo 

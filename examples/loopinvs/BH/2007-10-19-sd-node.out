@@ -1,0 +1,43 @@
+
+Analyzing class Node.
+...........................xx....xx............xx........xx............xx........xx....xx....xx................................................xx........xx.
+======================================================================
+Built-in validity checker proved 12 sequents during splitting.
+SPASS proved 34 out of 34 sequents. Total time : 0.3 s
+======================================================================
+A total of 46 sequents out of 46 proved.
+
+[Node.makeCell:...............xx....xx....xx....xx....xx....xxxx............xxx....xx....xx....xxxxxx....xx........xx....xx....xxxxxxxxxxxxxxxx........xxxxxxxxxxxx....xxx............xx....xx....xxxx........xx....xx....xx........xxxxxxxx............xx....xx....xxxxxx....xxxxxxxxxxxx....xxxxxxxxxxxxxxxx............xx....................xx.
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+SPASS proved 49 out of 49 sequents. Total time : 5.0 s
+======================================================================
+A total of 57 sequents out of 57 proved.
+:Node.makeCell]
+[Node.makeTree:.......................................................xx....o................................................xx....xx.
+======================================================================
+Built-in validity checker proved 120 sequents during splitting.
+SPASS proved 28 out of 28 sequents. Total time : 8.2 s
+======================================================================
+A total of 148 sequents out of 148 proved.
+:Node.makeTree]
+[Node.addToTree:...xx........................xx................xx....xx....xxx....xx....xx....xxxxxx....xx........xx....xx....xxxxxxxxxxxxxxxx........xxxxxxxxxxxx....xxx............xx....xx....xxxx....xx....xx....xx....xx....xx....xx....xxxxxxxx............xx....xx....xxxxxx....xxxxxxxxxxxx....xxxxxxxxxxxxxxxx........xxx....xxxxxxxxxxxxxxxxxxxxxxxx....xxx............o........xx....o!.....xx....xx....xxxx........xxx................xx....xx....xx....xx....xx.....
+======================================================================
+Built-in validity checker proved 121 sequents during splitting.
+SPASS proved 66 out of 67 sequents. Total time : 22.5 s
+CVC Lite proved 1 out of 1 sequents. Total time : 0.8 s
+======================================================================
+A total of 188 sequents out of 188 proved.
+:Node.addToTree]
+[Node.loadTree:...xx........xx....xx....oxx....xx........xxx........xxx................xxx........................................xx........xx....xxx....o........xx....xx....xx....xx........xx....xx.......xx....xx....xx........xxxxxxx............xx....xx....xxxxxxx....xx....xx....xxxxxox....xx........xx....xx....xxxxxxxxxxxxxxxx........xxxxxxxxxxxx....xxx............xx....xx....xxxx....xx....xx....xx....xx....xxxxxxxx....o........xx....xx....xxxxxox....xxxxxxxxxxxx....xxxxxxxxxxxxxxxx....o!.....xxoxoxxoxox!.....xxxxxxxxxxxxxxxxxxxxxxxoxxxxxxxxxxxxxxxxoxxxxxxxxoxxxxxxxxoxxxxxxxxxxxxxxxxxxxxxxxxoxxxxxxxxxxxxxxxxoxxxxxxxxoxxxxxxxxox!.....xoxoxoxxxox!.....o!.....o!.....xx........xx....xx....xx....xx....xx....xxxx........xxx............xx....xx....xx....xx....xx....xx.
+======================================================================
+Built-in validity checker proved 140 sequents during splitting.
+Lemma file proved 1 out of 99 sequents. Total time : 1.9 s
+SPASS proved 92 out of 98 sequents. Total time : 213.5 s
+CVC Lite proved 6 out of 6 sequents. Total time : 4.9 s
+======================================================================
+A total of 239 sequents out of 239 proved.
+:Node.loadTree]
+0=== Verification SUCCEEDED.
+271.21user 6.73system 4:38.59elapsed 99%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (0major+1855530minor)pagefaults 0swaps

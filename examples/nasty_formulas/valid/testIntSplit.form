@@ -1,0 +1,4 @@
+[|comment ''twoCases'' (p | q);
+comment ''caseConseq'' (p --> (~(EX (i::int). (((i, (elem :: obj)) :: (int * obj)) : (ArrayList_content :: ((int * obj)) set)))));
+comment ''caseSelect'' (~q)|] ==>
+    comment ''goal'' (~(EX (i::int). ((i, elem) : ArrayList_content)))

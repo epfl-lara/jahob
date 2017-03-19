@@ -1,0 +1,8 @@
+([|(ALL t_1. (fol_reach_1 t_1 (Node_parent t_1)));
+(ALL t1_1 t2_1. (((fol_reach_1 t1_1 t2_1) & (fol_reach_1 t2_1 t1_1)) --> (t1_1=t2_1)));
+(ALL t_1. (fol_reach_1 t_1 null));
+(ALL t1_1 t2_1. ((((Node_parent t1_1) = null) & ((Node_left t2_1) = t1_1)) --> (t1_1=null)));
+(ALL t1_1 t2_1. ((((Node_parent t1_1) = null) & ((Node_right t2_1) = t1_1)) --> (t1_1=null)));
+(ALL t_1. ((((Node_left (Node_parent t_1)) = t_1) | ((Node_parent t_1) = null)) | ((Node_right (Node_parent t_1)) = t_1)));
+((p_2~=null) --> ((Node_left p_2) = null))|] ==>
+    ((((Node_right ((fieldWrite Node_parent e p_2) v_5_30)) = v_5_30) | (((fieldWrite Node_left p_2 e) ((fieldWrite Node_parent e p_2) v_5_30)) = v_5_30)) | ((((fieldWrite Node_parent e p_2) v_5_30) = null) & ((((Node_right v_4_30) = v_5_30) | (((fieldWrite Node_left p_2 e) v_4_30) = v_5_30)) --> (v_5_30=null)))))

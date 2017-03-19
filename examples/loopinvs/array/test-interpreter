@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt ArraySet.java -interpret -class ArraySet -noverify 2>>interpret.out | tee interpret.out
+

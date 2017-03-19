@@ -1,0 +1,6 @@
+../../../bin/jahob.opt CHTest.java -method CHTest.test0 -usedp cvcl
+ensure_verifies $? "test0"
+../../../bin/jahob.opt CHTest.java -method CHTest.test1 -usedp cvcl
+ensure_fails $? "test1"
+../../../bin/jahob.opt CHTest.java -method CHTest.test2 -usedp cvcl
+ensure_fails $? "test2"

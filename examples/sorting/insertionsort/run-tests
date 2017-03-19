@@ -1,0 +1,1 @@
+/usr/bin/time ../../../bin/jahob.opt -nobackground -method Insertion.insertionSort Insertion.java -usedp z3 2>&1 | tee insertionsort.out

@@ -1,0 +1,54 @@
+([|(comment ''Tree.content_def'' ((Tree_content :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead (Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Tree_root :: obj) x)} :: obj set)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~= (null :: obj)));
+(comment '': ProcedurePrecondition'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_left :: (obj => obj)), (Node_right :: (obj => obj))]));
+(comment '': ProcedurePrecondition'' (((Tree_root :: obj) ~= (null :: obj)) --> (ALL (n::obj). ((((fieldRead (Node_left :: (obj => obj)) n) :: obj) ~= (Tree_root :: obj)) & (((fieldRead (Node_right :: (obj => obj)) n) :: obj) ~= (Tree_root :: obj))))));
+(comment '': ProcedurePrecondition'' (((Tree_first :: obj) ~= (null :: obj)) --> (ALL (n::obj). (((fieldRead (Node_next :: (obj => obj)) n) :: obj) ~= (Tree_first :: obj)))));
+(comment '': ProcedurePrecondition'' ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((fieldRead (Node_next :: (obj => obj)) x) :: obj) = (y :: obj))) (Tree_first :: obj) (Tree_root :: obj)));
+(comment '': ProcedurePrecondition'' (ALL (x::obj) (y::obj). ((((x :: obj) ~= (null :: obj)) & ((y :: obj) ~= (null :: obj)) & ((((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_left :: (obj => obj)) x) :: obj) = (y :: obj)))) --> ((y :: obj) : (Tree_content :: obj set)))));
+(comment '': ProcedurePrecondition'' (ALL (x::obj) (y::obj). ((((fieldRead (Node_next :: (obj => obj)) x) :: obj) = (y :: obj)) <-> ((((x :: obj) ~= (null :: obj)) --> (((((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (null :: obj)) --> (((EX (z::obj). (((fieldRead (Node_left :: (obj => obj)) z) :: obj) = (x :: obj))) --> (((fieldRead (Node_left :: (obj => obj)) y) :: obj) = (x :: obj))) & ((ALL (z::obj). (((fieldRead (Node_left :: (obj => obj)) z) :: obj) ~= (x :: obj))) --> (((ALL (z::obj). (~((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x1::obj) (x2::obj). (((fieldRead (Node_right :: (obj => obj)) x1) :: obj) = (x2 :: obj))) ((Node_left :: (obj => obj)) z) x))) & ((y :: obj) = (null :: obj))) | ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x1::obj) (x2::obj). (((fieldRead (Node_right :: (obj => obj)) x1) :: obj) = (x2 :: obj))) ((Node_left :: (obj => obj)) y) x))))) & ((((fieldRead (Node_right :: (obj => obj)) x) :: obj) ~= (null :: obj)) --> ((((fieldRead (Node_left :: (obj => obj)) y) :: obj) = (null :: obj)) & ((y :: obj) ~= (null :: obj)) & ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x1::obj) (x2::obj). (((fieldRead (Node_left :: (obj => obj)) x1) :: obj) = (x2 :: obj))) ((Node_right :: (obj => obj)) x) y))))) & (((x :: obj) = (null :: obj)) --> ((y :: obj) = (null :: obj)))))));
+(comment ''AssumingLoopInv'' ((((p_13 :: obj) = (null :: obj)) & ((n_7 :: obj) = (null :: obj))) --> ((Tree_root :: obj) = (null :: obj))));
+(comment ''AssumingLoopInv'' ((p_13 :: obj) : (Tree_content :: obj set)));
+(comment ''AssumingLoopInv'' ((n_7 :: obj) : (Tree_content :: obj set)));
+(comment ''AssumingLoopInv'' ((((p_13 :: obj) ~= (null :: obj)) & (wentLeft_2 :: bool)) --> (((fieldRead (Node_left :: (obj => obj)) (p_13 :: obj)) :: obj) = (n_7 :: obj))));
+(comment ''AssumingLoopInv'' ((((p_13 :: obj) ~= (null :: obj)) & (~(wentLeft_2 :: bool))) --> (((fieldRead (Node_right :: (obj => obj)) (p_13 :: obj)) :: obj) = (n_7 :: obj))));
+(comment ''AssumingLoopInv'' ((pred_3 :: obj) : (Tree_content :: obj set)));
+(comment ''AssumingLoopInv'' ((~(wentLeft_2 :: bool)) <-> ((pred_3 :: obj) = (p_13 :: obj))));
+(comment ''AssumingLoopInv'' (((pred_3 :: obj) = (null :: obj)) --> ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x1::obj) (x2::obj). (((fieldRead (Node_left :: (obj => obj)) x1) :: obj) = (x2 :: obj))) (Tree_root :: obj) (p_13 :: obj))));
+(comment ''AssumingLoopInv'' (((pred_3 :: obj) = (null :: obj)) --> ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x1::obj) (x2::obj). (((fieldRead (Node_left :: (obj => obj)) x1) :: obj) = (x2 :: obj))) (Tree_root :: obj) (n_7 :: obj))));
+(comment ''AssumingLoopInv'' ((((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x1::obj) (x2::obj). (((fieldRead (Node_left :: (obj => obj)) x1) :: obj) = (x2 :: obj))) (Tree_root :: obj) (p_13 :: obj)) & (wentLeft_2 :: bool)) --> ((pred_3 :: obj) = (null :: obj))));
+(comment ''AssumingLoopInv'' ((((n_7 :: obj) ~= (null :: obj)) & ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x1::obj) (x2::obj). (((fieldRead (Node_left :: (obj => obj)) x1) :: obj) = (x2 :: obj))) (Tree_root :: obj) (n_7 :: obj))) --> ((pred_3 :: obj) = (null :: obj))));
+(comment ''AssumingLoopInv'' (((pred_3 :: obj) ~= (null :: obj)) --> ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x1::obj) (x2::obj). (((fieldRead (Node_left :: (obj => obj)) x1) :: obj) = (x2 :: obj))) (fieldRead (Node_right :: (obj => obj)) (pred_3 :: obj)) (n_7 :: obj))));
+(comment ''AssumingLoopInv'' ((((pred_3 :: obj) ~= (null :: obj)) & ((p_13 :: obj) ~= (pred_3 :: obj))) --> ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x1::obj) (x2::obj). (((fieldRead (Node_left :: (obj => obj)) x1) :: obj) = (x2 :: obj))) (fieldRead (Node_right :: (obj => obj)) (pred_3 :: obj)) (p_13 :: obj))));
+(comment ''AssumingLoopInv'' (((n_7 :: obj) ~= (Tree_root :: obj)) --> (((n_7 :: obj) = ((fieldRead (Node_left :: (obj => obj)) (p_13 :: obj)) :: obj)) | ((n_7 :: obj) = ((fieldRead (Node_right :: (obj => obj)) (p_13 :: obj)) :: obj)))));
+(comment ''TrueBranch'' (((n_7 :: obj) ~= (null :: obj)) :: bool));
+(comment ''LoopConditionFalse'' (~(((n_7 :: obj) ~= (e :: obj)) :: bool)));
+(comment ''FalseBranch'' (~(((n_7 :: obj) = (null :: obj)) :: bool)));
+(comment ''TrueBranch'' ((((fieldRead (Node_left :: (obj => obj)) (n_7 :: obj)) :: obj) ~= (null :: obj)) :: bool));
+(comment ''AssumingLoopInv'' (((newSubrootParent_2 :: obj) ~= (null :: obj)) --> (((fieldRead (Node_right :: (obj => obj)) (newSubrootParent_2 :: obj)) :: obj) = (newSubroot_2 :: obj))));
+(comment ''AssumingLoopInv'' (((newSubrootParent_2 :: obj) = (null :: obj)) --> ((newSubroot_2 :: obj) = ((fieldRead (Node_left :: (obj => obj)) (n_7 :: obj)) :: obj))));
+(comment ''AssumingLoopInv'' ((newSubroot_2 :: obj) : (Tree_content :: obj set)));
+(comment ''AssumingLoopInv'' (((newSubrootParent_2 :: obj) ~= (null :: obj)) --> ((newSubrootParent_2 :: obj) : (Tree_content :: obj set))));
+(comment ''AssumingLoopInv'' ((newSubroot_2 :: obj) ~= (null :: obj)));
+(comment ''LoopConditionFalse'' (~((((fieldRead (Node_right :: (obj => obj)) (newSubroot_2 :: obj)) :: obj) ~= (null :: obj)) :: bool)));
+(comment ''TrueBranch'' ((((fieldRead (Node_right :: (obj => obj)) (n_7 :: obj)) :: obj) ~= (null :: obj)) :: bool));
+(comment ''TrueBranch'' (((newSubrootParent_2 :: obj) ~= (null :: obj)) :: bool));
+(comment ''TrueBranch'' (((newSubroot_2 :: obj) ~= (null :: obj)) :: bool));
+(comment ''FalseBranch'' (~(((p_13 :: obj) = (null :: obj)) :: bool)));
+(comment ''TrueBranch'' (wentLeft_2 :: bool));
+(comment ''Tree.content_def'' ((Tree_content_2 :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead ((fieldWrite ((fieldWrite ((fieldWrite (Node_left :: (obj => obj)) (newSubroot_2 :: obj) ((fieldRead (Node_left :: (obj => obj)) (n_7 :: obj)) :: obj)) :: (obj => obj)) (n_7 :: obj) null) :: (obj => obj)) (p_13 :: obj) (newSubroot_2 :: obj)) :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead ((fieldWrite ((fieldWrite ((fieldWrite (Node_right :: (obj => obj)) (newSubrootParent_2 :: obj) ((fieldRead (Node_left :: (obj => obj)) (newSubroot_2 :: obj)) :: obj)) :: (obj => obj)) (newSubroot_2 :: obj) ((fieldRead ((fieldWrite (Node_right :: (obj => obj)) (newSubrootParent_2 :: obj) ((fieldRead (Node_left :: (obj => obj)) (newSubroot_2 :: obj)) :: obj)) :: (obj => obj)) (n_7 :: obj)) :: obj)) :: (obj => obj)) (n_7 :: obj) null) :: (obj => obj)) x) :: obj) = (y :: obj)))) (Tree_root :: obj) x)} :: obj set)));
+
+new_left = ((fieldWrite ((fieldWrite ((fieldWrite (Node_left :: (obj => obj)) (newSubroot_2 :: obj) 
+	((fieldRead (Node_left :: (obj => obj)) (n_7 :: obj)) :: obj)) :: (obj => obj)) (n_7 :: obj) null) :: (obj => obj)) (p_13 :: obj) (newSubroot_2 :: obj)) 
+	:: (obj => obj));
+new_right = ((fieldWrite ((fieldWrite ((fieldWrite (Node_right :: (obj => obj)) (newSubrootParent_2 :: obj) 
+	((fieldRead (Node_left :: (obj => obj)) (newSubroot_2 :: obj)) :: obj)) :: (obj => obj)) (newSubroot_2 :: obj) 
+	((fieldRead ((fieldWrite (Node_right :: (obj => obj)) (newSubrootParent_2 :: obj) ((fieldRead (Node_left :: 
+	(obj => obj)) (newSubroot_2 :: obj)) :: obj)) :: (obj => obj)) (n_7 :: obj)) :: obj)) :: (obj => obj)) 
+	(n_7 :: obj) null) :: (obj => obj));
+
+new_left_right = (% x y. x..new_left = y | x..new_right = y);
+
+|] ==>
+   (ALL x y z. new_left_right x z & new_left_right y z & x ~= y --> z = null) &
+   (ALL x y. new_left_right x y & (y,x) : {(x,y). new_left_right x y}^* --> x = null)  
+)

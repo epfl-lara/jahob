@@ -1,0 +1,7 @@
+PROVER=e
+../../../bin/jahob.opt -method Split.test0 Split.java -usedp $PROVER 
+ensure_verifies $? "test0"
+../../../bin/jahob.opt -method Split.test1 Split.java -usedp $PROVER 
+ensure_fails $? "test1"
+../../../bin/jahob.opt -method Split.test2 Split.java -usedp $PROVER 
+ensure_verifies $? "test2"

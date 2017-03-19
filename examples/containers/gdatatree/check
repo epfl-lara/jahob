@@ -1,0 +1,1 @@
+../../../bin/jahob.opt Tree.java Node.java -nobackground -abstractfinal -bohne -method $* -usedp mona z3 bapa:fullpapa

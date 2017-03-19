@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt SpanningTree.java -hidden -class Node -timeout 50 -sastvc -usedp z3 spass:OrderAxioms:ArithAxioms cvcl
+ensure_verifies $? "pldi08:SpanningTree"

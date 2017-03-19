@@ -1,0 +1,1 @@
+/usr/bin/time ../../../bin/jahob.opt DLL.java -nobackground -method DLL.addLast -infer Interpret=DLL.driver:Minimize -usedp mona >& infer.out

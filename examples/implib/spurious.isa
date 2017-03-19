@@ -1,0 +1,5 @@
+(comment ''PublicPreservedAfterReentrancy'' (Library_borrows_27 = Library_borrows) 
+
+==>
+
+    comment ''ProcedureEndPostcondition'' (EX p1. (((p1, b) : (fieldRead Relation_content_34 Library_borrows)) --> ((fieldRead Relation_content_34 Library_borrows_27) = (fieldRead Relation_content_34 Library_borrows)))))

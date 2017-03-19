@@ -1,0 +1,14 @@
+[|comment ''Hashtable_PrivateInvContentDefInvProcedurePrecondition'' (ALL this__33. (((this__33 : Object_alloc) & (this__33 : Hashtable) & (fieldRead Hashtable_init this__33)) --> ((fieldRead Hashtable_content this__33) = {p__5. (EX k v. ((p__5 = (k, v)) & ((k, v) : (fieldRead Node_con (arrayRead Array_arrayState (fieldRead Hashtable_table this__33) (Hashtable_h k (fieldRead Array_length (fieldRead Hashtable_table this__33))))))))})));
+comment ''Hashtable_PrivateInvHashInvProcedurePrecondition'' (ALL this__38. (((this__38 : Object_alloc) & (this__38 : Hashtable)) --> (ALL k. ((0 <= (Hashtable_h k (fieldRead Array_length (fieldRead Hashtable_table this__38)))) & (intless (Hashtable_h k (fieldRead Array_length (fieldRead Hashtable_table this__38))) (fieldRead Array_length (fieldRead Hashtable_table this__38)))))));
+comment ''ThisProps'' (this : Object_alloc);
+comment ''ThisProps'' (this : Hashtable);
+comment ''ThisProps'' (fieldRead Hashtable_init this);
+comment ''AllocChange'' (Object_alloc_14 = (Object_alloc Un {tmp_1_19}));
+comment ''NewNotHT'' (tmp_1_19 ~: Hashtable);
+comment ''HProp'' (tmp_2_13 = (Hashtable_h k0 (fieldRead Array_length (fieldRead Hashtable_table this))));
+comment ''NewNotRefArray'' (ALL ht i. (((ht : Object_alloc) & (ht : Hashtable) & (0 <= i) & (intless i (fieldRead Array_length (fieldRead Hashtable_table ht)))) --> ((arrayRead Array_arrayState (fieldRead Hashtable_table ht) i) ~= tmp_1_19)));
+comment ''TableInjInvNewTableInj'' (ALL h1 h2. (((h1 : Object_alloc_14) & (h1 : Hashtable) & (fieldRead Hashtable_init h1) & (h2 : Object_alloc_14) & (h2 : Hashtable) & (fieldRead Hashtable_init h2) & ((fieldRead Hashtable_table h1) = (fieldRead Hashtable_table h2))) --> (h1 = h2)));
+comment ''ContentDefInv_NewContentDef'' (this__6_bv8848 : Object_alloc_14);
+comment ''ContentDefInv_NewContentDef'' (this__6_bv8848 : Hashtable);
+comment ''ContentDefInv_NewContentDef'' (fieldRead Hashtable_init this__6_bv8848)|] ==>
+    comment ''ContentDefInv_NewContentDef'' ((fieldRead (fieldWrite Hashtable_content this ((fieldRead Hashtable_content this) Un {(k0, v0)})) this__6_bv8848) = {p__5. (EX k v. ((p__5 = (k, v)) & ((k, v) : (fieldRead (fieldWrite Node_con tmp_1_19 ({(k0, v0)} Un (fieldRead Node_con (arrayRead Array_arrayState (fieldRead Hashtable_table this) tmp_2_13)))) (arrayRead (arrayWrite Array_arrayState (fieldRead Hashtable_table this) tmp_2_13 tmp_1_19) (fieldRead Hashtable_table this__6_bv8848) (Hashtable_h k (fieldRead Array_length (fieldRead Hashtable_table this__6_bv8848))))))))})

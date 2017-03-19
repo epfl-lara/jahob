@@ -1,0 +1,1 @@
+../../../bin/jahob.opt -unroll -unrollfactor 1 -nobackground GlobalExtremeGhostPriorityQueue.java Element.java -method Queue.insert -sastvc -usedp spass:SpassSortGuards=no:TimeOut=5 spass:SpassSordGuards=no:ArithAxioms:OrderAxioms:TimeOut=7 isa:TimeOut=15

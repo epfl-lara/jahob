@@ -1,0 +1,4 @@
+/usr/bin/time ../../../../bin/jahob.opt IArrayList.java -sastvc -hidden -failfast -class ArrayList -usedp z3 spass:ArithAxioms:OrderAxioms cvcl isa 2>&1 | tee ialist.out
+ensure_verifies $? "loopinvs:java.util:IArrayList"
+
+

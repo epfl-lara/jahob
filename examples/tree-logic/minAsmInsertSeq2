@@ -1,0 +1,11 @@
+Here we go!
+Begining proof process...
+...
+Minimal sequent is:
+((comment ''Tree.content_def'' (Tree_content = {x. ((x=null) | ((Tree_root~=null) & (rtrancl_pt (% x y. ((fieldRead Node_parent x) = y)) x Tree_root)))})) ==>
+    (comment ''LoopInvHoldsInitially'' (Tree_root:Tree_content)))input formula (insertSeq2) is VALID. Yahoooo !
+
+======================================================================
+Z3 (Tree=:NoTriggers=:KeepRtrancl=) proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 1 sequents out of 1 proved.

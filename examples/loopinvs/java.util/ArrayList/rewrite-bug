@@ -1,0 +1,1 @@
+../../../../bin/jahob.opt ArrayList.java -sastvc -hidden -failfast -method ArrayList.add_at -assert contChange -v -debug -debugmodules SmtTranslate -debuglevel 4 -usedp z3 | tee out

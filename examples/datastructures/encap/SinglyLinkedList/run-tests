@@ -1,0 +1,3 @@
+/usr/bin/time ../../../../bin/jahob.opt SinglyLinkedList.java -class Node -class SinglyLinkedList -timeout 30 -usedp spass
+ensure_verifies $? "encap:SinglyLinkedList"
+

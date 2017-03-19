@@ -1,0 +1,63 @@
+P predicates... 
+(% (v_6::obj) (w_1::obj). ((v_6=e) --> False))  
+(% (v_6::obj) (w_1::obj). True)
+Before step 3 after rewritting fildWrites
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+([|((Tree_root::obj) : (Node :: obj set));
+((((Node_p :: (obj=>obj)) (Tree_root::obj)) :: obj) = (null::obj));
+(ALL (x::obj). (((((Node_l :: (obj=>obj)) x) :: obj) ~= (Tree_root::obj)) & ((((Node_r :: (obj=>obj)) x) :: obj) ~= (Tree_root::obj))));
+(parent_reach (% (v_6::obj) (w_1::obj). True) (pos::obj) (Tree_root::obj));
+((pos::obj) ~= (null::obj));
+((Tree_root::obj) ~= (null::obj));
+((pos::obj) ~= (null::obj));
+((((Node_l :: (obj=>obj)) (pos::obj)) :: obj) = (null::obj));
+(~(((Tree_root::obj) ~= (null::obj)) & ((e::obj) ~= (null::obj)) & (parent_reach (% (v_6::obj) (w_1::obj). True) (e::obj) (Tree_root::obj))));
+((e::obj) ~= (Tree_root::obj));
+((e::obj) ~= (null::obj));
+((((Node_p :: (obj=>obj)) (e::obj)) :: obj) = (null::obj));
+((((Node_l :: (obj=>obj)) (e::obj)) :: obj) = (null::obj));
+((((Node_r :: (obj=>obj)) (e::obj)) :: obj) = (null::obj));
+((pos::obj) : (Node :: obj set));
+((pos::obj) : (Object_alloc :: obj set));
+((e::obj) : (Node :: obj set));
+((e::obj) : (Object_alloc :: obj set))|]
+
+SOME AXIOMS
+ax_refl: 
+ '' (ALL (t_1::obj). (parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t_1 t_1))) & (comment ''
+ ax_trans: 
+ '' (ALL (t1_1::obj) (t2_1::obj) (t3_1::obj). (((parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t1_1 t2_1) & (parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t2_1 t3_1)) --> (parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t1_1 t3_1)))) & (comment ''
+ ax_antiSym: 
+ '' (ALL (t1_1::obj) (t2_1::obj). (((parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t1_1 t2_1) & (parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t2_1 t1_1)) --> (t1_1=t2_1)))) & (comment ''
+ ax_total: 
+ '' (ALL (t1_1::obj) (t2_1::obj). (((parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t1_1 t2_1) & (parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t1_1 t3_1)) --> ((parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t3_1 t2_1) | (parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) t2_1 t3_1)))))
+==>
+    ((ALL (v_5::obj). ((parent_reach (% (v_6::obj) (w_1::obj). ((v_6=e) --> False)) v_5 null) 
+
+
+After step 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+P predicates... 
+(% (v_6::obj) (w_1::obj). ((v_6=e) --> False))  <-------bp2
+(% (v_6::obj) (w_1::obj). True)                 <-------bp1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Axioms Fig 5 for bp1 bp2
+&
+Axioms Fig 6 for bp1 bp2
+bpQ-def1 "ALL t1. P(t1,bp1(t1))" 
+bpQ-def1 "ALL t1. P(t1,bp2(t1))"
+& 
+.....:::
+(parent_reach (% (v_6::obj) (w_1::obj). True) (pos::obj) (Tree_root::obj));
+REPLACED BY
+P pos Tree_root & P Tree_root bp1(pos)
+
+.....:::
+==>
+((ALL (v_5::obj). ((parent_reach (% (v_6::obj) (w_1::obj). True & ((v_6=e) --> False)) v_5 null)
+REPLACED BY
+(ALL v_5. P v_5 null & P null bp2(v_5) )
+
+
+

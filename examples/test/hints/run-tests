@@ -1,0 +1,4 @@
+../../../bin/jahob.opt Hints.java -method Hints.testImpl -usedp cvcl
+ensure_verifies $? "Hints.testImpl"
+../../../bin/jahob.opt Hints.java -method Hints.testImplBreaks -usedp cvcl
+ensure_fails $? "Hints.testImplBreaks"

@@ -1,0 +1,3 @@
+# /usr/bin/time ../../../../bin/jahob.opt List.java -failfast -sastvc -class List -maxvcpar 16 -usedp z3 spass e 2>&1 | tee list-cursor.out
+/usr/bin/time ../../../../bin/jahob.opt List.java -failfast -sastvc -class List -usedp z3 spass e 2>&1 | tee list-cursor.out
+ensure_verifies $? "InstantiatableSinglyLinkedListBuiltinIterator"

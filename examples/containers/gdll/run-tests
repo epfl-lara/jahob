@@ -1,0 +1,4 @@
+../../../bin/jahob.opt DLL.java -nobackground -bohne -method DLL.addLast -usedp mona
+ensure_verifies $? "DLL.addLast"
+../../../bin/jahob.opt DLL.java -method DLL.remove -usedp mona
+ensure_verifies $? "DLL.remove"

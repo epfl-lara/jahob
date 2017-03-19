@@ -1,0 +1,8 @@
+../../bin/jahob.opt ../../lib/String.java -simpcall Library.java Set.java Relation.java Book.java Person.java FuncList.java AssocList.java -sastvc \
+  -method Library.checkOutBook \
+-usedp e:SortGuards=no:TimeOut=40 isa:TimeOut=0
+ensure_verifies $? "Library.checkOutBook [ImperativeInterfaces]"
+../../bin/jahob.opt ../../lib/String.java Library.java Set.java Relation.java Book.java Person.java FuncList.java AssocList.java -sastvc \
+  -method Library.checkOutBookBroken \
+-usedp e:SortGuards=no:TimeOut=40 isa:TimeOut=0
+ensure_fails $? "Library.checkOutBookBroken [ImperativeInterfaces]"

@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt PriorityQueue.java PriorityQueueElement.java -failfast -nobackground -sastvc -class PriorityQueue -usedp z3 2>&1 | tee priorityqueue.out
+ensure_verifies $? "loopinvs/pqueue/PriorityQueue.java:PriorityQueue"

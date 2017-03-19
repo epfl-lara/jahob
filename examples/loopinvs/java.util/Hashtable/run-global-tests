@@ -1,0 +1,3 @@
+/usr/bin/time ../../../../bin/jahob.opt GlobalHashtable.java -hidden -sastvc -class GlobalHashtable -failfast -usedp spass:SpassSortGuards=no:OrderAxioms:ArithAxioms:TimeOut=10 isa 2>&1 | tee ght.out
+ensure_verifies $? "loopinvs:java.util:GlobalHashtable"
+

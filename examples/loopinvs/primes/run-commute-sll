@@ -1,0 +1,1 @@
+../../../bin/jahob.opt SLL.java -nobackground -method Set.add0 -commute "Set.content" -v -usedp e spass cvcl isa | tee sll-commute.out

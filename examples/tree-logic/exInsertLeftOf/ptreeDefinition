@@ -1,0 +1,20 @@
+([|((e::obj) : (Object_alloc :: obj set));
+((e::obj) : (Node :: obj set));
+((pos::obj) : (Object_alloc :: obj set));
+((pos::obj) : (Node :: obj set));
+((((Node_r :: (obj=>obj)) (e::obj)) :: obj) = (null::obj));
+((((Node_l :: (obj=>obj)) (e::obj)) :: obj) = (null::obj));
+((((Node_p :: (obj=>obj)) (e::obj)) :: obj) = (null::obj));
+((e::obj) ~= (null::obj));
+((e::obj) ~= (Tree_root::obj));
+(~(((Tree_root::obj) ~= (null::obj)) & ((e::obj) ~= (null::obj)) & ((rtrancl_pt :: ((obj => (obj=>bool)) => (obj => (obj=>bool)))) (% (x::obj) (y::obj). ((((Node_p :: (obj=>obj)) x) :: obj) = (y::obj))) (e::obj) (Tree_root::obj))));
+((((Node_l :: (obj=>obj)) (pos::obj)) :: obj) = (null::obj));
+((pos::obj) ~= (null::obj));
+((Tree_root::obj) ~= (null::obj));
+((pos::obj) ~= (null::obj));
+((rtrancl_pt :: ((obj => (obj=>bool)) => (obj => (obj=>bool)))) (% (x::obj) (y::obj). ((((Node_p :: (obj=>obj)) x) :: obj) = (y::obj))) (pos::obj) (Tree_root::obj));
+(ALL (x::obj). (((((Node_l :: (obj=>obj)) x) :: obj) ~= (Tree_root::obj)) & ((((Node_r :: (obj=>obj)) x) :: obj) ~= (Tree_root::obj))));
+((((Node_p :: (obj=>obj)) (Tree_root::obj)) :: obj) = (null::obj));
+((ptree :: ((obj=>obj) => (((obj=>obj) list) => bool))) (Node_p :: (obj=>obj)) [(Node_l :: (obj=>obj)), (Node_r :: (obj=>obj))]);
+((Tree_root::obj) : (Node :: obj set))|] ==>
+    ((ALL (v_5::obj). (rtrancl_pt (% (v_5::obj) (v_4::obj). ((((fieldWrite (Node_p :: (obj=>obj)) (e::obj) (pos::obj)) :: (obj=>obj)) v_5) = v_4)) v_5 null)) & (ALL (v_5::obj) (v_4::obj) (v_3::obj). ((((((Node_r :: (obj=>obj)) v_3) = v_5) | ((((fieldWrite (Node_l :: (obj=>obj)) (pos::obj) (e::obj)) :: (obj=>obj)) v_3) = v_5)) & ((((Node_r :: (obj=>obj)) v_4) = v_5) | ((((fieldWrite (Node_l :: (obj=>obj)) (pos::obj) (e::obj)) :: (obj=>obj)) v_4) = v_5)) & (null~=v_5)) --> (v_4=v_3))) & ((ALL (v_5::obj). ((((((fieldWrite (Node_p :: (obj=>obj)) (e::obj) (pos::obj)) :: (obj=>obj)) ((Node_r :: (obj=>obj)) v_5)) = v_5) | (((Node_r :: (obj=>obj)) v_5) = null)) & (((((fieldWrite (Node_p :: (obj=>obj)) (e::obj) (pos::obj)) :: (obj=>obj)) (((fieldWrite (Node_l :: (obj=>obj)) (pos::obj) (e::obj)) :: (obj=>obj)) v_5)) = v_5) | ((((fieldWrite (Node_l :: (obj=>obj)) (pos::obj) (e::obj)) :: (obj=>obj)) v_5) = null)))) & (ALL (v_5::obj) (v_4::obj). (((((Node_r :: (obj=>obj)) (((fieldWrite (Node_p :: (obj=>obj)) (e::obj) (pos::obj)) :: (obj=>obj)) v_5)) = v_5) | ((((fieldWrite (Node_l :: (obj=>obj)) (pos::obj) (e::obj)) :: (obj=>obj)) (((fieldWrite (Node_p :: (obj=>obj)) (e::obj) (pos::obj)) :: (obj=>obj)) v_5)) = v_5)) | (((((fieldWrite (Node_p :: (obj=>obj)) (e::obj) (pos::obj)) :: (obj=>obj)) v_5) = null) & (((((Node_r :: (obj=>obj)) v_4) = v_5) | ((((fieldWrite (Node_l :: (obj=>obj)) (pos::obj) (e::obj)) :: (obj=>obj)) v_4) = v_5)) --> (v_5=null))))))))

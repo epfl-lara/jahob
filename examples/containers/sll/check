@@ -1,0 +1,2 @@
+#!/bin/sh
+../../../bin/jahob.opt -v List.java -method $@ -failfast -timeout 30 -usedp z3 mona 

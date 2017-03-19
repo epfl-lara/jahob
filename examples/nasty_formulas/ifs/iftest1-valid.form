@@ -1,0 +1,3 @@
+(o1=o2 | k=0) --> 
+((if i=i+k then o2 else (if i=i then o1 else a(i))) = 
+(if i+k=i+k then o2 else (if i+k=i then o1 else a(i+k))))

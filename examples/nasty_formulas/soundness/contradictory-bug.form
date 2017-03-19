@@ -1,0 +1,5 @@
+([|comment ''ArrayList_PrivateInvRangeInvProcedurePrecondition'' (ALL i. ((EX v. ((i, v) : ArrayList_content)) = ((0 <= i) & (intless i ArrayList_size))));
+comment ''ProcedurePrecondition'' (intless 0 ArrayList_size);
+comment ''ArrayList.content_def'' (ArrayList_content = {p__6. (EX i n. ((p__6 = (i, n)) & (0 <= i) & (intless i ArrayList_size) & (n = (arrayRead Array_arrayState ArrayList_elementData i))))})
+|] ==>
+    comment ''ProcedureEndPostcondition'' False)

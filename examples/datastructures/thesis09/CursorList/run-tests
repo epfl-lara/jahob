@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt CursorList.java -failfast -sastvc -class CursorList -timeout 30 -printcounts -usedp z3 spass
+ensure_verifies $? "thesis09:CursorList"

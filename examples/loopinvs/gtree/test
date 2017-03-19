@@ -1,0 +1,1 @@
+../../../bin/jahob.opt Tree.java Node.java -nobackground -method Tree.add -usedp mona 2>&1 | tee test.out

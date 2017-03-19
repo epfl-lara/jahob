@@ -1,0 +1,1 @@
+../../../bin/jahob.opt RefCountObject.java -method $@ -bohne -abstractfinal -nobackground -usedp z3 bapa:SliceQuantAssms

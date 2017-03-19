@@ -1,0 +1,3 @@
+JAHOB="../../../bin/jahob.opt"
+LIBS="../../../lib/String.java ../../../lib/Math.java"
+$JAHOB $LIBS $*

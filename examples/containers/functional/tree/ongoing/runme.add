@@ -1,0 +1,1 @@
+../../../bin/jahob.opt FuncTree.java -nobackground -method FuncTree.add -usedp spass:SpassSortGuards=no:TimeOut=20 spass:SpassSortGuards=no:OrderAxioms:TimeOut=60

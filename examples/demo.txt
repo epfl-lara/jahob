@@ -1,0 +1,49 @@
+First-order provers
+*******************
+
+Library system
+--------------
+cd implib
+run-small-test
+
+Association List
+----------------
+
+cd containers/functionnal_list
+check
+
+Hash table built on top of association list
+-------------------------------------------
+cd containers/ghashtable
+check
+
+Functional tree
+---------------
+cd containers/functional_tree
+runme.update
+
+Field constraint analysis and Bohne
+***********************************
+
+Singly linked list, directly linked
+-----------------------------------
+cd containers/hobgsll
+check 
+
+
+Sorted List
+-----------
+cd containers/sorted
+check
+
+Two-level skip list
+-------------------
+cd containers/skiplist
+check -extraprecise
+
+
+Tree insertion (takes a few minutes)
+--------------
+cd containers/gtree/
+check Tree.add
+

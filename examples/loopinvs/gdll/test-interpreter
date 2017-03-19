@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt DLL.java -interpret -class DLL -noverify | tee out
+

@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt MonaTree.java -failfast -nobackground -class Tree -timeout 60 -sastvc -usedp mona z3 e spass cvcl isa 2>&1 | tee monatree.out
+ensure_verifies $? "loopinvs/gtree/Tree.java:Tree"

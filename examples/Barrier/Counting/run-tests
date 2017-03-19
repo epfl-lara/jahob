@@ -1,0 +1,13 @@
+../../../bin/jahob.opt CountingBarrier_set_le.java -timeout 500 -method Thread.world -nocontext -nosplitting -noTryHard -usedp bapa:qfbapa
+ensure_verifies $? "Barrier:CountingBarrier:CountingBarrier_world"
+../../../bin/jahob.opt CountingBarrier_set_le.java -timeout 500 -method Thread.world_failing -nocontext -nosplitting -noTryHard -usedp bapa:qfbapa
+ensure_fails $? "Barrier:CountingBarrier:CountingBarrier_world_failing"
+
+# This one works:
+# /usr/bin/time -p -o CountingBarrier_set_le.log --append jahob.opt CountingBarrier_set_le.java -v -timeout 500 -method Thread.world -debuglevel 7 -nobackground -nocontext -nosplitting -noTryHard -debugmodules Bapa,Bohne,BohneRefine,BohneAbstraction,Mona -usedp bapa:qfbapa | tee --append CountingBarrier_set_le.log
+# This one works too:
+#/usr/bin/time -p -o CountingBarrier_set_le.log --append jahob.opt CountingBarrier_set_le.java -v -timeout 500 -method Thread.world -debuglevel 7 -nocontext -nosplitting -noTryHard -debugmodules Bapa,Bohne,BohneRefine,BohneAbstraction,Mona -usedp bapa:qfbapa | tee --append CountingBarrier_set_le.log
+# A timeout of 600 is too small.
+# /usr/bin/time -p -o CountingBarrier_pc_le.log --append jahob.opt CountingBarrier_pc_le.java -v -timeout 600 -method Thread.world -debuglevel 7 -nocontext -nosplitting -noTryHard -debugmodules Bapa -usedp bapa:qfbapa mona z3 spass cvcl e paradox z3 card 1>>CountingBarrier_pc_le.log 2>>CountingBarrier_pc_le.log
+# /usr/bin/time -p -o CountingBarrier_pc_le.log --append jahob.opt CountingBarrier_pc_le.java -v -timeout 1000 -method Thread.world -debuglevel 7 -nocontext -nosplitting -noTryHard -debugmodules Bapa -usedp bapa:qfbapa mona z3 spass cvcl e paradox z3 card 1>>CountingBarrier_pc_le.log 2>>CountingBarrier_pc_le.log
+

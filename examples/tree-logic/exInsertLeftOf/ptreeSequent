@@ -1,0 +1,22 @@
+
+([|(comment ''Tree.content_def'' ((Tree_content :: obj set) = ({x. (((Tree_root::obj) ~= (null::obj)) & ((x::obj) ~= (null::obj)) & ((rtrancl_pt :: ((obj => (obj=>bool)) => (obj => (obj=>bool)))) (% (x::obj) (y::obj). ((((Node_p :: (obj=>obj)) x) :: obj) = (y::obj))) x (Tree_root::obj)))} :: obj set)));
+(comment ''static_pointsto'' ((Tree_root::obj) : (Node :: obj set)));
+(comment ''ProcedurePrecondition'' ((ptree :: ((obj=>obj) => (((obj=>obj) list) => bool))) (Node_p :: (obj=>obj)) [(Node_l :: (obj=>obj)), (Node_r :: (obj=>obj))]));
+(comment ''ProcedurePrecondition'' ((((Node_p :: (obj=>obj)) (Tree_root::obj)) :: obj) = (null::obj)));
+(comment ''ProcedurePrecondition'' ((Tree_root::obj) ~= (null::obj)));
+(comment ''ProcedurePrecondition'' (ALL (x::obj). (((((Node_l :: (obj=>obj)) x) :: obj) ~= (Tree_root::obj)) & ((((Node_r :: (obj=>obj)) x) :: obj) ~= (Tree_root::obj)))));
+(comment ''ProcedurePrecondition'' ((pos::obj) : (Tree_content :: obj set)));
+(comment ''ProcedurePrecondition'' ((pos::obj) ~= (null::obj)));
+(comment ''ProcedurePrecondition'' ((((Node_l :: (obj=>obj)) (pos::obj)) :: obj) = (null::obj)));
+(comment ''ProcedurePrecondition'' ((e::obj) ~: (Tree_content :: obj set)));
+(comment ''ProcedurePrecondition'' ((e::obj) ~= (Tree_root::obj)));
+(comment ''ProcedurePrecondition'' ((e::obj) ~= (null::obj)));
+(comment ''ProcedurePrecondition'' ((((Node_p :: (obj=>obj)) (e::obj)) :: obj) = (null::obj)));
+(comment ''ProcedurePrecondition'' ((((Node_l :: (obj=>obj)) (e::obj)) :: obj) = (null::obj)));
+(comment ''ProcedurePrecondition'' ((((Node_r :: (obj=>obj)) (e::obj)) :: obj) = (null::obj)));
+(comment ''pos_type'' ((pos::obj) : (Node :: obj set)));
+(comment ''pos_type'' ((pos::obj) : (Object_alloc :: obj set)));
+(comment ''e_type'' ((e::obj) : (Node :: obj set)));
+(comment ''e_type'' ((e::obj) : (Object_alloc :: obj set)));
+(comment ''Tree.content_def'' ((Tree_content_1 :: obj set) = ({x. (((Tree_root::obj) ~= (null::obj)) & ((x::obj) ~= (null::obj)) & ((rtrancl_pt :: ((obj => (obj=>bool)) => (obj => (obj=>bool)))) (% (x::obj) (y::obj). (((((fieldWrite (Node_p :: (obj=>obj)) (e::obj) (pos::obj)) :: (obj=>obj)) x) :: obj) = (y::obj))) x (Tree_root::obj)))} :: obj set)))|] ==>
+    ((ptree :: ((obj=>obj) => (((obj=>obj) list) => bool))) ((fieldWrite (Node_p :: (obj=>obj)) (e::obj) (pos::obj)) :: (obj=>obj)) [((fieldWrite (Node_l :: (obj=>obj)) (pos::obj) (e::obj)) :: (obj=>obj)), (Node_r :: (obj=>obj))]))

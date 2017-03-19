@@ -1,0 +1,1 @@
+../../../bin/jahob.opt List1.java -sastvc -method List.add -debugmodules Analyze -debug -v -timeout 30 -usedp spass:TimeOut=10 mona isa:TimeOut=0 | tee sast.txt

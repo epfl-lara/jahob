@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt FuncTree.java -failfast -sastvc -class FuncTree -usedp z3 spass:SpassSortGuards=no:TimeOut=2:Sorting:Filtering=50  spass:SpassSortGuards=no:OrderAxioms:TimeOut=3:Sorting:Filtering=75 e:SortGuards=no:OrderAxioms:TimeOut=120 2>&1 | tee functree.out
+ensure_verifies $? "Functional tree"

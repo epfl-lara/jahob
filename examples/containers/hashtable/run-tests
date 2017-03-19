@@ -1,0 +1,2 @@
+../../../bin/jahob.opt -simpcall Hashtable.java AssocList.java -class Hashtable -hidden -sastvc -usedp  spass:OrderAxioms:TimeOut=5:SpassSortGuards=no:Sorting:Filtering=50 spass:OrderAxioms:ArithAxioms:TimeOut=5:SpassSortGuards=no
+ensure_verifies $? "Instantiable Hash Table"

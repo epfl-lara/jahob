@@ -1,0 +1,6 @@
+List_content \<subseteq> alloc &
+a : alloc &
+b : alloc & 
+(List_size :: int) = cardinality (List_content :: obj set)
+& List_size1 = cardinality ({x::obj} Un List_content) -->
+List_size1 <= List_size + 1

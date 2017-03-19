@@ -1,0 +1,24 @@
+((
+  (Node \<subseteq> Tree) &
+  (EmptyNode \<subseteq> Tree) &
+  (Node Int EmptyNode = {}) &
+  (PositiveNode \<subseteq> Node) &
+  (NegativeNode \<subseteq> Node) &
+  (EvenNode \<subseteq> Node) &
+  (Node \<subseteq> (PositiveNode Un NegativeNode)) &
+  (Tree \<subseteq> (Node Un EmptyNode)) &
+  (PositiveNode Int NegativeNode = {}) &
+  (EmptyNode = AEmptyNode)
+)
+-->
+(
+   ({(a,d). a : Tree & d: {(b,e). b : Tree & e: Tree}}) \<subseteq>
+        ({(a,d). a : PositiveNode & d: {(b,e). b : PositiveNode & e:
+PositiveNode}} Un
+         {(a,d). a : PositiveNode & d: {(b,e). b : NegativeNode & e:
+Tree}} Un
+         {(a,d). a : PositiveNode & d: {(b,e). b : EmptyNode & e:
+Tree}} Un
+         {(a,d). a : NegativeNode & d: {(b,e). b : Tree & e: Tree}} Un
+        {(a,d). a : AEmptyNode & d: {(b,e). b : Tree & e: Tree}})
+))

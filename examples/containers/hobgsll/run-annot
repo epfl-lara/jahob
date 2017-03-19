@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt List.java -sastvc -nobackground -method List.reverse_annot -usedp mona 2>&1 | tee list.out
+ensure_verifies $? "List.reverse_annot"

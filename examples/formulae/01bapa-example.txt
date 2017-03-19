@@ -1,0 +1,1 @@
+card A <= card (A Un B)

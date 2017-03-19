@@ -1,0 +1,2 @@
+../../../bin/jahob.opt List.java -sastvc -class List -usedp spass:SpassSortGuards=no:TimeOut=20 e:SortGuards=no:TimeOut=20 isa:TimeOut=0 | tee out
+ensure_verifies $? "InstantiatableSinglyLinkedListWithGhostVar"

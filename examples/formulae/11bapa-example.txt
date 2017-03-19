@@ -1,0 +1,8 @@
+[|
+Library_enoughBooks = ((card (Library_borrowedBooks :: obj set)) <= 2 * (card Library_availableBooks - 1));
+comment ''ProcedurePrecondition'' Library_enoughBooks;
+Library_availabilityPolicy_8 = ((card Library_borrowedBooks_10) <= 2 * (card Library_availableBooks_9));
+((Library_borrowedBooks_10 :: obj set) = (Library_borrowedBooks \<setminus> {b}));
+(Library_availableBooks_9 = (Library_availableBooks \<setminus> {b}))
+|] ==>
+    comment ''relevantOneLast'' Library_availabilityPolicy_8

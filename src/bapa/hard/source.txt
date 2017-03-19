@@ -1,0 +1,52 @@
+original printed:
+
+|((s2 U ((s0' I s3') I s6')) U s1)| = 50
+|(s0 I (s4' U (s0 U (s2' U (s3 I s0')))))| = 34
+|(s5' U ((s0 I (s1' U s0')) U s5'))| = 43
+|(s5 U ((s1' I s6') U (s2' U s6')))| = 54
+|((s5' U (s2' U s0)) U s5')| = 57
+|((s3 U s2) U ((s2 I (s4 I s5)) I s2))| = 50
+|((s2' I s3) I ((s1' U s1) I s6'))| = 8
+
+--------------------------------------------------
+no parens:
+
+|s2 U (s0' I s3' I s6') U s1| = 50
+|s0 I (s4' U s0 U s2' U (s3 I s0'))| = 34
+|s5' U (s0 I (s1' U s0')) U s5'| = 43
+|s5 U (s1' I s6') U s2' U s6'| = 54
+|s5' U s2' U s0 U s5'| = 57
+|s3 U s2 U (s2 I s4 I s5 I s2)| = 50
+|s2' I s3 I (s1' U s1) I s6'| = 8
+
+--------------------------------------------------
+simplify:
+
+|s2 U (s0' I s3' I s6') U s1| = 50
+|s0| = 34
+|(s0 I (s1' U s0')) U s5'| = 43
+|s5 U s2' U s6'| = 54
+|s5' U s2' U s0| = 57
+|s3 U s2| = 50
+|s2' I s3 I s6'| = 8
+
+--------------------------------------------------
+note: s4 does not occur, only
+  s0, s1, s2, s3, s5, s6
+So we can reduce the space of Venn regions in half.
+  renaming 
+    s5 -> s4
+    s6 -> s5
+and simplifying (s0 I (s1' U s0')) into (s0 I s1')
+
+|s2 U (s0' I s3' I s5') U s1| = 50
+|s0| = 34
+|(s0 I s1') U s4'| = 43
+|s4 U s2' U s5'| = 54
+|s4' U s2' U s0| = 57
+|s3 U s2| = 50
+|s2' I s3 I s5'| = 8
+
+--actually there seems to be a minima solution with less
+  than 8, apparently 6 or less non-zero variables.
+

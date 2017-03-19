@@ -1,0 +1,8 @@
+([|(comment '': _ProcedureEndPostcondition'' ((fieldRead (fieldWrite Node_parent e p_2) x_3) = y_80));
+(comment '': _ProcedureEndPostcondition'' (y_80~=null));
+(comment ''Tree.content_def'' (Tree_content_2 = {x. ((x=null) | ((Tree_root~=null) & (rtrancl_pt (% x y. ((fieldRead (fieldWrite Node_parent e p_2) x) = y)) x Tree_root)))}));
+(comment ''AssumingLoopInv'' (e~:Tree_content));
+(comment ''AssumingLoopInv'' (p_2:Tree_content));
+(comment '': ProcedurePrecondition'' (ALL x y. (((y~=null) & ((fieldRead Node_parent x) = y)) --> (x:Tree_content))));
+(comment ''Tree.content_def'' (Tree_content = {x. ((x=null) | ((Tree_root~=null) & (rtrancl_pt (% x y. ((fieldRead Node_parent x) = y)) x Tree_root)))}))|] ==>
+    (comment '': _ProcedureEndPostcondition'' (x_3:Tree_content_2)))

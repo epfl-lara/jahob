@@ -1,0 +1,1 @@
+../../../bin/jahob.opt -failfast -simpcall Hashtable.java AssocList.java -method Hashtable.rehash -hidden -sastvc -usedp spass:OrderAxioms=on:SpassSortGuards=no:TimeOut=60:Sorting spass:SpassSortGuards=no:TimeOut=60:Sorting spass:TimeOut=60:ArithAxioms:OrderAxioms:Sorting:Filtering=80 isa:TimeOut=0:CompactSave

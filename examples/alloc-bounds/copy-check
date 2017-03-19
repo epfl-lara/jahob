@@ -1,0 +1,1 @@
+../../bin/jahob.opt List.java -unrollfactor 1 -unroll -sastvc -method List.copy -usedp spass:SpassSortGuards=no:TimeOut=20 e:SortGuards=no:TimeOut=20 isa:TimeOut=0 | tee out-clone.txt

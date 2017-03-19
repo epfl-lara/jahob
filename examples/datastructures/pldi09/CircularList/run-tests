@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt CircularList.java -class CircularList -timeout 30 -printcounts -failfast -usedp z3 mona:TimeOut=60
+ensure_verifies $? "pldi09:CircularList"

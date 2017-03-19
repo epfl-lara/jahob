@@ -1,0 +1,5 @@
+cd ~jahob/examples/containers/gdll
+../../../bin/jahob.opt DLL.java -method DLL.remove -usedp mona
+cd ~jahob/examples/loopinvs/gtree
+../../../bin/jahob.opt Tree.java -nobackground -timeout 240 -failfast -sastvc -v -method Tree.contains -usedp mona
+../../../bin/jahob.opt Tree.java -nobackground -timeout 240 -failfast -sastvc -v -method Tree.remove_int -usedp mona

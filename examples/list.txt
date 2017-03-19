@@ -1,0 +1,82 @@
+Bugs
+====
+
+*cyclic-dll _INIT fails
+
+*when verifying e.g. loopinvs/gtree some z3 processes are left dangling even without forking, so they consume uselessly other CPUs
+
+*mona interface does not seem to work with forking on e.g. gtree
+
+*in loopinvs/gtree/run-mona the obligation SubtreeChange fails with all provers, and presumably it verified before, try this:
+
+../../../bin/jahob.opt MonaTree.java -method Tree.removeMin -timeout 60 -sastvc -failfast -assert SubtreeChange -usedp mona z3 e spass cvcl isa
+
+Issues/TODO
+===========
+
+*check loopinvs directory
+
+*loopinvs/DLLSet does not have tree[...] invariant but uses rtrancl, so I think it was used to test interpreter only.
+
+*look at Jame, Dijkstra
+
+*complete containers/sorted/SortedListVC to make it a useful data structure?
+
+*complex conditional assignments don't work so we need havoc+assume in
+   containers/instantiable/list-cursor/removeCurrent
+
+*hash table got broken by slight vcgen change?
+ (note need SPASS-2.2, as 3.0 gets confused by 'div')
+
+*make countKeys work for AssocList using BAPA
+
+*verifying functionalness of hashtable compute_hash
+
+*reentrancy story
+
+Comments
+========
+
+*I don't see big differences between sll and containers/instantiable/list-data but the identifier names and slightly differerent preconditions.  
+*loopinvs/array seems subsumed by loopinvs/java.util/ArrayList
+
+
+Description of examples that we got running
+===========================================
+
+Lists
+-----
+
+./containers/instantiable/list-data/
+
+  Instantiable linked list with data elements, add and remove operations.
+  verified using first-order provers thanks to ghost fields
+
+./containers/instantiable/list-cursor/
+
+  Instantiable linked list with data elements and a cursor.
+  Many consequences of invariants had to be added.
+  Proof decomposition (currently unchecked) using havoc,assume etc.
+
+./containers/array/
+
+  Global set implemented as an array, with operations 'add' and 'contains'.
+
+./examples/loopinvs/BH/
+
+  the invariant ChildrenAdvInjInv must be proved manually, but otherwise works
+
+
+Trees
+-----
+
+Hash tables
+-----------
+
+./containers/vs_hashtable/
+
+ instantiable hash table on top of immutable assoc list, 
+ works with SPASS-2.2 (not 3.0 due to 'div' keyword), 
+ we assume hash function spec
+ (would need dependence analysis and special treatment to remove that assumption)
+

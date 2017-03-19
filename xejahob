@@ -1,0 +1,6 @@
+#!/bin/bash
+THY_FILE=$1.thy
+rm -f $THY_FILE
+ln -s $1 $THY_FILE
+Isabelle -x true $THY_FILE 
+rm -f $THY_FILE

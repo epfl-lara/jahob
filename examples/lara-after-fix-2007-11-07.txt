@@ -1,0 +1,1413 @@
+/home/kuncak/jahob/examples/containers/vs_hashtable
+Jahob results are unsound due to selected verification parameters.
+
+Analyzing class Hashtable.
+............................
+======================================================================
+Z3 proved 7 out of 7 sequents. Total time : 0.3 s
+======================================================================
+A total of 7 sequents out of 7 proved.
+
+[Hashtable.compute_hash:
+======================================================================
+Built-in validity checker proved 1 sequents during splitting.
+======================================================================
+A total of 1 sequents out of 1 proved.
+:Hashtable.compute_hash]
+[Hashtable.init:........................xx.....................
+======================================================================
+Z3 proved 10 out of 11 sequents. Total time : 0.9 s
+SPASS (TimeOut=30:SpassSortGuards=no) proved 1 out of 1 sequents. Total time : 0.3 s
+======================================================================
+A total of 11 sequents out of 11 proved.
+:Hashtable.init]
+[Hashtable.add:............................
+======================================================================
+Built-in validity checker proved 36 sequents during splitting.
+Z3 proved 7 out of 7 sequents. Total time : 0.7 s
+======================================================================
+A total of 43 sequents out of 43 proved.
+:Hashtable.add]
+[Hashtable.add1:........xx.............................oxox.................................oxox.................
+======================================================================
+Built-in validity checker proved 45 sequents during splitting.
+Z3 proved 18 out of 21 sequents. Total time : 1.8 s
+SPASS (TimeOut=30:SpassSortGuards=no) proved 3 out of 3 sequents. Total time : 11.7 s
+======================================================================
+A total of 66 sequents out of 66 proved.
+:Hashtable.add1]
+[Hashtable.lookup:........xx..........................
+======================================================================
+Built-in validity checker proved 12 sequents during splitting.
+Z3 proved 6 out of 8 sequents. Total time : 0.4 s
+SPASS (TimeOut=30:SpassSortGuards=no) proved 2 out of 2 sequents. Total time : 0.2 s
+======================================================================
+A total of 20 sequents out of 20 proved.
+:Hashtable.lookup]
+[Hashtable.remove:........xx.........................xx.............xsx!.oxox!.oxox!...All provers failed on proof obligation: 'Hashtable_PrivateInvcontentDefinition_ProcedureEndPostcondition'
+
+======================================================================
+Built-in validity checker proved 23 sequents during splitting.
+Z3 proved 8 out of 11 sequents. Total time : 0.7 s
+SPASS (TimeOut=30:SpassSortGuards=no) proved 2 out of 3 sequents. Total time : 1.5 s
+======================================================================
+A total of 33 sequents out of 34 proved.
+:Hashtable.remove]
+-1=== Verification FAILED.
+
+Analyzing class AssocList.
+.....................
+======================================================================
+Z3 proved 7 out of 7 sequents. Total time : 0.2 s
+======================================================================
+A total of 7 sequents out of 7 proved.
+
+[AssocList.nil:...
+======================================================================
+Built-in validity checker proved 10 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 11 sequents out of 11 proved.
+:AssocList.nil]
+[AssocList.cons:...................................
+======================================================================
+Built-in validity checker proved 2 sequents during splitting.
+Z3 proved 9 out of 11 sequents. Total time : 0.5 s
+SPASS (TimeOut=5) proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 13 sequents out of 13 proved.
+:AssocList.cons]
+[AssocList.is_nil:...
+======================================================================
+Built-in validity checker proved 10 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 11 sequents out of 11 proved.
+:AssocList.is_nil]
+[AssocList.remove_all:......xx..........xx.
+======================================================================
+Built-in validity checker proved 64 sequents during splitting.
+Z3 proved 3 out of 5 sequents. Total time : 0.3 s
+SPASS (TimeOut=5) proved 2 out of 2 sequents. Total time : 1.0 s
+======================================================================
+A total of 69 sequents out of 69 proved.
+:AssocList.remove_all]
+[AssocList.update:...xx.
+======================================================================
+Built-in validity checker proved 30 sequents during splitting.
+SPASS (TimeOut=5) proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 31 sequents out of 31 proved.
+:AssocList.update]
+[AssocList.member:............
+======================================================================
+Built-in validity checker proved 71 sequents during splitting.
+Z3 proved 4 out of 4 sequents. Total time : 0.1 s
+======================================================================
+A total of 75 sequents out of 75 proved.
+:AssocList.member]
+[AssocList.countKeys:...
+======================================================================
+Built-in validity checker proved 56 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 57 sequents out of 57 proved.
+:AssocList.countKeys]
+[AssocList.remove:..............................
+======================================================================
+Built-in validity checker proved 103 sequents during splitting.
+Z3 proved 10 out of 10 sequents. Total time : 0.5 s
+======================================================================
+A total of 113 sequents out of 113 proved.
+:AssocList.remove]
+[AssocList.lookup:.........
+======================================================================
+Built-in validity checker proved 46 sequents during splitting.
+Z3 proved 3 out of 3 sequents. Total time : 0.1 s
+======================================================================
+A total of 49 sequents out of 49 proved.
+:AssocList.lookup]
+[AssocList.getOne:................................................
+======================================================================
+Built-in validity checker proved 3 sequents during splitting.
+Z3 proved 16 out of 16 sequents. Total time : 0.6 s
+======================================================================
+A total of 19 sequents out of 19 proved.
+:AssocList.getOne]
+0=== Verification SUCCEEDED.
+/home/kuncak/jahob/examples/loopinvs/java.util/ArrayList
+
+Analyzing class ArrayList.
+
+======================================================================
+Built-in validity checker proved 7 sequents during splitting.
+======================================================================
+A total of 7 sequents out of 7 proved.
+
+[ArrayList.init_with:.................................
+======================================================================
+Built-in validity checker proved 3 sequents during splitting.
+Z3 proved 11 out of 11 sequents. Total time : 0.3 s
+======================================================================
+A total of 14 sequents out of 14 proved.
+:ArrayList.init_with]
+[ArrayList.init:.................................
+======================================================================
+Built-in validity checker proved 3 sequents during splitting.
+Z3 proved 11 out of 11 sequents. Total time : 0.3 s
+======================================================================
+A total of 14 sequents out of 14 proved.
+:ArrayList.init]
+[ArrayList.trimToSize:.............................................xxxx.......
+======================================================================
+Built-in validity checker proved 21 sequents during splitting.
+Z3 proved 16 out of 17 sequents. Total time : 1.0 s
+SPASS (OrderAxioms=:ArithAxioms=) proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 38 sequents out of 38 proved.
+:ArrayList.trimToSize]
+[ArrayList.ensureCapacity:......
+======================================================================
+Built-in validity checker proved 18 sequents during splitting.
+Z3 proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 20 sequents out of 20 proved.
+:ArrayList.ensureCapacity]
+[ArrayList._ensureCapacity:.........................................................xxxx................................................................xxxx.......
+======================================================================
+Built-in validity checker proved 38 sequents during splitting.
+Z3 proved 40 out of 42 sequents. Total time : 3.7 s
+SPASS (OrderAxioms=:ArithAxioms=) proved 2 out of 2 sequents. Total time : 0.2 s
+======================================================================
+A total of 80 sequents out of 80 proved.
+:ArrayList._ensureCapacity]
+[ArrayList.size:
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+======================================================================
+A total of 8 sequents out of 8 proved.
+:ArrayList.size]
+[ArrayList.isEmpty:
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+======================================================================
+A total of 8 sequents out of 8 proved.
+:ArrayList.isEmpty]
+[ArrayList.contains:...xx!..
+======================================================================
+Built-in validity checker proved 15 sequents during splitting.
+CVC Lite proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 16 sequents out of 16 proved.
+:ArrayList.contains]
+[ArrayList.indexOf:
+======================================================================
+Built-in validity checker proved 20 sequents during splitting.
+======================================================================
+A total of 20 sequents out of 20 proved.
+:ArrayList.indexOf]
+[ArrayList.indexOf1:..............................
+======================================================================
+Built-in validity checker proved 22 sequents during splitting.
+Z3 proved 10 out of 10 sequents. Total time : 0.2 s
+======================================================================
+A total of 32 sequents out of 32 proved.
+:ArrayList.indexOf1]
+[ArrayList.lastIndexOf:.................................
+======================================================================
+Built-in validity checker proved 22 sequents during splitting.
+Z3 proved 11 out of 11 sequents. Total time : 0.3 s
+======================================================================
+A total of 33 sequents out of 33 proved.
+:ArrayList.lastIndexOf]
+[ArrayList.toArray:.................................xxxx.......xx.......................
+======================================================================
+Built-in validity checker proved 25 sequents during splitting.
+Z3 proved 17 out of 20 sequents. Total time : 0.8 s
+SPASS (OrderAxioms=:ArithAxioms=) proved 3 out of 3 sequents. Total time : 0.3 s
+======================================================================
+A total of 45 sequents out of 45 proved.
+:ArrayList.toArray]
+[ArrayList.get:......
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+Z3 proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 10 sequents out of 10 proved.
+:ArrayList.get]
+[ArrayList.set:........................xxxx.
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+Z3 proved 7 out of 8 sequents. Total time : 0.3 s
+SPASS (OrderAxioms=:ArithAxioms=) proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 16 sequents out of 16 proved.
+:ArrayList.set]
+[ArrayList.add:....................................xxxx....
+======================================================================
+Built-in validity checker proved 17 sequents during splitting.
+Z3 proved 12 out of 13 sequents. Total time : 0.7 s
+SPASS (OrderAxioms=:ArithAxioms=) proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 30 sequents out of 30 proved.
+:ArrayList.add]
+[ArrayList.add_at:........................................................................................oxox!..All provers failed on proof obligation: 'afterShifted_ProcedureEndPostcondition'
+...............xxxx....
+======================================================================
+Built-in validity checker proved 21 sequents during splitting.
+Z3 proved 32 out of 35 sequents. Total time : 1.6 s
+SPASS (OrderAxioms=:ArithAxioms=) proved 2 out of 3 sequents. Total time : 20.4 s
+======================================================================
+A total of 55 sequents out of 56 proved.
+:ArrayList.add_at]
+[ArrayList.remove_at:.....................
+======================================================================
+Built-in validity checker proved 19 sequents during splitting.
+Z3 proved 7 out of 7 sequents. Total time : 0.3 s
+======================================================================
+A total of 26 sequents out of 26 proved.
+:ArrayList.remove_at]
+[ArrayList.remove_at_dep:..............................................................................xxxx....
+======================================================================
+Built-in validity checker proved 11 sequents during splitting.
+Z3 proved 26 out of 27 sequents. Total time : 1.4 s
+SPASS (OrderAxioms=:ArithAxioms=) proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 38 sequents out of 38 proved.
+:ArrayList.remove_at_dep]
+[ArrayList.remove:...........................xxxx.............................................................xxxx....
+======================================================================
+Built-in validity checker proved 25 sequents during splitting.
+Z3 proved 28 out of 30 sequents. Total time : 1.3 s
+SPASS (OrderAxioms=:ArithAxioms=) proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 55 sequents out of 55 proved.
+:ArrayList.remove]
+[ArrayList.fastRemove:.....................................................................xxxx....
+======================================================================
+Built-in validity checker proved 10 sequents during splitting.
+Z3 proved 23 out of 24 sequents. Total time : 1.9 s
+SPASS (OrderAxioms=:ArithAxioms=) proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 34 sequents out of 34 proved.
+:ArrayList.fastRemove]
+[ArrayList.clear:..............................
+======================================================================
+Built-in validity checker proved 10 sequents during splitting.
+Z3 proved 10 out of 10 sequents. Total time : 0.2 s
+======================================================================
+A total of 20 sequents out of 20 proved.
+:ArrayList.clear]
+[ArrayList.pushLast:......oxox!..All provers failed on proof obligation: 'ProcedureEndPostcondition'
+
+======================================================================
+Built-in validity checker proved 32 sequents during splitting.
+Z3 proved 1 out of 2 sequents. Total time : 0.2 s
+======================================================================
+A total of 33 sequents out of 34 proved.
+:ArrayList.pushLast]
+[ArrayList.popLast:.........o!..All provers failed on proof obligation: 'ProcedureEndPostcondition'
+...xox!..All provers failed on proof obligation: 'ProcedureEndPostcondition'
+
+======================================================================
+Built-in validity checker proved 15 sequents during splitting.
+Z3 proved 2 out of 4 sequents. Total time : 0.2 s
+======================================================================
+A total of 17 sequents out of 19 proved.
+:ArrayList.popLast]
+[ArrayList.popFirst:...o!..All provers failed on proof obligation: 'ProcedureEndPostcondition'
+...exception caught in FolTranslation : Failure("TODO")..All provers failed on proof obligation: 'ProcedureEndPostcondition'
+
+======================================================================
+Built-in validity checker proved 15 sequents during splitting.
+======================================================================
+A total of 15 sequents out of 17 proved.
+:ArrayList.popFirst]
+[ArrayList.pushFirst:...o!..All provers failed on proof obligation: 'ArrayList.add_at_Precondition'
+......o!..All provers failed on proof obligation: 'ProcedureEndPostcondition'
+...exception caught in FolTranslation : Failure("TODO")..All provers failed on proof obligation: 'ProcedureEndPostcondition'
+...o!..All provers failed on proof obligation: 'FrameCondition_ProcedureEndPostcondition'
+
+======================================================================
+Built-in validity checker proved 15 sequents during splitting.
+Z3 proved 1 out of 5 sequents. Total time : 3.1 s
+======================================================================
+A total of 16 sequents out of 20 proved.
+:ArrayList.pushFirst]
+[ArrayList.test:...o!..All provers failed on proof obligation: 'ProcedureEndPostcondition'
+
+======================================================================
+Built-in validity checker proved 7 sequents during splitting.
+======================================================================
+A total of 7 sequents out of 8 proved.
+:ArrayList.test]
+-1=== Verification FAILED.
+/home/kuncak/jahob/examples/loopinvs/BH
+
+Analyzing class Node.
+............................................................................................................................
+======================================================================
+Built-in validity checker proved 12 sequents during splitting.
+Z3 proved 26 out of 30 sequents. Total time : 0.7 s
+SPASS proved 4 out of 4 sequents. Total time : 0.1 s
+======================================================================
+A total of 42 sequents out of 42 proved.
+
+[Node.makeCell:....................................................................................................................................................................................
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+Z3 proved 45 out of 45 sequents. Total time : 2.7 s
+======================================================================
+A total of 53 sequents out of 53 proved.
+:Node.makeCell]
+[Node.getNext:
+======================================================================
+Built-in validity checker proved 1 sequents during splitting.
+======================================================================
+A total of 1 sequents out of 1 proved.
+:Node.getNext]
+[Node.makeTree:........................................................................................................................................................................................
+======================================================================
+Built-in validity checker proved 106 sequents during splitting.
+Z3 proved 46 out of 46 sequents. Total time : 7.0 s
+======================================================================
+A total of 152 sequents out of 152 proved.
+:Node.makeTree]
+[Node.addToTree:............................................................................................................xx.................................................................................................................................................
+======================================================================
+Built-in validity checker proved 117 sequents during splitting.
+Z3 proved 62 out of 63 sequents. Total time : 4.6 s
+SPASS proved 1 out of 1 sequents. Total time : 0.4 s
+======================================================================
+A total of 180 sequents out of 180 proved.
+:Node.addToTree]
+[Node.loadTree:........................exception caught in FolTranslation : Failure("TODO")..exception caught in FolTranslation : Failure("TODO")...All provers failed on proof obligation: 'SubtreeDefRCInv_ProcedureEndPostcondition'
+
+======================================================================
+Built-in validity checker proved 137 sequents during splitting.
+Z3 proved 5 out of 6 sequents. Total time : 0.4 s
+======================================================================
+A total of 142 sequents out of 143 proved.
+:Node.loadTree]
+-1=== Verification FAILED.
+Command exited with non-zero status 1
+35.26user 0.65system 0:36.26elapsed 99%CPU (0avgtext+0avgdata 0maxresident)k
+0inputs+0outputs (0major+369122minor)pagefaults 0swaps
+/home/kuncak/jahob/examples/loopinvs/pqueue
+
+Analyzing class PriorityQueue.
+
+======================================================================
+Built-in validity checker proved 6 sequents during splitting.
+======================================================================
+A total of 6 sequents out of 6 proved.
+
+[PriorityQueue.init:............................
+======================================================================
+Built-in validity checker proved 9 sequents during splitting.
+Z3 proved 7 out of 7 sequents. Total time : 0.2 s
+======================================================================
+A total of 16 sequents out of 16 proved.
+:PriorityQueue.init]
+[PriorityQueue.currLength:
+======================================================================
+Built-in validity checker proved 7 sequents during splitting.
+======================================================================
+A total of 7 sequents out of 7 proved.
+:PriorityQueue.currLength]
+[PriorityQueue.maxLength:
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+======================================================================
+A total of 8 sequents out of 8 proved.
+:PriorityQueue.maxLength]
+[PriorityQueue.isEmpty:
+======================================================================
+Built-in validity checker proved 7 sequents during splitting.
+======================================================================
+A total of 7 sequents out of 7 proved.
+:PriorityQueue.isEmpty]
+[PriorityQueue.isFull:
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+======================================================================
+A total of 8 sequents out of 8 proved.
+:PriorityQueue.isFull]
+[PriorityQueue.parent:................
+======================================================================
+Z3 proved 4 out of 4 sequents. Total time : 0.0 s
+======================================================================
+A total of 4 sequents out of 4 proved.
+:PriorityQueue.parent]
+[PriorityQueue.left:........
+======================================================================
+Built-in validity checker proved 1 sequents during splitting.
+Z3 proved 2 out of 2 sequents. Total time : 0.0 s
+======================================================================
+A total of 3 sequents out of 3 proved.
+:PriorityQueue.left]
+[PriorityQueue.right:........
+======================================================================
+Built-in validity checker proved 1 sequents during splitting.
+Z3 proved 2 out of 2 sequents. Total time : 0.0 s
+======================================================================
+A total of 3 sequents out of 3 proved.
+:PriorityQueue.right]
+[PriorityQueue.insert:..................................................................................................................................................................
+======================================================================
+Built-in validity checker proved 28 sequents during splitting.
+Lemma file proved 2 out of 41 sequents. Total time : 0.2 s
+Z3 proved 39 out of 39 sequents. Total time : 2.3 s
+======================================================================
+A total of 69 sequents out of 69 proved.
+:PriorityQueue.insert]
+[PriorityQueue.findMax:Parse error:
+([|(intless 0 PriorityQueue_length);
+(ALL i j. (((0 <= i) & (intless i PriorityQueue_length) & (0 <= j) & (intless j PriorityQueue_length) & ((j = (intplus (intplus i i) 1)) | (j = (intplus (intplus i i) 2)))) --> ((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue j)) <= (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue i)))))|] ==>
+  (ALL x. (x <= (int <*>  n)) & (0 <= x) & (intless x PriorityQueue_length) -->
+          ((((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue x)) :: int) <= 
+             (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue 0))))))
+*** Warning: Syntax error while parsing formula '([|(intless 0 PriorityQueue_length);
+(ALL i j. (((0 <= i) & (intless i PriorityQueue_length) & (0 <= j) & (intless j PriorityQueue_length) & ((j = (intplus (intplus i i) 1)) | (j = (intplus (intplus i i) 2)))) --> ((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue j)) <= (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue i)))))|] ==>
+  (ALL x. (x <= (int n)) & (0 <= x) & (intless x PriorityQueue_length) -->
+          ((((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue x)) :: int) <= 
+             (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue 0))))))'
+...................
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+Lemma file proved 1 out of 5 sequents. Total time : 0.0 s
+Z3 proved 4 out of 4 sequents. Total time : 0.1 s
+======================================================================
+A total of 13 sequents out of 13 proved.
+:PriorityQueue.findMax]
+[PriorityQueue.extractMax:Parse error:
+([|(intless 0 PriorityQueue_length);
+(ALL i j. (((0 <= i) & (intless i PriorityQueue_length) & (0 <= j) & (intless j PriorityQueue_length) & ((j = (intplus (intplus i i) 1)) | (j = (intplus (intplus i i) 2)))) --> ((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue j)) <= (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue i)))))|] ==>
+  (ALL x. (x <= (int <*>  n)) & (0 <= x) & (intless x PriorityQueue_length) -->
+          ((((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue x)) :: int) <= 
+             (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue 0))))))
+*** Warning: Syntax error while parsing formula '([|(intless 0 PriorityQueue_length);
+(ALL i j. (((0 <= i) & (intless i PriorityQueue_length) & (0 <= j) & (intless j PriorityQueue_length) & ((j = (intplus (intplus i i) 1)) | (j = (intplus (intplus i i) 2)))) --> ((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue j)) <= (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue i)))))|] ==>
+  (ALL x. (x <= (int n)) & (0 <= x) & (intless x PriorityQueue_length) -->
+          ((((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue x)) :: int) <= 
+             (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue 0))))))'
+.......................................................................................................
+======================================================================
+Built-in validity checker proved 19 sequents during splitting.
+Lemma file proved 1 out of 26 sequents. Total time : 0.2 s
+Z3 proved 25 out of 25 sequents. Total time : 0.8 s
+======================================================================
+A total of 45 sequents out of 45 proved.
+:PriorityQueue.extractMax]
+[PriorityQueue.heapify:................................................................................................................................................................................................................................................................................................................................................................................................
+======================================================================
+Built-in validity checker proved 209 sequents during splitting.
+Z3 proved 96 out of 96 sequents. Total time : 3.7 s
+======================================================================
+A total of 305 sequents out of 305 proved.
+:PriorityQueue.heapify]
+0=== Verification SUCCEEDED.
+/home/kuncak/jahob/examples/loopinvs/pqueue
+
+Analyzing class PriorityQueue.
+
+======================================================================
+Built-in validity checker proved 5 sequents during splitting.
+======================================================================
+A total of 5 sequents out of 5 proved.
+
+[PriorityQueue.init:..................
+======================================================================
+Built-in validity checker proved 9 sequents during splitting.
+Z3 proved 6 out of 6 sequents. Total time : 0.1 s
+======================================================================
+A total of 15 sequents out of 15 proved.
+:PriorityQueue.init]
+[PriorityQueue.currLength:
+======================================================================
+Built-in validity checker proved 6 sequents during splitting.
+======================================================================
+A total of 6 sequents out of 6 proved.
+:PriorityQueue.currLength]
+[PriorityQueue.maxLength:
+======================================================================
+Built-in validity checker proved 7 sequents during splitting.
+======================================================================
+A total of 7 sequents out of 7 proved.
+:PriorityQueue.maxLength]
+[PriorityQueue.isEmpty:
+======================================================================
+Built-in validity checker proved 6 sequents during splitting.
+======================================================================
+A total of 6 sequents out of 6 proved.
+:PriorityQueue.isEmpty]
+[PriorityQueue.isFull:
+======================================================================
+Built-in validity checker proved 7 sequents during splitting.
+======================================================================
+A total of 7 sequents out of 7 proved.
+:PriorityQueue.isFull]
+[PriorityQueue.parent:.........
+======================================================================
+Z3 proved 3 out of 3 sequents. Total time : 0.0 s
+======================================================================
+A total of 3 sequents out of 3 proved.
+:PriorityQueue.parent]
+[PriorityQueue.left:......
+======================================================================
+Z3 proved 2 out of 2 sequents. Total time : 0.0 s
+======================================================================
+A total of 2 sequents out of 2 proved.
+:PriorityQueue.left]
+[PriorityQueue.right:......
+======================================================================
+Z3 proved 2 out of 2 sequents. Total time : 0.0 s
+======================================================================
+A total of 2 sequents out of 2 proved.
+:PriorityQueue.right]
+[PriorityQueue.insert:.............................................................................................
+======================================================================
+Built-in validity checker proved 30 sequents during splitting.
+Z3 proved 31 out of 31 sequents. Total time : 1.0 s
+======================================================================
+A total of 61 sequents out of 61 proved.
+:PriorityQueue.insert]
+[PriorityQueue.findMax:Parse error:
+([|(intless 0 PriorityQueue_length);
+(ALL i j. (((0 <= i) & (intless i PriorityQueue_length) & (0 <= j) & (intless j PriorityQueue_length) & ((j = (intplus (intplus i i) 1)) | (j = (intplus (intplus i i) 2)))) --> ((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue j)) <= (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue i)))))|] ==>
+  (ALL x. (x <= (int <*>  n)) & (0 <= x) & (intless x PriorityQueue_length) -->
+          ((((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue x)) :: int) <= 
+             (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue 0))))))
+*** Warning: Syntax error while parsing formula '([|(intless 0 PriorityQueue_length);
+(ALL i j. (((0 <= i) & (intless i PriorityQueue_length) & (0 <= j) & (intless j PriorityQueue_length) & ((j = (intplus (intplus i i) 1)) | (j = (intplus (intplus i i) 2)))) --> ((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue j)) <= (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue i)))))|] ==>
+  (ALL x. (x <= (int n)) & (0 <= x) & (intless x PriorityQueue_length) -->
+          ((((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue x)) :: int) <= 
+             (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue 0))))))'
+.........
+======================================================================
+Built-in validity checker proved 6 sequents during splitting.
+Z3 proved 3 out of 3 sequents. Total time : 0.1 s
+======================================================================
+A total of 9 sequents out of 9 proved.
+:PriorityQueue.findMax]
+[PriorityQueue.extractMax:Parse error:
+([|(intless 0 PriorityQueue_length);
+(ALL i j. (((0 <= i) & (intless i PriorityQueue_length) & (0 <= j) & (intless j PriorityQueue_length) & ((j = (intplus (intplus i i) 1)) | (j = (intplus (intplus i i) 2)))) --> ((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue j)) <= (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue i)))))|] ==>
+  (ALL x. (x <= (int <*>  n)) & (0 <= x) & (intless x PriorityQueue_length) -->
+          ((((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue x)) :: int) <= 
+             (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue 0))))))
+*** Warning: Syntax error while parsing formula '([|(intless 0 PriorityQueue_length);
+(ALL i j. (((0 <= i) & (intless i PriorityQueue_length) & (0 <= j) & (intless j PriorityQueue_length) & ((j = (intplus (intplus i i) 1)) | (j = (intplus (intplus i i) 2)))) --> ((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue j)) <= (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue i)))))|] ==>
+  (ALL x. (x <= (int n)) & (0 <= x) & (intless x PriorityQueue_length) -->
+          ((((fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue x)) :: int) <= 
+             (fieldRead PriorityQueueElement_key (arrayRead Array_arrayState PriorityQueue_queue 0))))))'
+.......................................
+======================================================================
+Built-in validity checker proved 13 sequents during splitting.
+Z3 proved 13 out of 13 sequents. Total time : 0.3 s
+======================================================================
+A total of 26 sequents out of 26 proved.
+:PriorityQueue.extractMax]
+[PriorityQueue.heapify:........................................................................................................................................................................
+======================================================================
+Built-in validity checker proved 160 sequents during splitting.
+Z3 proved 56 out of 56 sequents. Total time : 1.5 s
+======================================================================
+A total of 216 sequents out of 216 proved.
+:PriorityQueue.heapify]
+0=== Verification SUCCEEDED.
+PASSED Benchmark loopinvs/pqueue/PriorityQueue.java:PriorityQueue.
+/home/kuncak/jahob/examples/containers/hobgsll
+
+[List.reverse_annot:..*** Warning: Added trivial field constraint for field: Node.next_14
+...*** Warning: Added trivial field constraint for field: Node.next
+...*** Warning: Added trivial field constraint for field: Node.next
+...*** Warning: Added trivial field constraint for field: Node.next
+...*** Warning: Added trivial field constraint for field: Node.next
+...*** Warning: Added trivial field constraint for field: Node.next
+...*** Warning: Added trivial field constraint for field: Node.next
+...*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next
+...*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next
+...*** Warning: Added trivial field constraint for field: Node.next
+.
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+MONA proved 10 out of 10 sequents. Total time : 0.2 s
+======================================================================
+A total of 18 sequents out of 18 proved.
+:List.reverse_annot]
+0=== Verification SUCCEEDED.
+PASSED Benchmark List.reverse_annot.
+/home/kuncak/jahob/examples/loopinvs/gdll
+
+[DLL.clearShouldNotVerify:...All provers failed on proof obligation: 'ProcedureCallNotDesugared'
+...
+======================================================================
+Built-in validity checker proved 5 sequents during splitting.
+MONA proved 1 out of 2 sequents. Total time : 0.0 s
+======================================================================
+A total of 6 sequents out of 7 proved.
+:DLL.clearShouldNotVerify]
+-1=== Verification FAILED.
+PASSED Benchmark DLL.clearShouldNotVerify.
+.........
+======================================================================
+Built-in validity checker proved 2 sequents during splitting.
+CVC Lite proved 3 out of 3 sequents. Total time : 0.1 s
+======================================================================
+A total of 5 sequents out of 5 proved.
+
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL._INIT.
+
+[DLL.getFirst:...
+======================================================================
+Built-in validity checker proved 4 sequents during splitting.
+MONA proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 5 sequents out of 5 proved.
+:DLL.getFirst]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.getFirst.
+
+[DLL.getLast:......
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+MONA proved 2 out of 2 sequents. Total time : 0.0 s
+======================================================================
+A total of 10 sequents out of 10 proved.
+:DLL.getLast]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.getLast.
+
+[DLL.addLast:.......................................
+======================================================================
+Built-in validity checker proved 11 sequents during splitting.
+MONA proved 13 out of 13 sequents. Total time : 0.4 s
+======================================================================
+A total of 24 sequents out of 24 proved.
+:DLL.addLast]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.addLast.
+
+[DLL.removeFirst:................................................
+======================================================================
+Built-in validity checker proved 4 sequents during splitting.
+MONA proved 16 out of 16 sequents. Total time : 0.2 s
+======================================================================
+A total of 20 sequents out of 20 proved.
+:DLL.removeFirst]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.removeFirst.
+
+[DLL.removeLast:.......................................
+======================================================================
+Built-in validity checker proved 10 sequents during splitting.
+MONA proved 13 out of 13 sequents. Total time : 0.2 s
+======================================================================
+A total of 23 sequents out of 23 proved.
+:DLL.removeLast]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.removeLast.
+
+[DLL.addFirst:....................................
+======================================================================
+Built-in validity checker proved 4 sequents during splitting.
+MONA proved 12 out of 12 sequents. Total time : 0.3 s
+======================================================================
+A total of 16 sequents out of 16 proved.
+:DLL.addFirst]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.addFirst.
+
+[DLL.addLast:.......................................
+======================================================================
+Built-in validity checker proved 11 sequents during splitting.
+MONA proved 13 out of 13 sequents. Total time : 0.4 s
+======================================================================
+A total of 24 sequents out of 24 proved.
+:DLL.addLast]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.addLast.
+
+[DLL.contains:.....................
+======================================================================
+Built-in validity checker proved 12 sequents during splitting.
+MONA proved 7 out of 7 sequents. Total time : 0.1 s
+======================================================================
+A total of 19 sequents out of 19 proved.
+:DLL.contains]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.contains.
+
+[DLL.size:
+======================================================================
+Built-in validity checker proved 5 sequents during splitting.
+======================================================================
+A total of 5 sequents out of 5 proved.
+:DLL.size]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.size.
+
+[DLL.add:....................................
+======================================================================
+Built-in validity checker proved 6 sequents during splitting.
+MONA proved 12 out of 12 sequents. Total time : 0.3 s
+======================================================================
+A total of 18 sequents out of 18 proved.
+:DLL.add]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.add.
+
+[DLL.remove:........................................................................
+======================================================================
+Built-in validity checker proved 23 sequents during splitting.
+MONA proved 24 out of 24 sequents. Total time : 0.5 s
+======================================================================
+A total of 47 sequents out of 47 proved.
+:DLL.remove]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.remove.
+
+[DLL.clear:..*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next_14
+*** Warning: Added trivial field constraint for field: Node.prev_15
+*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next_14
+*** Warning: Added trivial field constraint for field: Node.prev_15
+*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next_14
+*** Warning: Added trivial field constraint for field: Node.prev_15
+...*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next_14
+*** Warning: Added trivial field constraint for field: Node.prev_15
+*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next_14
+*** Warning: Added trivial field constraint for field: Node.prev_15
+*** Warning: Added trivial field constraint for field: Node.next
+*** Warning: Added trivial field constraint for field: Node.next_14
+*** Warning: Added trivial field constraint for field: Node.prev_15
+.
+======================================================================
+Built-in validity checker proved 18 sequents during splitting.
+MONA proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 20 sequents out of 20 proved.
+:DLL.clear]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.clear.
+
+[DLL.get:.........
+======================================================================
+Built-in validity checker proved 12 sequents during splitting.
+MONA proved 3 out of 3 sequents. Total time : 0.0 s
+======================================================================
+A total of 15 sequents out of 15 proved.
+:DLL.get]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.get.
+
+[DLL.removeAt:..*** Warning: Added trivial field constraint for field: Node.next_12
+*** Warning: Added trivial field constraint for field: Node.prev_13
+...*** Warning: Added trivial field constraint for field: Node.next_12
+*** Warning: Added trivial field constraint for field: Node.prev_13
+...*** Warning: Added trivial field constraint for field: Node.next_12
+*** Warning: Added trivial field constraint for field: Node.prev_13
+.
+======================================================================
+Built-in validity checker proved 25 sequents during splitting.
+MONA proved 3 out of 3 sequents. Total time : 0.0 s
+======================================================================
+A total of 28 sequents out of 28 proved.
+:DLL.removeAt]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.removeAt.
+
+[DLL.addAt:...........................................................................................................................
+======================================================================
+Built-in validity checker proved 19 sequents during splitting.
+MONA proved 41 out of 41 sequents. Total time : 1.8 s
+======================================================================
+A total of 60 sequents out of 60 proved.
+:DLL.addAt]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.addAt.
+
+[DLL.indexOf:..............................
+======================================================================
+Built-in validity checker proved 14 sequents during splitting.
+Z3 proved 6 out of 9 sequents. Total time : 0.2 s
+MONA proved 3 out of 3 sequents. Total time : 0.1 s
+======================================================================
+A total of 23 sequents out of 23 proved.
+:DLL.indexOf]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.indexOf.
+
+[DLL.isEmpty:...
+======================================================================
+Built-in validity checker proved 4 sequents during splitting.
+MONA proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 5 sequents out of 5 proved.
+:DLL.isEmpty]
+0=== Verification SUCCEEDED.
+PASSED Benchmark DLL.isEmpty.
+/home/kuncak/jahob/examples/sorting/insertionsort
+
+[Insertion.insertionSort:.................................................................................
+======================================================================
+Built-in validity checker proved 11 sequents during splitting.
+Z3 proved 27 out of 27 sequents. Total time : 0.7 s
+======================================================================
+A total of 38 sequents out of 38 proved.
+:Insertion.insertionSort]
+0=== Verification SUCCEEDED.
+/home/kuncak/jahob/examples/containers/functional/list
+
+Analyzing class List.
+...............
+======================================================================
+Z3 proved 5 out of 5 sequents. Total time : 0.1 s
+======================================================================
+A total of 5 sequents out of 5 proved.
+
+[List.nil:...
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 9 sequents out of 9 proved.
+:List.nil]
+[List.cons:...........................
+======================================================================
+Built-in validity checker proved 2 sequents during splitting.
+Z3 proved 9 out of 9 sequents. Total time : 0.3 s
+======================================================================
+A total of 11 sequents out of 11 proved.
+:List.cons]
+[List.is_nil:...
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 9 sequents out of 9 proved.
+:List.is_nil]
+[List.remove_all:............
+======================================================================
+Built-in validity checker proved 51 sequents during splitting.
+Z3 proved 4 out of 4 sequents. Total time : 0.2 s
+======================================================================
+A total of 55 sequents out of 55 proved.
+:List.remove_all]
+[List.member:.........
+======================================================================
+Built-in validity checker proved 37 sequents during splitting.
+Z3 proved 3 out of 3 sequents. Total time : 0.1 s
+======================================================================
+A total of 40 sequents out of 40 proved.
+:List.member]
+[List.getFirst:.........
+======================================================================
+Built-in validity checker proved 8 sequents during splitting.
+Z3 proved 3 out of 3 sequents. Total time : 0.1 s
+======================================================================
+A total of 11 sequents out of 11 proved.
+:List.getFirst]
+[List.getRest:......
+======================================================================
+Built-in validity checker proved 7 sequents during splitting.
+Z3 proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 9 sequents out of 9 proved.
+:List.getRest]
+[List.getMatch:.......................................
+======================================================================
+Built-in validity checker proved 3 sequents during splitting.
+Z3 proved 13 out of 13 sequents. Total time : 0.4 s
+======================================================================
+A total of 16 sequents out of 16 proved.
+:List.getMatch]
+[List.reverse_append:.........
+======================================================================
+Built-in validity checker proved 32 sequents during splitting.
+Z3 proved 3 out of 3 sequents. Total time : 0.1 s
+======================================================================
+A total of 35 sequents out of 35 proved.
+:List.reverse_append]
+[List.reverse:...
+======================================================================
+Built-in validity checker proved 23 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 24 sequents out of 24 proved.
+:List.reverse]
+[List.concat:......
+======================================================================
+Built-in validity checker proved 58 sequents during splitting.
+Z3 proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 60 sequents out of 60 proved.
+:List.concat]
+0=== Verification SUCCEEDED.
+/home/kuncak/jahob/examples/containers/functional/assoc-list
+
+Analyzing class AssocList.
+.....................
+======================================================================
+Z3 proved 7 out of 7 sequents. Total time : 0.2 s
+======================================================================
+A total of 7 sequents out of 7 proved.
+
+[AssocList.nil:...
+======================================================================
+Built-in validity checker proved 10 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 11 sequents out of 11 proved.
+:AssocList.nil]
+[AssocList.cons:...................................
+======================================================================
+Built-in validity checker proved 2 sequents during splitting.
+Z3 proved 9 out of 11 sequents. Total time : 0.7 s
+SPASS (TimeOut=5) proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 13 sequents out of 13 proved.
+:AssocList.cons]
+[AssocList.is_nil:...
+======================================================================
+Built-in validity checker proved 10 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 11 sequents out of 11 proved.
+:AssocList.is_nil]
+[AssocList.remove_all:......xx..........oxx.
+======================================================================
+Built-in validity checker proved 64 sequents during splitting.
+Z3 proved 3 out of 5 sequents. Total time : 0.3 s
+SPASS (TimeOut=5) proved 2 out of 2 sequents. Total time : 1.7 s
+======================================================================
+A total of 69 sequents out of 69 proved.
+:AssocList.remove_all]
+[AssocList.update:...xx.
+======================================================================
+Built-in validity checker proved 30 sequents during splitting.
+SPASS (TimeOut=5) proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 31 sequents out of 31 proved.
+:AssocList.update]
+[AssocList.member:............
+======================================================================
+Built-in validity checker proved 71 sequents during splitting.
+Z3 proved 4 out of 4 sequents. Total time : 0.2 s
+======================================================================
+A total of 75 sequents out of 75 proved.
+:AssocList.member]
+[AssocList.countKeys:...
+======================================================================
+Built-in validity checker proved 56 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 57 sequents out of 57 proved.
+:AssocList.countKeys]
+[AssocList.remove:..............................
+======================================================================
+Built-in validity checker proved 103 sequents during splitting.
+Z3 proved 10 out of 10 sequents. Total time : 0.6 s
+======================================================================
+A total of 113 sequents out of 113 proved.
+:AssocList.remove]
+[AssocList.lookup:.........
+======================================================================
+Built-in validity checker proved 46 sequents during splitting.
+Z3 proved 3 out of 3 sequents. Total time : 0.1 s
+======================================================================
+A total of 49 sequents out of 49 proved.
+:AssocList.lookup]
+[AssocList.getFirst:................................................
+======================================================================
+Built-in validity checker proved 3 sequents during splitting.
+Z3 proved 16 out of 16 sequents. Total time : 0.8 s
+======================================================================
+A total of 19 sequents out of 19 proved.
+:AssocList.getFirst]
+[AssocList.getRest:......
+======================================================================
+Built-in validity checker proved 9 sequents during splitting.
+Z3 proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 11 sequents out of 11 proved.
+:AssocList.getRest]
+[AssocList.getMatch:......................................................
+======================================================================
+Built-in validity checker proved 3 sequents during splitting.
+Z3 proved 18 out of 18 sequents. Total time : 0.9 s
+======================================================================
+A total of 21 sequents out of 21 proved.
+:AssocList.getMatch]
+[AssocList.reverse_append:............
+======================================================================
+Built-in validity checker proved 41 sequents during splitting.
+Z3 proved 4 out of 4 sequents. Total time : 0.2 s
+======================================================================
+A total of 45 sequents out of 45 proved.
+:AssocList.reverse_append]
+[AssocList.reverse:...
+======================================================================
+Built-in validity checker proved 29 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 30 sequents out of 30 proved.
+:AssocList.reverse]
+[AssocList.concat:......
+======================================================================
+Built-in validity checker proved 74 sequents during splitting.
+Z3 proved 2 out of 2 sequents. Total time : 0.2 s
+======================================================================
+A total of 76 sequents out of 76 proved.
+:AssocList.concat]
+0=== Verification SUCCEEDED.
+/home/kuncak/jahob/examples/containers/functional/tree
+
+Analyzing class FuncTree.
+...............
+======================================================================
+Z3 proved 5 out of 5 sequents. Total time : 0.1 s
+======================================================================
+A total of 5 sequents out of 5 proved.
+
+[FuncTree.empty_set:...
+======================================================================
+Built-in validity checker proved 5 sequents during splitting.
+Z3 proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 6 sequents out of 6 proved.
+:FuncTree.empty_set]
+[FuncTree.add:
+======================================================================
+Built-in validity checker proved 13 sequents during splitting.
+======================================================================
+A total of 13 sequents out of 13 proved.
+:FuncTree.add]
+[FuncTree.add1:........................................................................sxx!.xx......................sxsxx!.xxx................
+======================================================================
+Built-in validity checker proved 27 sequents during splitting.
+Z3 proved 34 out of 36 sequents. Total time : 2.8 s
+SPASS (TimeOut=3:SpassSortGuards=no:Sorting=:OrderAxioms=:Filtering=75) proved 2 out of 2 sequents. Total time : 0.2 s
+======================================================================
+A total of 63 sequents out of 63 proved.
+:FuncTree.add1]
+[FuncTree.update:
+======================================================================
+Built-in validity checker proved 12 sequents during splitting.
+======================================================================
+A total of 12 sequents out of 12 proved.
+:FuncTree.update]
+[FuncTree.update1:....................................xx....sxsx!.xx...............................xx....sxsx!.xx...............................xx....sxsx!.xx............................
+======================================================================
+Built-in validity checker proved 28 sequents during splitting.
+Z3 proved 38 out of 44 sequents. Total time : 4.0 s
+SPASS (TimeOut=2:SpassSortGuards=no:Sorting=:Filtering=50) proved 3 out of 6 sequents. Total time : 0.5 s
+SPASS (TimeOut=3:SpassSortGuards=no:Sorting=:OrderAxioms=:Filtering=75) proved 3 out of 3 sequents. Total time : 1.4 s
+======================================================================
+A total of 72 sequents out of 72 proved.
+:FuncTree.update1]
+[FuncTree.member:.............
+======================================================================
+Built-in validity checker proved 40 sequents during splitting.
+Z3 proved 3 out of 4 sequents. Total time : 0.2 s
+SPASS (TimeOut=2:SpassSortGuards=no:Sorting=:Filtering=50) proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 44 sequents out of 44 proved.
+:FuncTree.member]
+[FuncTree.lookup:............
+======================================================================
+Built-in validity checker proved 41 sequents during splitting.
+Z3 proved 4 out of 4 sequents. Total time : 0.1 s
+======================================================================
+A total of 45 sequents out of 45 proved.
+:FuncTree.lookup]
+[FuncTree.lookup1:.....................
+======================================================================
+Built-in validity checker proved 42 sequents during splitting.
+Z3 proved 7 out of 7 sequents. Total time : 0.3 s
+======================================================================
+A total of 49 sequents out of 49 proved.
+:FuncTree.lookup1]
+[FuncTree.max:
+======================================================================
+Built-in validity checker proved 15 sequents during splitting.
+======================================================================
+A total of 15 sequents out of 15 proved.
+:FuncTree.max]
+[FuncTree.max1:............................................................s!.o!........sxx!.xx.
+======================================================================
+Built-in validity checker proved 12 sequents during splitting.
+Z3 proved 20 out of 22 sequents. Total time : 0.8 s
+SPASS (TimeOut=3:SpassSortGuards=no:Sorting=:OrderAxioms=:Filtering=75) proved 1 out of 2 sequents. Total time : 3.5 s
+E (TimeOut=120:SortGuards=no:OrderAxioms=) proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 34 sequents out of 34 proved.
+:FuncTree.max1]
+[FuncTree.remove_max:
+======================================================================
+Built-in validity checker proved 15 sequents during splitting.
+======================================================================
+A total of 15 sequents out of 15 proved.
+:FuncTree.remove_max]
+[FuncTree.remove_max1:.........s!.o!.....sxsx!.xx....sxsx!.oxox!.xx.......s!.....sxx!.oxx!.xx...................sxsx!.xx....sxsx!.oxox!.xx............................
+======================================================================
+Built-in validity checker proved 14 sequents during splitting.
+Z3 proved 17 out of 24 sequents. Total time : 1.7 s
+SPASS (TimeOut=3:SpassSortGuards=no:Sorting=:OrderAxioms=:Filtering=75) proved 3 out of 7 sequents. Total time : 18.1 s
+E (TimeOut=120:SortGuards=no:OrderAxioms=) proved 4 out of 4 sequents. Total time : 33.5 s
+======================================================================
+A total of 38 sequents out of 38 proved.
+:FuncTree.remove_max1]
+[FuncTree.remove:
+======================================================================
+Built-in validity checker proved 11 sequents during splitting.
+======================================================================
+A total of 11 sequents out of 11 proved.
+:FuncTree.remove]
+[FuncTree.remove1:...............s!.....xx....sxsx!.xx...............................xx....sxsx!.xx...............................xx....sxsx!.xx............................
+======================================================================
+Built-in validity checker proved 85 sequents during splitting.
+Z3 proved 31 out of 38 sequents. Total time : 3.4 s
+SPASS (TimeOut=2:SpassSortGuards=no:Sorting=:Filtering=50) proved 3 out of 7 sequents. Total time : 0.5 s
+SPASS (TimeOut=3:SpassSortGuards=no:Sorting=:OrderAxioms=:Filtering=75) proved 4 out of 4 sequents. Total time : 1.7 s
+======================================================================
+A total of 123 sequents out of 123 proved.
+:FuncTree.remove1]
+[FuncTree.min:
+======================================================================
+Built-in validity checker proved 13 sequents during splitting.
+======================================================================
+A total of 13 sequents out of 13 proved.
+:FuncTree.min]
+[FuncTree.min1:..........................................s!.o!.......................
+======================================================================
+Built-in validity checker proved 9 sequents during splitting.
+Z3 proved 20 out of 21 sequents. Total time : 0.8 s
+E (TimeOut=120:SortGuards=no:OrderAxioms=) proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 30 sequents out of 30 proved.
+:FuncTree.min1]
+[FuncTree.is_empty:...xsx!.xx.
+======================================================================
+Built-in validity checker proved 5 sequents during splitting.
+SPASS (TimeOut=3:SpassSortGuards=no:Sorting=:OrderAxioms=:Filtering=75) proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 6 sequents out of 6 proved.
+:FuncTree.is_empty]
+0=== Verification SUCCEEDED.
+PASSED Benchmark Functional tree.
+/home/kuncak/jahob/examples/containers/instantiable/list-data
+
+Analyzing class List.
+......
+======================================================================
+Z3 proved 2 out of 2 sequents. Total time : 0.1 s
+======================================================================
+A total of 2 sequents out of 2 proved.
+
+[List.List:................
+======================================================================
+Built-in validity checker proved 3 sequents during splitting.
+Z3 proved 4 out of 5 sequents. Total time : 0.2 s
+SPASS proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 8 sequents out of 8 proved.
+:List.List]
+[List.member:
+======================================================================
+Built-in validity checker proved 11 sequents during splitting.
+======================================================================
+A total of 11 sequents out of 11 proved.
+:List.member]
+[List.member1:.......................
+======================================================================
+Built-in validity checker proved 21 sequents during splitting.
+Z3 proved 5 out of 7 sequents. Total time : 0.3 s
+SPASS proved 2 out of 2 sequents. Total time : 0.0 s
+======================================================================
+A total of 28 sequents out of 28 proved.
+:List.member1]
+[List.add:..................................
+======================================================================
+Built-in validity checker proved 12 sequents during splitting.
+Z3 proved 10 out of 11 sequents. Total time : 0.5 s
+SPASS proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 23 sequents out of 23 proved.
+:List.add]
+[List.isEmpty:...xx.
+======================================================================
+Built-in validity checker proved 5 sequents during splitting.
+SPASS proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 6 sequents out of 6 proved.
+:List.isEmpty]
+[List.getOne:.......
+======================================================================
+Built-in validity checker proved 5 sequents during splitting.
+Z3 proved 1 out of 2 sequents. Total time : 0.1 s
+SPASS proved 1 out of 1 sequents. Total time : 0.0 s
+======================================================================
+A total of 7 sequents out of 7 proved.
+:List.getOne]
+[List.remove:............xx....xx...................xx.........................................xx....xx....xx.............xx....................xx.......xx........xxxx..........xx.................xx........
+======================================================================
+Built-in validity checker proved 25 sequents during splitting.
+Z3 proved 25 out of 48 sequents. Total time : 2.6 s
+SPASS proved 23 out of 23 sequents. Total time : 2.2 s
+======================================================================
+A total of 73 sequents out of 73 proved.
+:List.remove]
+[List.test:.................................
+======================================================================
+Built-in validity checker proved 59 sequents during splitting.
+Z3 proved 11 out of 11 sequents. Total time : 0.9 s
+======================================================================
+A total of 70 sequents out of 70 proved.
+:List.test]
+0=== Verification SUCCEEDED.
+PASSED Benchmark InstantiatableSinglyLinkedListWithGhostVar.
+/home/kuncak/jahob/examples/containers/instantiable/list-cursor
+
+Analyzing class List.
+.........................................................
+[List.List:...................................................................
+======================================================================
+Built-in validity checker proved 6 sequents during splitting.
+======================================================================
+A total of 6 sequents out of 6 proved.
+:List.List]
+[List.member:
+======================================================================
+Built-in validity checker proved 38 sequents during splitting.
+======================================================================
+A total of 38 sequents out of 38 proved.
+:List.member]
+[List.member1:......................
+======================================================================
+Built-in validity checker proved 46 sequents during splitting.
+======================================================================
+A total of 46 sequents out of 46 proved.
+:List.member1]
+[List.addNew:....................................................................................................................................................................
+======================================================================
+Built-in validity checker proved 3 sequents during splitting.
+======================================================================
+A total of 3 sequents out of 3 proved.
+:List.addNew]
+[List.initIter:.......................................
+======================================================================
+Built-in validity checker proved 13 sequents during splitting.
+======================================================================
+A total of 13 sequents out of 13 proved.
+:List.initIter]
+[List.nextIter:.............................................xxxxx.xx.x..
+======================================================================
+Built-in validity checker proved 13 sequents during splitting.
+======================================================================
+A total of 13 sequents out of 13 proved.
+:List.nextIter]
+[List.getCurrent:
+======================================================================
+Built-in validity checker proved 21 sequents during splitting.
+======================================================================
+A total of 21 sequents out of 21 proved.
+:List.getCurrent]
+[List.lastIter:...
+======================================================================
+Built-in validity checker proved 20 sequents during splitting.
+======================================================================
+A total of 20 sequents out of 20 proved.
+:List.lastIter]
+[List.removeCurrent:..............................................xx..x.x..................................................x..xxx............................................................................................................................................................................................................................
+======================================================================
+Built-in validity checker proved 33 sequents during splitting.
+======================================================================
+A total of 33 sequents out of 33 proved.
+:List.removeCurrent]
+0=== Verification SUCCEEDED (modulo 3 assume statements).
+PASSED Benchmark InstantiatableSinglyLinkedListBuiltinIterator.
+/home/kuncak/jahob/examples/loopinvs/java.util/AssocList
+
+Analyzing class AssocList.
+........xx..................................
+======================================================================
+SPASS (TimeOut=30:SpassSortGuards=no) proved 14 out of 14 sequents. Total time : 0.2 s
+======================================================================
+A total of 14 sequents out of 14 proved.
+
+[AssocList.AssocList:.....xx.....................................
+======================================================================
+Built-in validity checker proved 4 sequents during splitting.
+SPASS (TimeOut=30:SpassSortGuards=no) proved 14 out of 14 sequents. Total time : 0.7 s
+======================================================================
+A total of 18 sequents out of 18 proved.
+:AssocList.AssocList]
+[AssocList.containsKey:
+======================================================================
+Built-in validity checker proved 23 sequents during splitting.
+======================================================================
+A total of 23 sequents out of 23 proved.
+:AssocList.containsKey]
+[AssocList.containsKey0:.................xx....
+======================================================================
+Built-in validity checker proved 29 sequents during splitting.
+SPASS (TimeOut=30:SpassSortGuards=no) proved 7 out of 7 sequents. Total time : 0.2 s
+======================================================================
+A total of 36 sequents out of 36 proved.
+:AssocList.containsKey0]
+[AssocList.add:..xx...xx...............xx...............xx...xx.........................
+======================================================================
+Built-in validity checker proved 1 sequents during splitting.
+SPASS (TimeOut=30:SpassSortGuards=no) proved 21 out of 21 sequents. Total time : 1.7 s
+======================================================================
+A total of 22 sequents out of 22 proved.
+:AssocList.add]
+[AssocList.replace:.....xx...xx.
+======================================================================
+Built-in validity checker proved 43 sequents during splitting.
+SPASS (TimeOut=30:SpassSortGuards=no) proved 3 out of 3 sequents. Total time : 0.5 s
+======================================================================
+A total of 46 sequents out of 46 proved.
+:AssocList.replace]
+[AssocList.put:.....xx...xx......xx.
+======================================================================
+Built-in validity checker proved 69 sequents during splitting.
+SPASS (TimeOut=30:SpassSortGuards=no) proved 5 out of 5 sequents. Total time : 0.4 s
+======================================================================
+A total of 74 sequents out of 74 proved.
+:AssocList.put]
+[AssocList.get:....................xx....
+======================================================================
+Built-in validity checker proved 33 sequents during splitting.
+SPASS (TimeOut=30:SpassSortGuards=no) proved 8 out of 8 sequents. Total time : 0.3 s
+======================================================================
+A total of 41 sequents out of 41 proved.
+:AssocList.get]
+[AssocList.isEmpty:..xx.
+======================================================================
+Built-in validity checker proved 12 sequents during splitting.
+SPASS (TimeOut=30:SpassSortGuards=no) proved 1 out of 1 sequents. Total time : 0.1 s
+======================================================================
+A total of 13 sequents out of 13 proved.
+:AssocList.isEmpty]
+[AssocList.remove:..............xx......xx..............................xx...xx.......................................xx...............xx...xx......xx......xxxx...xx...xx...............xx...xx......xx......xxxx...xx...xx......xx...........................xx...xox.........................
+======================================================================
+Built-in validity checker proved 15 sequents during splitting.
+SPASS (TimeOut=30:SpassSortGuards=no) proved 75 out of 75 sequents. Total time : 7.9 s
+======================================================================
+A total of 90 sequents out of 90 proved.
+:AssocList.remove]
+0=== Verification SUCCEEDED (modulo one assume statement).
+PASSED Benchmark loopinvs:java.util:AssocList:AssocList.
+The test passed ! GO JAHOB !

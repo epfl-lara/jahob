@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt AssocList.java -failfast -class AssocList -usedp spass 2>&1 | tee assoclist.out
+ensure_verifies $? "loopinvs:java.util:AssocList:AssocList"

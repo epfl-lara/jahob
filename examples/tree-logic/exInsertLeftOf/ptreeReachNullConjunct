@@ -1,0 +1,7 @@
+(ALL (v_5::obj). (rtrancl_pt (% (v_5::obj) (v_4::obj). ((((fieldWrite (Node_p :: (obj=>obj)) (e::obj) (pos::obj)) :: (obj=>obj)) v_5) = v_4)) v_5 null)
+
+
+
+
+
+

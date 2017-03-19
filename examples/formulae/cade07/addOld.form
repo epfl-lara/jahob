@@ -1,0 +1,3 @@
+(x::obj) : List_content &
+List_size = cardinality List_content -->
+List_size = cardinality ({x} Un List_content)

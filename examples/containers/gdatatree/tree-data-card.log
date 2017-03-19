@@ -1,0 +1,313 @@
+     _       _           _                  _____
+    | | __ _| |__   ___ | |__              /     \
+ _  | |/ _` | '_ \ / _ \| '_ \       x <==|  (J)  |===.
+| |_| | (_| | | | | (_) | |_) |     ======+=======+==="  F
+ \____/\__,_|_| |_|\___/|_.__/             \_____/  
+
+No undeclared modified vars.Post assert for vc is:
+((Justvc_size :: int) = (cardinality (Justvc_content :: obj set)))
+Did not patch assert called ObjNullCheck
+Did not patch assert called ObjNullCheck
+Did not patch assert called 
+Did not patch assert called isIn
+Patched 1 asserts with formula
+ ((Justvc_size :: int) = (cardinality (Justvc_content :: obj set))) 
+No undeclared modified vars.Post assert for vcAllInvs is:
+True
+Patched 1 asserts with formula
+ True 
+No undeclared modified vars.Post assert for hashCode is:
+((((result :: int) = ((Object_hashFunc :: (obj => int)) (this :: obj))) & ((Object_alloc :: obj set) = (old_Object_alloc :: obj set))) & (comment '': hCInv'' (ALL (this::obj). (((this : Object_alloc) & (this : Object)) --> ((fieldRead (Object_hashCode :: (obj => int)) (this :: obj)) = ((Object_hashFunc :: (obj => int)) (this :: obj)))))))
+Patched 1 asserts with formula
+ ((((result :: int) = ((Object_hashFunc :: (obj => int)) (this :: obj))) & ((Object_alloc :: obj set) = (old_Object_alloc :: obj set))) & (comment '': hCInv'' (ALL (this::obj). (((this : Object_alloc) & (this : Object)) --> ((fieldRead (Object_hashCode :: (obj => int)) (this :: obj)) = ((Object_hashFunc :: (obj => int)) (this :: obj))))))) 
+
+Now analyzing: ==== Procedure Justvc.vc ====
+Procedure Justvc.vc is not a public procedure.
+Generating VCs...
+No undeclared modified vars.Using VC generation from simplified Ast.
+Done generating VCs.
+Processing VCs...opening lemma file : vc_Justvc-lemmas.thy
+No lemma file vc_Justvc-lemmas.thyRetrieved 0 lemmas from lemma file vc_Justvc-lemmas.thy.
+Generated 1 proof obligations.
+Trivially true.
+Proved during splitting: ([|(comment ''AllocatedObject'' (ALL (j::int). (((arrayRead Array_arrayState tmp_1_1 j) :: obj) = (null :: obj))));
+(comment ''AllocatedObject'' (((fieldRead Node_data tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_left tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_right tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' ((Justvc_root :: obj) ~= (tmp_1_1 :: obj)));
+(comment ''AllocatedObject'' (ALL (z::obj) (i::int). (((arrayRead Array_arrayState z i) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_data y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_left y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_right y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) : (Node :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~: (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~= (null :: obj)));
+(comment ''e_type'' ((e :: obj) : (Object_alloc :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Object_alloc :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Node :: obj set)));
+(comment ''ProcedurePrecondition'' (((fieldRead (Node_left :: (obj => obj)) (p :: obj)) :: obj) = (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) : (Justvc_inlist :: obj set)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~: (Justvc_content :: obj set)));
+(comment ''ProcedurePrecondition'' ((Justvc_size :: int) = ((cardinality (Justvc_content :: obj set)) :: int)));
+(comment ''ProcedurePrecondition'' ((Justvc_inlist :: obj set) <= (Object_alloc :: obj set)));
+(comment ''ProcedurePrecondition'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_left :: (obj => obj)), (Node_right :: (obj => obj))]));
+(comment ''static_pointsto'' ((Justvc_root :: obj) : (Node :: obj set)));
+(comment ''Justvc.inlist_def'' ((Justvc_inlist :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead (Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''Justvc.content_def'' ((Justvc_content :: obj set) = ({x. (EX (n::obj). (((n :: obj) ~= (null :: obj)) & ((n :: obj) : (Justvc_inlist :: obj set)) & (((fieldRead (Node_data :: (obj => obj)) n) :: obj) = (x :: obj))))} :: obj set)))|] ==>
+    (comment ''ObjNullCheck'' ((p :: obj) ~= (null :: obj))))
+Trivially true.
+Proved during splitting: ([|(comment ''AllocatedObject'' (ALL (j::int). (((arrayRead Array_arrayState tmp_1_1 j) :: obj) = (null :: obj))));
+(comment ''AllocatedObject'' (((fieldRead Node_data tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_left tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_right tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' ((Justvc_root :: obj) ~= (tmp_1_1 :: obj)));
+(comment ''AllocatedObject'' (ALL (z::obj) (i::int). (((arrayRead Array_arrayState z i) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_data y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_left y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_right y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) : (Node :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~: (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~= (null :: obj)));
+(comment ''e_type'' ((e :: obj) : (Object_alloc :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Object_alloc :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Node :: obj set)));
+(comment ''ProcedurePrecondition'' (((fieldRead (Node_left :: (obj => obj)) (p :: obj)) :: obj) = (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) : (Justvc_inlist :: obj set)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~: (Justvc_content :: obj set)));
+(comment ''ProcedurePrecondition'' ((Justvc_size :: int) = ((cardinality (Justvc_content :: obj set)) :: int)));
+(comment ''ProcedurePrecondition'' ((Justvc_inlist :: obj set) <= (Object_alloc :: obj set)));
+(comment ''ProcedurePrecondition'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_left :: (obj => obj)), (Node_right :: (obj => obj))]));
+(comment ''static_pointsto'' ((Justvc_root :: obj) : (Node :: obj set)));
+(comment ''Justvc.inlist_def'' ((Justvc_inlist :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead (Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''Justvc.content_def'' ((Justvc_content :: obj set) = ({x. (EX (n::obj). (((n :: obj) ~= (null :: obj)) & ((n :: obj) : (Justvc_inlist :: obj set)) & (((fieldRead (Node_data :: (obj => obj)) n) :: obj) = (x :: obj))))} :: obj set)))|] ==>
+    (comment ''ObjNullCheck'' ((tmp_1_1 :: obj) ~= (null :: obj))))
+
+Proof obligation: ([|(comment ''Justvc.content_def'' ((Justvc_content :: obj set) = ({x. (EX (n::obj). (((n :: obj) ~= (null :: obj)) & ((n :: obj) : (Justvc_inlist :: obj set)) & (((fieldRead (Node_data :: (obj => obj)) n) :: obj) = (x :: obj))))} :: obj set)));
+(comment ''Justvc.inlist_def'' ((Justvc_inlist :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead (Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''static_pointsto'' ((Justvc_root :: obj) : (Node :: obj set)));
+(comment ''ProcedurePrecondition'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_left :: (obj => obj)), (Node_right :: (obj => obj))]));
+(comment ''ProcedurePrecondition'' ((Justvc_inlist :: obj set) <= (Object_alloc :: obj set)));
+(comment ''ProcedurePrecondition'' ((Justvc_size :: int) = ((cardinality (Justvc_content :: obj set)) :: int)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~: (Justvc_content :: obj set)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) : (Justvc_inlist :: obj set)));
+(comment ''ProcedurePrecondition'' ((p :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' (((fieldRead (Node_left :: (obj => obj)) (p :: obj)) :: obj) = (null :: obj)));
+(comment ''p_type'' ((p :: obj) : (Node :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Object_alloc :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~= (null :: obj)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~: (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) : (Node :: obj set)));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_right y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_left y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_data y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (z::obj) (i::int). (((arrayRead Array_arrayState z i) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' ((Justvc_root :: obj) ~= (tmp_1_1 :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_right tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_left tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_data tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (ALL (j::int). (((arrayRead Array_arrayState tmp_1_1 j) :: obj) = (null :: obj))));
+(comment ''Justvc.inlist_def'' ((Justvc_inlist_1 :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead ((fieldWrite (Node_left :: (obj => obj)) (p :: obj) (tmp_1_1 :: obj)) :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''Justvc.content_def'' ((Justvc_content_1 :: obj set) = ({x. (EX (n_1::obj). (((n_1 :: obj) ~= (null :: obj)) & ((n_1 :: obj) : (Justvc_inlist_1 :: obj set)) & (((fieldRead ((fieldWrite (Node_data :: (obj => obj)) (tmp_1_1 :: obj) (e :: obj)) :: (obj => obj)) n_1) :: obj) = (x :: obj))))} :: obj set)))|] ==>
+    ((Justvc_inlist_1 :: obj set) = (((Justvc_inlist :: obj set) Un {(tmp_1_1 :: obj)}) :: obj set)))
+.Running Built-in validity checker (after splitting)... Built-in validity checker (after splitting) failed to prove formula.
+Running Z3... Z3 failed to prove formula.
+Running BAPA... Before rewriting:
+
+(([|(comment ''AllocatedObject'' (ALL (j::int). (((arrayRead Array_arrayState tmp_1_1 j) :: obj) = (null :: obj))));
+(comment ''AllocatedObject'' (((Node_data tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((Node_left tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((Node_right tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' ((Justvc_root :: obj) ~= (tmp_1_1 :: obj)));
+(comment ''AllocatedObject'' (ALL (z::obj) (i::int). (((arrayRead Array_arrayState z i) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((Node_data y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((Node_left y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((Node_right y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) : (Node :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~: (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~= (null :: obj)));
+(comment ''e_type'' ((e :: obj) : (Object_alloc :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Object_alloc :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Node :: obj set)));
+(comment ''ProcedurePrecondition'' ((((Node_left :: (obj => obj)) (p :: obj)) :: obj) = (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) : ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~: ({x. (EX (n::obj). (((n :: obj) ~= (null :: obj)) & ((n :: obj) : ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)) & ((((Node_data :: (obj => obj)) n) :: obj) = (x :: obj))))} :: obj set)));
+(comment ''ProcedurePrecondition'' (({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set) \<subseteq> (Object_alloc :: obj set)));
+(comment ''ProcedurePrecondition'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_left :: (obj => obj)), (Node_right :: (obj => obj))]));
+(comment ''static_pointsto'' ((Justvc_root :: obj) : (Node :: obj set)))|] ==>
+    (({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((((fieldWrite (Node_left :: (obj => obj)) (p :: obj) (tmp_1_1 :: obj)) :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set) === ((({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set) Un {(tmp_1_1 :: obj)}) :: obj set))) :: bool)
+
+BAPA form input:
+([|(Justvc_root ~= tmp_1_1);
+(EX (b__8::obj). (b__8 ~= tmp_1_1));
+(EX (b__7::obj). (b__7 ~= tmp_1_1));
+(EX (b__6::obj). (b__6 ~= tmp_1_1));
+(EX (b__5::obj). (b__5 ~= tmp_1_1));
+(tmp_1_1 ~: Object_alloc);
+(tmp_1_1 ~= null);
+(p ~= null);
+(p : b__2);
+(b__2 \<subseteq> Object_alloc)|] ==>
+    (b__13 === (b__2 Un {tmp_1_1})))
+ That is:
+
+(App((Const MetaImpl),[(App((Const MetaAnd),[(App((Const Not),[(App((Const Eq),[(Var "Justvc.root"); (Var "tmp_1_1")]))])); (Binder(Exists,[(b__8,(TypeApp(TypeObject,[])))],(App((Const Not),[(App((Const Eq),[(Var "b__8"); (Var "tmp_1_1")]))])))); (Binder(Exists,[(b__7,(TypeApp(TypeObject,[])))],(App((Const Not),[(App((Const Eq),[(Var "b__7"); (Var "tmp_1_1")]))])))); (Binder(Exists,[(b__6,(TypeApp(TypeObject,[])))],(App((Const Not),[(App((Const Eq),[(Var "b__6"); (Var "tmp_1_1")]))])))); (Binder(Exists,[(b__5,(TypeApp(TypeObject,[])))],(App((Const Not),[(App((Const Eq),[(Var "b__5"); (Var "tmp_1_1")]))])))); (App((Const Not),[(App((Const Elem),[(Var "tmp_1_1"); (Var "Object.alloc")]))])); (App((Const Not),[(App((Const Eq),[(Var "tmp_1_1"); (Const NullConst)]))])); (App((Const Not),[(App((Const Eq),[(Var "p"); (Const NullConst)]))])); (App((Const Elem),[(Var "p"); (Var "b__2")])); (App((Const Subseteq),[(Var "b__2"); (Var "Object.alloc")]))])); (App((Const Seteq),[(Var "b__13"); (App((Const Cup),[(Var "b__2"); (App((Const FiniteSetConst),[(Var "tmp_1_1")]))]))]))]))
+
+env ={|(b__13::obj set), (p::obj), (Object_alloc::obj set), (Justvc_root::obj), (b__2::obj set), (tmp_1_1::obj)|}singletons = p, Justvc.root, tmp_1_1
+Failure("Approximated away formula {null} in trs.")Failure("Approximated away formula {null} in trs.")BAPA translation done.
+NNF:
+(ALL (Justvc_root::obj set). (ALL (p::obj set). (ALL (Object_alloc::obj set). (ALL (b__13::obj set). (ALL (b__2::obj set). (ALL (tmp_1_1::obj set). (((cardinality tmp_1_1) ~= 1) | ((cardinality Justvc_root) ~= 1) | ((cardinality p) ~= 1) | (b__13 === (b__2 Un tmp_1_1)) | (Justvc_root === tmp_1_1) | (tmp_1_1 \<subseteq> Object_alloc) | (~(p \<subseteq> b__2)) | (~(b__2 \<subseteq> Object_alloc)))))))))
+
+Obtained QFBAPA formula.Using QFBAPA procedure.
+Iteration 8 / 8
+
+ Deciding formula with 1534 nodes.
+BAPA failed to prove formula.
+Running MONA... 
+Field constraint analysis:
+   backbone: Node.right, Node.left
+   derived: 
+   trivial: Node.data
+MONA proved formula.
+
+Proof obligation: ([|(comment ''Justvc.content_def'' ((Justvc_content :: obj set) = ({x. (EX (n::obj). (((n :: obj) ~= (null :: obj)) & ((n :: obj) : (Justvc_inlist :: obj set)) & (((fieldRead (Node_data :: (obj => obj)) n) :: obj) = (x :: obj))))} :: obj set)));
+(comment ''Justvc.inlist_def'' ((Justvc_inlist :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead (Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''static_pointsto'' ((Justvc_root :: obj) : (Node :: obj set)));
+(comment ''ProcedurePrecondition'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_left :: (obj => obj)), (Node_right :: (obj => obj))]));
+(comment ''ProcedurePrecondition'' ((Justvc_inlist :: obj set) <= (Object_alloc :: obj set)));
+(comment ''ProcedurePrecondition'' ((Justvc_size :: int) = ((cardinality (Justvc_content :: obj set)) :: int)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~: (Justvc_content :: obj set)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) : (Justvc_inlist :: obj set)));
+(comment ''ProcedurePrecondition'' ((p :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' (((fieldRead (Node_left :: (obj => obj)) (p :: obj)) :: obj) = (null :: obj)));
+(comment ''p_type'' ((p :: obj) : (Node :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Object_alloc :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~= (null :: obj)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~: (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) : (Node :: obj set)));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_right y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_left y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_data y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (z::obj) (i::int). (((arrayRead Array_arrayState z i) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' ((Justvc_root :: obj) ~= (tmp_1_1 :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_right tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_left tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_data tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (ALL (j::int). (((arrayRead Array_arrayState tmp_1_1 j) :: obj) = (null :: obj))));
+(comment ''Justvc.inlist_def'' ((Justvc_inlist_1 :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead ((fieldWrite (Node_left :: (obj => obj)) (p :: obj) (tmp_1_1 :: obj)) :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''Justvc.content_def'' ((Justvc_content_1 :: obj set) = ({x. (EX (n_1::obj). (((n_1 :: obj) ~= (null :: obj)) & ((n_1 :: obj) : (Justvc_inlist_1 :: obj set)) & (((fieldRead ((fieldWrite (Node_data :: (obj => obj)) (tmp_1_1 :: obj) (e :: obj)) :: (obj => obj)) n_1) :: obj) = (x :: obj))))} :: obj set)));
+((Justvc_inlist_1 :: obj set) = (((Justvc_inlist :: obj set) Un {(tmp_1_1 :: obj)}) :: obj set))|] ==>
+    (comment ''isIn'' ((Justvc_content_1 :: obj set) = (((Justvc_content :: obj set) Un {(e :: obj)}) :: obj set))))
+.Running Built-in validity checker (after splitting)... Built-in validity checker (after splitting) failed to prove formula.
+Running Z3... Z3 proved formula.
+
+Proof obligation: ([|(comment ''Justvc.content_def'' ((Justvc_content :: obj set) = ({x. (EX (n::obj). (((n :: obj) ~= (null :: obj)) & ((n :: obj) : (Justvc_inlist :: obj set)) & (((fieldRead (Node_data :: (obj => obj)) n) :: obj) = (x :: obj))))} :: obj set)));
+(comment ''Justvc.inlist_def'' ((Justvc_inlist :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead (Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''static_pointsto'' ((Justvc_root :: obj) : (Node :: obj set)));
+(comment ''ProcedurePrecondition'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_left :: (obj => obj)), (Node_right :: (obj => obj))]));
+(comment ''ProcedurePrecondition'' ((Justvc_inlist :: obj set) <= (Object_alloc :: obj set)));
+(comment ''ProcedurePrecondition'' ((Justvc_size :: int) = ((cardinality (Justvc_content :: obj set)) :: int)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~: (Justvc_content :: obj set)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) : (Justvc_inlist :: obj set)));
+(comment ''ProcedurePrecondition'' ((p :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' (((fieldRead (Node_left :: (obj => obj)) (p :: obj)) :: obj) = (null :: obj)));
+(comment ''p_type'' ((p :: obj) : (Node :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Object_alloc :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~= (null :: obj)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~: (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) : (Node :: obj set)));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_right y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_left y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((fieldRead Node_data y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (z::obj) (i::int). (((arrayRead Array_arrayState z i) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' ((Justvc_root :: obj) ~= (tmp_1_1 :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_right tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_left tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((fieldRead Node_data tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (ALL (j::int). (((arrayRead Array_arrayState tmp_1_1 j) :: obj) = (null :: obj))));
+(comment ''Justvc.inlist_def'' ((Justvc_inlist_1 :: obj set) = ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((fieldRead ((fieldWrite (Node_left :: (obj => obj)) (p :: obj) (tmp_1_1 :: obj)) :: (obj => obj)) x) :: obj) = (y :: obj)) | (((fieldRead (Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''Justvc.content_def'' ((Justvc_content_1 :: obj set) = ({x. (EX (n_1::obj). (((n_1 :: obj) ~= (null :: obj)) & ((n_1 :: obj) : (Justvc_inlist_1 :: obj set)) & (((fieldRead ((fieldWrite (Node_data :: (obj => obj)) (tmp_1_1 :: obj) (e :: obj)) :: (obj => obj)) n_1) :: obj) = (x :: obj))))} :: obj set)));
+((Justvc_inlist_1 :: obj set) = (((Justvc_inlist :: obj set) Un {(tmp_1_1 :: obj)}) :: obj set));
+(comment ''isIn'' ((Justvc_content_1 :: obj set) = (((Justvc_content :: obj set) Un {(e :: obj)}) :: obj set)))|] ==>
+    (comment ''ProcedureEndPostcondition'' (((intplus (Justvc_size :: int) (1 :: int)) :: int) = ((cardinality (Justvc_content_1 :: obj set)) :: int))))
+.Running Built-in validity checker (after splitting)... Built-in validity checker (after splitting) failed to prove formula.
+Running Z3... Z3 failed to prove formula.
+Running BAPA... Before rewriting:
+
+(([|(comment ''isIn'' (({x. (EX (n_1::obj). (((n_1 :: obj) ~= (null :: obj)) & ((n_1 :: obj) : ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((((fieldWrite (Node_left :: (obj => obj)) (p :: obj) (tmp_1_1 :: obj)) :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)) & (((((fieldWrite (Node_data :: (obj => obj)) (tmp_1_1 :: obj) (e :: obj)) :: (obj => obj)) n_1) :: obj) = (x :: obj))))} :: obj set) === ((({x. (EX (n::obj). (((n :: obj) ~= (null :: obj)) & ((n :: obj) : ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)) & ((((Node_data :: (obj => obj)) n) :: obj) = (x :: obj))))} :: obj set) Un {(e :: obj)}) :: obj set)));
+(({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((((fieldWrite (Node_left :: (obj => obj)) (p :: obj) (tmp_1_1 :: obj)) :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set) === ((({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set) Un {(tmp_1_1 :: obj)}) :: obj set));
+(comment ''AllocatedObject'' (ALL (j::int). (((arrayRead Array_arrayState tmp_1_1 j) :: obj) = (null :: obj))));
+(comment ''AllocatedObject'' (((Node_data tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((Node_left tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' (((Node_right tmp_1_1) :: obj) = (null :: obj)));
+(comment ''AllocatedObject'' ((Justvc_root :: obj) ~= (tmp_1_1 :: obj)));
+(comment ''AllocatedObject'' (ALL (z::obj) (i::int). (((arrayRead Array_arrayState z i) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((Node_data y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((Node_left y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' (ALL (y::obj). (((Node_right y) :: obj) ~= (tmp_1_1 :: obj))));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) : (Node :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~: (Object_alloc :: obj set)));
+(comment ''AllocatedObject'' ((tmp_1_1 :: obj) ~= (null :: obj)));
+(comment ''e_type'' ((e :: obj) : (Object_alloc :: obj set)));
+(comment ''e_type'' ((e :: obj) : (Object :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Object_alloc :: obj set)));
+(comment ''p_type'' ((p :: obj) : (Node :: obj set)));
+(comment ''ProcedurePrecondition'' ((((Node_left :: (obj => obj)) (p :: obj)) :: obj) = (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((p :: obj) : ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~= (null :: obj)));
+(comment ''ProcedurePrecondition'' ((e :: obj) ~: ({x. (EX (n::obj). (((n :: obj) ~= (null :: obj)) & ((n :: obj) : ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)) & ((((Node_data :: (obj => obj)) n) :: obj) = (x :: obj))))} :: obj set)));
+(comment ''ProcedurePrecondition'' (({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set) \<subseteq> (Object_alloc :: obj set)));
+(comment ''ProcedurePrecondition'' ((tree :: ((((obj => obj)) list) => bool)) [(Node_left :: (obj => obj)), (Node_right :: (obj => obj))]));
+(comment ''static_pointsto'' ((Justvc_root :: obj) : (Node :: obj set)))|] ==>
+    (comment ''ProcedureEndPostcondition'' (((intplus ((cardinality {x. (EX (n::obj). (((n :: obj) ~= (null :: obj)) & ((n :: obj) : ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). (((((Node_left :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)) & ((((Node_data :: (obj => obj)) n) :: obj) = (x :: obj))))}) :: int) (1 :: int)) :: int) = ((cardinality ({x. (EX (n_1::obj). (((n_1 :: obj) ~= (null :: obj)) & ((n_1 :: obj) : ({x. ((rtrancl_pt :: (((obj => ((obj => bool)))) => ((obj => ((obj => bool)))))) (% (x::obj) (y::obj). ((((((fieldWrite (Node_left :: (obj => obj)) (p :: obj) (tmp_1_1 :: obj)) :: (obj => obj)) x) :: obj) = (y :: obj)) | ((((Node_right :: (obj => obj)) x) :: obj) = (y :: obj)))) (Justvc_root :: obj) x)} :: obj set)) & (((((fieldWrite (Node_data :: (obj => obj)) (tmp_1_1 :: obj) (e :: obj)) :: (obj => obj)) n_1) :: obj) = (x :: obj))))} :: obj set)) :: int)))) :: bool)
+
+BAPA form input:
+([|(e ~= null);
+(e ~: b__18)|] ==>
+    ((intplus (cardinality b__18) 1) = (cardinality (b__18 Un {e}))))
+ That is:
+
+(App((Const MetaImpl),[(App((Const MetaAnd),[(App((Const Not),[(App((Const Eq),[(Var "e"); (Const NullConst)]))])); (App((Const Not),[(App((Const Elem),[(Var "e"); (Var "b__18")]))]))])); (App((Const Eq),[(App((Const Plus),[(App((Const Card),[(Var "b__18")])); (Const (IntConst 1))])); (App((Const Card),[(App((Const Cup),[(Var "b__18"); (App((Const FiniteSetConst),[(Var "e")]))]))]))]))]))
+
+env ={|(e::obj), (b__18::obj set)|}singletons = e
+Failure("Approximated away formula {null} in trs.")BAPA translation done.
+NNF:
+(ALL (b__18::obj set). (ALL (e::obj set). (((cardinality e) ~= 1) | ((intplus (cardinality b__18) 1) = (cardinality (b__18 Un e))) | (e \<subseteq> b__18))))
+
+Obtained QFBAPA formula.Using QFBAPA procedure.
+Set bound 2^s (4) is lower than d log d bound (4), using 2^s for soundness, but you better use fullbapa option anyway.
+Iteration 4 / 4
+
+ Deciding formula with 223 nodes.
+BAPA proved formula.
+
+======================================================================
+Built-in validity checker proved 2 sequents during splitting.
+Z3 proved 1 out of 3 sequents. Total time : 0.1 s
+BAPA proved 1 out of 2 sequents. Total time : 0.2 s
+MONA proved 1 out of 1 sequents. Total time : 7.9 s
+======================================================================
+A total of 5 sequents out of 5 proved.
+
+Done analyzing Procedure Justvc.vc.
+
+Verified 1 of 1 methods and 5 of 5 sequents.
+0=== Verification SUCCEEDED.

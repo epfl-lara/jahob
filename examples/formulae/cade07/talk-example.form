@@ -1,0 +1,2 @@
+((m Un g Un w) \<subseteq> u) &
+((m \<setminus> g) \<subseteq> w) & cardinality (m Int g) = cardinality (u \<setminus> g) & cardinality (w \<setminus> g) = cardinality (m Int w Int g) --> cardinality ((m Int g) \<setminus> w) = cardinality (u \<setminus> (m Un w Un g))

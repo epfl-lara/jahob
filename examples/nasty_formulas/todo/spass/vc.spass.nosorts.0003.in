@@ -1,0 +1,279 @@
+% original : ([|comment ''FreeInv nullEmpty'' (ALL (this::obj). ((((this :: obj) : (Object_alloc :: obj set)) & ((this :: obj) : (AssocList :: obj set)) & ((this :: obj) = (null :: obj))) --> (((fieldRead (AssocList_content :: (obj => ((obj * obj)) set)) (this :: obj)) :: ((obj * obj)) set) = ({} :: ((obj * obj)) set))));
+% comment ''FreeInv emptyNull'' (ALL (this::obj). ((((this :: obj) : (Object_alloc :: obj set)) & ((this :: obj) : (AssocList :: obj set)) & (((fieldRead (AssocList_content :: (obj => ((obj * obj)) set)) (this :: obj)) :: ((obj * obj)) set) = ({} :: ((obj * obj)) set))) --> ((this :: obj) = (null :: obj))));
+% (((fieldRead Hashtable_table null) :: obj) = (null :: obj));
+% (((fieldRead Pair_key null) :: obj) = (null :: obj));
+% (((fieldRead Pair_value null) :: obj) = (null :: obj));
+% (((fieldRead AssocList_key null) :: obj) = (null :: obj));
+% (((fieldRead AssocList_data null) :: obj) = (null :: obj));
+% (((fieldRead AssocList_next null) :: obj) = (null :: obj));
+% (ALL (xObj::obj). ((xObj :: obj) : (Object :: obj set)));
+% (((AssocList Int Array) :: obj set) = ({null} :: obj set));
+% (((Pair Int Array) :: obj set) = ({null} :: obj set));
+% (((Pair Int AssocList) :: obj set) = ({null} :: obj set));
+% (((Hashtable Int Array) :: obj set) = ({null} :: obj set));
+% (((Hashtable Int AssocList) :: obj set) = ({null} :: obj set));
+% (((Hashtable Int Pair) :: obj set) = ({null} :: obj set));
+% ((null :: obj) : (Object_alloc :: obj set));
+% (pointsto Hashtable Hashtable_table Array);
+% comment ''unalloc_lonely'' (ALL (x::obj). (((x :: obj) ~: (Object_alloc :: obj set)) --> ((ALL (y::obj). (((fieldRead Hashtable_table y) :: obj) ~= (x :: obj))) & (ALL (y::obj). (((fieldRead Pair_key y) :: obj) ~= (x :: obj))) & (ALL (y::obj). (((fieldRead Pair_value y) :: obj) ~= (x :: obj))) & (ALL (y::obj). (((fieldRead AssocList_key y) :: obj) ~= (x :: obj))) & (ALL (y::obj). (((fieldRead AssocList_data y) :: obj) ~= (x :: obj))) & (ALL (y::obj). (((fieldRead AssocList_next y) :: obj) ~= (x :: obj))) & (ALL (z::obj) (i::int). (((arrayRead Array_arrayState z i) :: obj) ~= (x :: obj))) & (((fieldRead Hashtable_table x) :: obj) = (null :: obj)) & (((fieldRead Pair_key x) :: obj) = (null :: obj)) & (((fieldRead Pair_value x) :: obj) = (null :: obj)) & (((fieldRead AssocList_key x) :: obj) = (null :: obj)) & (((fieldRead AssocList_data x) :: obj) = (null :: obj)) & (((fieldRead AssocList_next x) :: obj) = (null :: obj)) & (ALL (j::int). (((arrayRead Array_arrayState x j) :: obj) = (null :: obj))))));
+% comment ''ProcedurePrecondition'' (fieldRead (Hashtable_init :: (obj => bool)) (this :: obj));
+% comment ''ProcedurePrecondition'' ((key :: obj) ~= (null :: obj));
+% comment ''ProcedurePrecondition'' ((value :: obj) ~= (null :: obj));
+% comment ''Hashtable_PrivateInvHiddenArrayProcedurePrecondition'' (ALL (this__48::obj). ((((this__48 :: obj) : (Object_alloc :: obj set)) & ((this__48 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__48 :: obj))) --> (((fieldRead (Hashtable_table :: (obj => obj)) (this__48 :: obj)) :: obj) : (Hashtable_hidden :: obj set))));
+% comment ''Hashtable_PrivateInvcontentDefinitionProcedurePrecondition'' (ALL (this__49::obj). ((((this__49 :: obj) : (Object_alloc :: obj set)) & ((this__49 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__49 :: obj))) --> (((fieldRead (Hashtable_content :: (obj => ((obj * obj)) set)) (this__49 :: obj)) :: ((obj * obj)) set) = ({p__6. (EX (k::obj) (v::obj). (((p__6 :: (obj * obj)) = ((k, v) :: (obj * obj))) & (EX (i::int). (((0 :: int) <= (i :: int)) & (intless i (fieldRead (Array_length :: (obj => int)) (fieldRead (Hashtable_table :: (obj => obj)) (this__49 :: obj)))) & (((k, v) :: (obj * obj)) : ((fieldRead (AssocList_content :: (obj => ((obj * obj)) set)) (arrayRead (Array_arrayState :: (obj => (int => obj))) (fieldRead (Hashtable_table :: (obj => obj)) (this__49 :: obj)) i)) :: ((obj * obj)) set))))))} :: ((obj * obj)) set))));
+% comment ''Hashtable_PrivateInvTableNotNullProcedurePrecondition'' (ALL (this__50::obj). ((((this__50 :: obj) : (Object_alloc :: obj set)) & ((this__50 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__50 :: obj))) --> (((fieldRead (Hashtable_table :: (obj => obj)) (this__50 :: obj)) :: obj) ~= (null :: obj))));
+% comment ''Hashtable_PrivateInvTableAllocProcedurePrecondition'' (ALL (this__51::obj). ((((this__51 :: obj) : (Object_alloc :: obj set)) & ((this__51 :: obj) : (Hashtable :: obj set))) --> (((fieldRead (Hashtable_table :: (obj => obj)) (this__51 :: obj)) :: obj) : (Object_alloc :: obj set))));
+% comment ''Hashtable_PrivateInvCoherenceProcedurePrecondition'' (ALL (this__52::obj). ((((this__52 :: obj) : (Object_alloc :: obj set)) & ((this__52 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__52 :: obj))) --> (ALL (i::int) (k::obj) (v::obj). ((((0 :: int) <= (i :: int)) & (intless i (fieldRead (Array_length :: (obj => int)) (fieldRead (Hashtable_table :: (obj => obj)) (this__52 :: obj))))) --> ((((k, v) :: (obj * obj)) : ((fieldRead (AssocList_content :: (obj => ((obj * obj)) set)) (arrayRead (Array_arrayState :: (obj => (int => obj))) (fieldRead (Hashtable_table :: (obj => obj)) (this__52 :: obj)) i)) :: ((obj * obj)) set)) --> ((((Hashtable_h :: (obj => ((int => int)))) k (fieldRead (Array_length :: (obj => int)) (fieldRead (Hashtable_table :: (obj => obj)) (this__52 :: obj)))) :: int) = (i :: int)))))));
+% comment ''Hashtable_PrivateInvTableInjectivityProcedurePrecondition'' (ALL (u::obj) (v::obj). ((((u :: obj) : (Object_alloc :: obj set)) & ((u :: obj) : (Hashtable :: obj set)) & ((u :: obj) ~= (null :: obj)) & ((v :: obj) : (Object_alloc :: obj set)) & ((v :: obj) : (Hashtable :: obj set)) & ((v :: obj) ~= (u :: obj))) --> (((fieldRead (Hashtable_table :: (obj => obj)) u) :: obj) ~= ((fieldRead (Hashtable_table :: (obj => obj)) v) :: obj))));
+% comment ''Hashtable_PrivateInvTableSizeProcedurePrecondition'' (ALL (this__53::obj). ((((this__53 :: obj) : (Object_alloc :: obj set)) & ((this__53 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__53 :: obj))) --> (intless (0 :: int) (fieldRead (Array_length :: (obj => int)) (fieldRead (Hashtable_table :: (obj => obj)) (this__53 :: obj))))));
+% comment ''thisNotNull'' ((this :: obj) ~= (null :: obj));
+% comment ''thisType'' ((this :: obj) : (Hashtable :: obj set));
+% comment ''thisType'' ((this :: obj) : (Object_alloc :: obj set));
+% comment ''key_type'' ((key :: obj) : (Object :: obj set));
+% comment ''key_type'' ((key :: obj) : (Object_alloc :: obj set));
+% comment ''value_type'' ((value :: obj) : (Object :: obj set));
+% comment ''value_type'' ((value :: obj) : (Object_alloc :: obj set));
+% comment ''obj should not be hidden'' ((key :: obj) ~: (Hashtable_hidden :: obj set));
+% comment ''obj should not be hidden'' ((value :: obj) ~: (Hashtable_hidden :: obj set));
+% comment ''Hashtable.add1_Postcondition'' (((fieldRead (Hashtable_content_29 :: (obj => ((obj * obj)) set)) (this :: obj)) :: ((obj * obj)) set) = (((fieldRead (Hashtable_content :: (obj => ((obj * obj)) set)) (this :: obj)) Un {((key :: obj), (value :: obj))}) :: ((obj * obj)) set));
+% comment ''HiddenArrayHashtable.add1_Postcondition'' (ALL (this__18::obj). ((((this__18 :: obj) : (Object_alloc_27 :: obj set)) & ((this__18 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__18 :: obj))) --> (((fieldRead (Hashtable_table :: (obj => obj)) (this__18 :: obj)) :: obj) : (Hashtable_hidden :: obj set))));
+% comment ''contentDefinitionHashtable.add1_Postcondition'' (ALL (this__19::obj). ((((this__19 :: obj) : (Object_alloc_27 :: obj set)) & ((this__19 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__19 :: obj))) --> (((fieldRead (Hashtable_content_29 :: (obj => ((obj * obj)) set)) (this__19 :: obj)) :: ((obj * obj)) set) = ({p__6. (EX (k::obj) (v::obj). (((p__6 :: (obj * obj)) = ((k, v) :: (obj * obj))) & (EX (i::int). (((0 :: int) <= (i :: int)) & (intless i (fieldRead (Array_length :: (obj => int)) (fieldRead (Hashtable_table :: (obj => obj)) (this__19 :: obj)))) & (((k, v) :: (obj * obj)) : ((fieldRead (AssocList_content :: (obj => ((obj * obj)) set)) (arrayRead (Array_arrayState :: (obj => (int => obj))) (fieldRead (Hashtable_table :: (obj => obj)) (this__19 :: obj)) i)) :: ((obj * obj)) set))))))} :: ((obj * obj)) set))));
+% comment ''TableNotNullHashtable.add1_Postcondition'' (ALL (this__20::obj). ((((this__20 :: obj) : (Object_alloc_27 :: obj set)) & ((this__20 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__20 :: obj))) --> (((fieldRead (Hashtable_table :: (obj => obj)) (this__20 :: obj)) :: obj) ~= (null :: obj))));
+% comment ''TableAllocHashtable.add1_Postcondition'' (ALL (this__21::obj). ((((this__21 :: obj) : (Object_alloc_27 :: obj set)) & ((this__21 :: obj) : (Hashtable :: obj set))) --> (((fieldRead (Hashtable_table :: (obj => obj)) (this__21 :: obj)) :: obj) : (Object_alloc_27 :: obj set))));
+% comment ''CoherenceHashtable.add1_Postcondition'' (ALL (this__22::obj). ((((this__22 :: obj) : (Object_alloc_27 :: obj set)) & ((this__22 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__22 :: obj))) --> (ALL (i::int) (k::obj) (v::obj). ((((0 :: int) <= (i :: int)) & (intless i (fieldRead (Array_length :: (obj => int)) (fieldRead (Hashtable_table :: (obj => obj)) (this__22 :: obj))))) --> ((((k, v) :: (obj * obj)) : ((fieldRead (AssocList_content :: (obj => ((obj * obj)) set)) (arrayRead (Array_arrayState :: (obj => (int => obj))) (fieldRead (Hashtable_table :: (obj => obj)) (this__22 :: obj)) i)) :: ((obj * obj)) set)) --> ((((Hashtable_h :: (obj => ((int => int)))) k (fieldRead (Array_length :: (obj => int)) (fieldRead (Hashtable_table :: (obj => obj)) (this__22 :: obj)))) :: int) = (i :: int)))))));
+% comment ''TableInjectivityHashtable.add1_Postcondition'' (ALL (u::obj) (v::obj). ((((u :: obj) : (Object_alloc_27 :: obj set)) & ((u :: obj) : (Hashtable :: obj set)) & ((u :: obj) ~= (null :: obj)) & ((v :: obj) : (Object_alloc_27 :: obj set)) & ((v :: obj) : (Hashtable :: obj set)) & ((v :: obj) ~= (u :: obj))) --> (((fieldRead (Hashtable_table :: (obj => obj)) u) :: obj) ~= ((fieldRead (Hashtable_table :: (obj => obj)) v) :: obj))));
+% comment ''TableSizeHashtable.add1_Postcondition'' (ALL (this__23::obj). ((((this__23 :: obj) : (Object_alloc_27 :: obj set)) & ((this__23 :: obj) : (Hashtable :: obj set)) & (fieldRead (Hashtable_init :: (obj => bool)) (this__23 :: obj))) --> (intless (0 :: int) (fieldRead (Array_length :: (obj => int)) (fieldRead (Hashtable_table :: (obj => obj)) (this__23 :: obj))))));
+% comment ''Hashtable.add1_Postcondition'' ((((Object_alloc_27 :: obj set) Int (Hashtable :: obj set)) :: obj set) = (((Object_alloc :: obj set) Int (Hashtable :: obj set)) :: obj set));
+% comment ''Hashtable.add1_Postcondition'' ((Object_alloc :: obj set) \<subseteq> (Object_alloc_27 :: obj set));
+% comment ''Hashtable.add1_Postcondition'' (ALL (framedObj::obj). ((((framedObj :: obj) : (Object_alloc :: obj set)) & ((framedObj :: obj) : (Hashtable :: obj set)) & ((framedObj :: obj) ~= (this :: obj))) --> (((fieldRead Hashtable_content_29 framedObj) :: ((obj * obj)) set) = ((fieldRead Hashtable_content framedObj) :: ((obj * obj)) set))));
+% comment ''Hashtable.add1_Postcondition'' (ALL (framedObj::obj). ((((framedObj :: obj) : (Object_alloc :: obj set)) & ((framedObj :: obj) : (Hashtable :: obj set)) & ((framedObj :: obj) ~= (this :: obj))) --> (((fieldRead Hashtable_size_28 framedObj) :: int) = ((fieldRead Hashtable_size framedObj) :: int))));
+% comment ''TrueBranch'' ((intless ((((inttimes (4 :: int) ((fieldRead (Array_length :: (obj => int)) ((fieldRead (Hashtable_table :: (obj => obj)) (this :: obj)) :: obj)) :: int)) :: int) div (5 :: int)) :: int) ((fieldRead (Hashtable_size_28 :: (obj => int)) (this :: obj)) :: int)) :: bool)|] ==>
+%     comment ''NullCheckFieldArray_length'' (((fieldRead (Hashtable_table :: (obj => obj)) (this :: obj)) :: obj) ~= (null :: obj))) 
+
+
+begin_problem(jahob).
+list_of_descriptions.
+name({*a Jahob proof obligation*}).
+author({* The Jahob (tm) system *}).
+status(unknown).
+description({* Hey, do you expect *ME* to write a description ? In your dreams ! Come back in 1000 years !!!*}).
+end_of_list.
+
+list_of_symbols.
+functions[assocList_data, array_arrayState, hashtable_size, assocList_next, this, 0, null, key, times, pair_key, value, array_length, div, 5, hashtable_table, assocList_key, hashtable_size_28, 4, pair_value, hashtable_h].
+predicates[Array, Object_alloc_27, AssocList, Object_alloc, Pair, Hashtable_init, Hashtable_content_29, Hashtable_hidden, Hashtable_content, Object, AssocList_content, Hashtable, _Lteq].
+sorts[int,obj,bool,float,unknown_sort].
+end_of_list.
+
+list_of_formulae(axioms).
+formula(and(_Lteq(0, 4), not(equal(0, 4)))).
+formula(and(_Lteq(0, 5), not(equal(0, 5)))).
+formula(and(_Lteq(4, 5), not(equal(4, 5)))).
+% comment ''FreeInv nullEmpty'' (ALL (v_4012::obj). (((v_4012 : Object_alloc) & (v_4012 : AssocList) & (v_4012 = null)) --> ((AssocList_content v_4012) === {})))
+
+formula(forall( [_V_4012], or(or(not(Object_alloc(_V_4012)), not(AssocList(_V_4012)), not(equal(_V_4012, null))), forall( [_Z_setinc_foltrans_2_0, _Z_setinc_foltrans_2_1], not(AssocList_content(_V_4012, _Z_setinc_foltrans_2_0, _Z_setinc_foltrans_2_1)))))).
+
+% comment ''FreeInv emptyNull'' (ALL (v_4011::obj). (((v_4011 : Object_alloc) & (v_4011 : AssocList) & ((AssocList_content v_4011) === {})) --> (v_4011 = null)))
+
+formula(forall( [_V_4011], or(or(not(Object_alloc(_V_4011)), not(AssocList(_V_4011)), exists( [_Z_setinc_foltrans_4_0, _Z_setinc_foltrans_4_1], AssocList_content(_V_4011, _Z_setinc_foltrans_4_0, _Z_setinc_foltrans_4_1))), equal(_V_4011, null)))).
+
+% ((Hashtable_table null) = null)
+
+formula(equal(null, hashtable_table(null))).
+
+% ((Pair_key null) = null)
+
+formula(equal(null, pair_key(null))).
+
+% ((Pair_value null) = null)
+
+formula(equal(null, pair_value(null))).
+
+% ((AssocList_key null) = null)
+
+formula(equal(null, assocList_key(null))).
+
+% ((AssocList_data null) = null)
+
+formula(equal(null, assocList_data(null))).
+
+% ((AssocList_next null) = null)
+
+formula(equal(null, assocList_next(null))).
+
+% (ALL (xObj::obj). (xObj : Object))
+
+formula(forall( [_XObj], Object(_XObj))).
+
+% ((AssocList Int Array) === {null})
+
+formula(and(forall( [_Z_setinc_foltrans_6], or(or(not(AssocList(_Z_setinc_foltrans_6)), not(Array(_Z_setinc_foltrans_6))), equal(_Z_setinc_foltrans_6, null))), forall( [_Z_setinc_foltrans_5], or(not(equal(_Z_setinc_foltrans_5, null)), and(AssocList(_Z_setinc_foltrans_5), Array(_Z_setinc_foltrans_5)))))).
+
+% ((Pair Int Array) === {null})
+
+formula(and(forall( [_Z_setinc_foltrans_8], or(or(not(Pair(_Z_setinc_foltrans_8)), not(Array(_Z_setinc_foltrans_8))), equal(_Z_setinc_foltrans_8, null))), forall( [_Z_setinc_foltrans_7], or(not(equal(_Z_setinc_foltrans_7, null)), and(Pair(_Z_setinc_foltrans_7), Array(_Z_setinc_foltrans_7)))))).
+
+% ((Pair Int AssocList) === {null})
+
+formula(and(forall( [_Z_setinc_foltrans_10], or(or(not(Pair(_Z_setinc_foltrans_10)), not(AssocList(_Z_setinc_foltrans_10))), equal(_Z_setinc_foltrans_10, null))), forall( [_Z_setinc_foltrans_9], or(not(equal(_Z_setinc_foltrans_9, null)), and(Pair(_Z_setinc_foltrans_9), AssocList(_Z_setinc_foltrans_9)))))).
+
+% ((Hashtable Int Array) === {null})
+
+formula(and(forall( [_Z_setinc_foltrans_12], or(or(not(Hashtable(_Z_setinc_foltrans_12)), not(Array(_Z_setinc_foltrans_12))), equal(_Z_setinc_foltrans_12, null))), forall( [_Z_setinc_foltrans_11], or(not(equal(_Z_setinc_foltrans_11, null)), and(Hashtable(_Z_setinc_foltrans_11), Array(_Z_setinc_foltrans_11)))))).
+
+% ((Hashtable Int AssocList) === {null})
+
+formula(and(forall( [_Z_setinc_foltrans_14], or(or(not(Hashtable(_Z_setinc_foltrans_14)), not(AssocList(_Z_setinc_foltrans_14))), equal(_Z_setinc_foltrans_14, null))), forall( [_Z_setinc_foltrans_13], or(not(equal(_Z_setinc_foltrans_13, null)), and(Hashtable(_Z_setinc_foltrans_13), AssocList(_Z_setinc_foltrans_13)))))).
+
+% ((Hashtable Int Pair) === {null})
+
+formula(and(forall( [_Z_setinc_foltrans_16], or(or(not(Hashtable(_Z_setinc_foltrans_16)), not(Pair(_Z_setinc_foltrans_16))), equal(_Z_setinc_foltrans_16, null))), forall( [_Z_setinc_foltrans_15], or(not(equal(_Z_setinc_foltrans_15, null)), and(Hashtable(_Z_setinc_foltrans_15), Pair(_Z_setinc_foltrans_15)))))).
+
+% (null : Object_alloc)
+
+formula(Object_alloc(null)).
+
+% (pointsto Hashtable Hashtable_table Array)
+
+formula(forall( [_Pto_foltrans_17], or(not(Hashtable(_Pto_foltrans_17)), forall( [_T_ms1_foltrans_18], or(not(equal(_T_ms1_foltrans_18, hashtable_table(_Pto_foltrans_17))), Array(_T_ms1_foltrans_18)))))).
+
+% comment ''unalloc_lonely'' (ALL (x::obj). ((x ~: Object_alloc) --> ((ALL (y::obj). ((Hashtable_table y) ~= x)) & (ALL (y::obj). ((Pair_key y) ~= x)) & (ALL (y::obj). ((Pair_value y) ~= x)) & (ALL (y::obj). ((AssocList_key y) ~= x)) & (ALL (y::obj). ((AssocList_data y) ~= x)) & (ALL (y::obj). ((AssocList_next y) ~= x)) & (ALL (i::int) (z::obj). ((arrayRead Array_arrayState z i) ~= x)) & ((Hashtable_table x) = null) & ((Pair_key x) = null) & ((Pair_value x) = null) & ((AssocList_key x) = null) & ((AssocList_data x) = null) & ((AssocList_next x) = null) & (ALL (j::int). ((arrayRead Array_arrayState x j) = null)))))
+
+formula(forall( [_X], or(Object_alloc(_X), and(forall( [_Y], not(equal(_X, hashtable_table(_Y)))), forall( [_Y], not(equal(_X, pair_key(_Y)))), forall( [_Y], not(equal(_X, pair_value(_Y)))), forall( [_Y], not(equal(_X, assocList_key(_Y)))), forall( [_Y], not(equal(_X, assocList_data(_Y)))), forall( [_Y], not(equal(_X, assocList_next(_Y)))), forall( [_I, _Z], not(equal(_X, array_arrayState(_Z, _I)))), equal(null, hashtable_table(_X)), equal(null, pair_key(_X)), equal(null, pair_value(_X)), equal(null, assocList_key(_X)), equal(null, assocList_data(_X)), equal(null, assocList_next(_X)), forall( [_J], equal(null, array_arrayState(_X, _J))))))).
+
+% comment ''ProcedurePrecondition'' (Hashtable_init this)
+
+formula(Hashtable_init(this)).
+
+% comment ''ProcedurePrecondition'' (key ~= null)
+
+formula(not(equal(key, null))).
+
+% comment ''ProcedurePrecondition'' (value ~= null)
+
+formula(not(equal(value, null))).
+
+% comment ''Hashtable_PrivateInvHiddenArrayProcedurePrecondition'' (ALL (this__48::obj). (((this__48 : Object_alloc) & (this__48 : Hashtable) & (Hashtable_init this__48)) --> ((Hashtable_table this__48) : Hashtable_hidden)))
+
+formula(forall( [_This__48], or(or(not(Object_alloc(_This__48)), not(Hashtable(_This__48)), not(Hashtable_init(_This__48))), forall( [_T_ms1_foltrans_19], or(not(equal(_T_ms1_foltrans_19, hashtable_table(_This__48))), Hashtable_hidden(_T_ms1_foltrans_19)))))).
+
+% comment ''Hashtable_PrivateInvcontentDefinitionProcedurePrecondition'' (ALL (this__49::obj). (((this__49 : Object_alloc) & (this__49 : Hashtable) & (Hashtable_init this__49)) --> ((Hashtable_content this__49) === {p__6. (EX (k::obj) (v::obj). ((p__6 = (k, v)) & (EX (i::int). ((0 <= i) & (intless i (Array_length (Hashtable_table this__49))) & ((k, v) : (AssocList_content (arrayRead Array_arrayState (Hashtable_table this__49) i)))))))})))
+
+formula(forall( [_This__49], or(or(not(Object_alloc(_This__49)), not(Hashtable(_This__49)), not(Hashtable_init(_This__49))), and(forall( [_Z_setinc_foltrans_22_0, _Z_setinc_foltrans_22_1], or(not(Hashtable_content(_This__49, _Z_setinc_foltrans_22_0, _Z_setinc_foltrans_22_1)), exists( [_K, _V], and(and(equal(_Z_setinc_foltrans_22_0, _K), equal(_Z_setinc_foltrans_22_1, _V)), exists( [_I], and(_Lteq(0, _I), and(exists( [_Fun_flat_foltrans_23], and(_Lteq(_I, _Fun_flat_foltrans_23), exists( [_Fun_flat_foltrans_24], and(equal(_Fun_flat_foltrans_23, array_length(_Fun_flat_foltrans_24)), equal(_Fun_flat_foltrans_24, hashtable_table(_This__49)))))), exists( [_Fun_flat_foltrans_25], and(equal(_Fun_flat_foltrans_25, hashtable_table(_This__49)), not(equal(_I, array_length(_Fun_flat_foltrans_25)))))), exists( [_T_ms1_foltrans_26_0, _T_ms1_foltrans_26_1], and(and(equal(_T_ms1_foltrans_26_0, _K), equal(_T_ms1_foltrans_26_1, _V)), exists( [_T_ms2_foltrans_27], and(exists( [_T_eqof_foltrans_28], and(equal(_T_eqof_foltrans_28, hashtable_table(_This__49)), equal(_T_ms2_foltrans_27, array_arrayState(_T_eqof_foltrans_28, _I)))), AssocList_content(_T_ms2_foltrans_27, _T_ms1_foltrans_26_0, _T_ms1_foltrans_26_1))))))))))), forall( [_Z_setinc_foltrans_21_0, _Z_setinc_foltrans_21_1], or(forall( [_K, _V], or(not(and(equal(_Z_setinc_foltrans_21_0, _K), equal(_Z_setinc_foltrans_21_1, _V))), forall( [_I], or(not(_Lteq(0, _I)), or(forall( [_Fun_flat_foltrans_29], or(not(_Lteq(_I, _Fun_flat_foltrans_29)), forall( [_Fun_flat_foltrans_30], or(not(equal(_Fun_flat_foltrans_29, array_length(_Fun_flat_foltrans_30))), not(equal(_Fun_flat_foltrans_30, hashtable_table(_This__49))))))), forall( [_Fun_flat_foltrans_31], or(not(equal(_Fun_flat_foltrans_31, hashtable_table(_This__49))), equal(_I, array_length(_Fun_flat_foltrans_31))))), forall( [_T_ms1_foltrans_32_0, _T_ms1_foltrans_32_1], or(not(and(equal(_T_ms1_foltrans_32_0, _K), equal(_T_ms1_foltrans_32_1, _V))), forall( [_T_ms2_foltrans_33], or(forall( [_T_eqof_foltrans_34], or(not(equal(_T_eqof_foltrans_34, hashtable_table(_This__49))), not(equal(_T_ms2_foltrans_33, array_arrayState(_T_eqof_foltrans_34, _I))))), not(AssocList_content(_T_ms2_foltrans_33, _T_ms1_foltrans_32_0, _T_ms1_foltrans_32_1)))))))))), Hashtable_content(_This__49, _Z_setinc_foltrans_21_0, _Z_setinc_foltrans_21_1))))))).
+
+% comment ''Hashtable_PrivateInvTableNotNullProcedurePrecondition'' (ALL (this__50::obj). (((this__50 : Object_alloc) & (this__50 : Hashtable) & (Hashtable_init this__50)) --> ((Hashtable_table this__50) ~= null)))
+
+formula(forall( [_This__50], or(or(not(Object_alloc(_This__50)), not(Hashtable(_This__50)), not(Hashtable_init(_This__50))), not(equal(null, hashtable_table(_This__50)))))).
+
+% comment ''Hashtable_PrivateInvTableAllocProcedurePrecondition'' (ALL (this__51::obj). (((this__51 : Object_alloc) & (this__51 : Hashtable)) --> ((Hashtable_table this__51) : Object_alloc)))
+
+formula(forall( [_This__51], or(or(not(Object_alloc(_This__51)), not(Hashtable(_This__51))), forall( [_T_ms1_foltrans_35], or(not(equal(_T_ms1_foltrans_35, hashtable_table(_This__51))), Object_alloc(_T_ms1_foltrans_35)))))).
+
+% comment ''Hashtable_PrivateInvCoherenceProcedurePrecondition'' (ALL (this__52::obj). (((this__52 : Object_alloc) & (this__52 : Hashtable) & (Hashtable_init this__52)) --> (ALL (v::obj) (k::obj) (i::int). (((0 <= i) & (intless i (Array_length (Hashtable_table this__52)))) --> (((k, v) : (AssocList_content (arrayRead Array_arrayState (Hashtable_table this__52) i))) --> ((Hashtable_h k (Array_length (Hashtable_table this__52))) = i))))))
+
+formula(forall( [_This__52], or(or(not(Object_alloc(_This__52)), not(Hashtable(_This__52)), not(Hashtable_init(_This__52))), forall( [_V, _K, _I], or(or(and(_Lteq(_I, 0), not(equal(_I, 0))), forall( [_Fun_flat_foltrans_36], or(exists( [_Fun_flat_foltrans_37], and(equal(_Fun_flat_foltrans_37, hashtable_table(_This__52)), not(equal(_Fun_flat_foltrans_36, array_length(_Fun_flat_foltrans_37))))), _Lteq(_Fun_flat_foltrans_36, _I)))), or(forall( [_T_ms1_foltrans_38_0, _T_ms1_foltrans_38_1], or(not(and(equal(_T_ms1_foltrans_38_0, _K), equal(_T_ms1_foltrans_38_1, _V))), forall( [_T_ms2_foltrans_39], or(forall( [_T_eqof_foltrans_40], or(not(equal(_T_eqof_foltrans_40, hashtable_table(_This__52))), not(equal(_T_ms2_foltrans_39, array_arrayState(_T_eqof_foltrans_40, _I))))), not(AssocList_content(_T_ms2_foltrans_39, _T_ms1_foltrans_38_0, _T_ms1_foltrans_38_1)))))), forall( [_Fun_flat_foltrans_41], or(exists( [_Fun_flat_foltrans_42], and(equal(_Fun_flat_foltrans_42, hashtable_table(_This__52)), not(equal(_Fun_flat_foltrans_41, array_length(_Fun_flat_foltrans_42))))), equal(_I, hashtable_h(_K, _Fun_flat_foltrans_41)))))))))).
+
+% comment ''Hashtable_PrivateInvTableInjectivityProcedurePrecondition'' (ALL (v::obj) (u::obj). (((u : Object_alloc) & (u : Hashtable) & (u ~= null) & (v : Object_alloc) & (v : Hashtable) & (v ~= u)) --> ((Hashtable_table u) ~= (Hashtable_table v))))
+
+formula(forall( [_V, _U], or(or(not(Object_alloc(_U)), not(Hashtable(_U)), equal(_U, null), not(Object_alloc(_V)), not(Hashtable(_V)), equal(_V, _U)), forall( [_T_eqof_foltrans_43], or(not(equal(_T_eqof_foltrans_43, hashtable_table(_U))), not(equal(_T_eqof_foltrans_43, hashtable_table(_V)))))))).
+
+% comment ''Hashtable_PrivateInvTableSizeProcedurePrecondition'' (ALL (this__53::obj). (((this__53 : Object_alloc) & (this__53 : Hashtable) & (Hashtable_init this__53)) --> (intless 0 (Array_length (Hashtable_table this__53)))))
+
+formula(forall( [_This__53], or(or(not(Object_alloc(_This__53)), not(Hashtable(_This__53)), not(Hashtable_init(_This__53))), and(forall( [_Fun_flat_foltrans_44], or(exists( [_Fun_flat_foltrans_45], and(equal(_Fun_flat_foltrans_45, hashtable_table(_This__53)), not(equal(_Fun_flat_foltrans_44, array_length(_Fun_flat_foltrans_45))))), _Lteq(0, _Fun_flat_foltrans_44))), forall( [_Fun_flat_foltrans_46], or(not(equal(0, array_length(_Fun_flat_foltrans_46))), not(equal(_Fun_flat_foltrans_46, hashtable_table(_This__53))))))))).
+
+% comment ''thisNotNull'' (this ~= null)
+
+formula(not(equal(this, null))).
+
+% comment ''thisType'' (this : Hashtable)
+
+formula(Hashtable(this)).
+
+% comment ''thisType'' (this : Object_alloc)
+
+formula(Object_alloc(this)).
+
+% comment ''key_type'' (key : Object)
+
+formula(Object(key)).
+
+% comment ''key_type'' (key : Object_alloc)
+
+formula(Object_alloc(key)).
+
+% comment ''value_type'' (value : Object)
+
+formula(Object(value)).
+
+% comment ''value_type'' (value : Object_alloc)
+
+formula(Object_alloc(value)).
+
+% comment ''obj should not be hidden'' (key ~: Hashtable_hidden)
+
+formula(not(Hashtable_hidden(key))).
+
+% comment ''obj should not be hidden'' (value ~: Hashtable_hidden)
+
+formula(not(Hashtable_hidden(value))).
+
+% comment ''Hashtable.add1_Postcondition'' ((Hashtable_content_29 this) === ((Hashtable_content this) Un {(key, value)}))
+
+formula(and(forall( [_Z_setinc_foltrans_48_0, _Z_setinc_foltrans_48_1], or(not(Hashtable_content_29(this, _Z_setinc_foltrans_48_0, _Z_setinc_foltrans_48_1)), or(Hashtable_content(this, _Z_setinc_foltrans_48_0, _Z_setinc_foltrans_48_1), and(equal(_Z_setinc_foltrans_48_0, key), equal(_Z_setinc_foltrans_48_1, value))))), forall( [_Z_setinc_foltrans_47_0, _Z_setinc_foltrans_47_1], or(and(not(Hashtable_content(this, _Z_setinc_foltrans_47_0, _Z_setinc_foltrans_47_1)), not(and(equal(_Z_setinc_foltrans_47_0, key), equal(_Z_setinc_foltrans_47_1, value)))), Hashtable_content_29(this, _Z_setinc_foltrans_47_0, _Z_setinc_foltrans_47_1))))).
+
+% comment ''HiddenArrayHashtable.add1_Postcondition'' (ALL (this__18::obj). (((this__18 : Object_alloc_27) & (this__18 : Hashtable) & (Hashtable_init this__18)) --> ((Hashtable_table this__18) : Hashtable_hidden)))
+
+formula(forall( [_This__18], or(or(not(Object_alloc_27(_This__18)), not(Hashtable(_This__18)), not(Hashtable_init(_This__18))), forall( [_T_ms1_foltrans_49], or(not(equal(_T_ms1_foltrans_49, hashtable_table(_This__18))), Hashtable_hidden(_T_ms1_foltrans_49)))))).
+
+% comment ''contentDefinitionHashtable.add1_Postcondition'' (ALL (this__19::obj). (((this__19 : Object_alloc_27) & (this__19 : Hashtable) & (Hashtable_init this__19)) --> ((Hashtable_content_29 this__19) === {p__6. (EX (k::obj) (v::obj). ((p__6 = (k, v)) & (EX (i::int). ((0 <= i) & (intless i (Array_length (Hashtable_table this__19))) & ((k, v) : (AssocList_content (arrayRead Array_arrayState (Hashtable_table this__19) i)))))))})))
+
+formula(forall( [_This__19], or(or(not(Object_alloc_27(_This__19)), not(Hashtable(_This__19)), not(Hashtable_init(_This__19))), and(forall( [_Z_setinc_foltrans_52_0, _Z_setinc_foltrans_52_1], or(not(Hashtable_content_29(_This__19, _Z_setinc_foltrans_52_0, _Z_setinc_foltrans_52_1)), exists( [_K, _V], and(and(equal(_Z_setinc_foltrans_52_0, _K), equal(_Z_setinc_foltrans_52_1, _V)), exists( [_I], and(_Lteq(0, _I), and(exists( [_Fun_flat_foltrans_53], and(_Lteq(_I, _Fun_flat_foltrans_53), exists( [_Fun_flat_foltrans_54], and(equal(_Fun_flat_foltrans_53, array_length(_Fun_flat_foltrans_54)), equal(_Fun_flat_foltrans_54, hashtable_table(_This__19)))))), exists( [_Fun_flat_foltrans_55], and(equal(_Fun_flat_foltrans_55, hashtable_table(_This__19)), not(equal(_I, array_length(_Fun_flat_foltrans_55)))))), exists( [_T_ms1_foltrans_56_0, _T_ms1_foltrans_56_1], and(and(equal(_T_ms1_foltrans_56_0, _K), equal(_T_ms1_foltrans_56_1, _V)), exists( [_T_ms2_foltrans_57], and(exists( [_T_eqof_foltrans_58], and(equal(_T_eqof_foltrans_58, hashtable_table(_This__19)), equal(_T_ms2_foltrans_57, array_arrayState(_T_eqof_foltrans_58, _I)))), AssocList_content(_T_ms2_foltrans_57, _T_ms1_foltrans_56_0, _T_ms1_foltrans_56_1))))))))))), forall( [_Z_setinc_foltrans_51_0, _Z_setinc_foltrans_51_1], or(forall( [_K, _V], or(not(and(equal(_Z_setinc_foltrans_51_0, _K), equal(_Z_setinc_foltrans_51_1, _V))), forall( [_I], or(not(_Lteq(0, _I)), or(forall( [_Fun_flat_foltrans_59], or(not(_Lteq(_I, _Fun_flat_foltrans_59)), forall( [_Fun_flat_foltrans_60], or(not(equal(_Fun_flat_foltrans_59, array_length(_Fun_flat_foltrans_60))), not(equal(_Fun_flat_foltrans_60, hashtable_table(_This__19))))))), forall( [_Fun_flat_foltrans_61], or(not(equal(_Fun_flat_foltrans_61, hashtable_table(_This__19))), equal(_I, array_length(_Fun_flat_foltrans_61))))), forall( [_T_ms1_foltrans_62_0, _T_ms1_foltrans_62_1], or(not(and(equal(_T_ms1_foltrans_62_0, _K), equal(_T_ms1_foltrans_62_1, _V))), forall( [_T_ms2_foltrans_63], or(forall( [_T_eqof_foltrans_64], or(not(equal(_T_eqof_foltrans_64, hashtable_table(_This__19))), not(equal(_T_ms2_foltrans_63, array_arrayState(_T_eqof_foltrans_64, _I))))), not(AssocList_content(_T_ms2_foltrans_63, _T_ms1_foltrans_62_0, _T_ms1_foltrans_62_1)))))))))), Hashtable_content_29(_This__19, _Z_setinc_foltrans_51_0, _Z_setinc_foltrans_51_1))))))).
+
+% comment ''TableNotNullHashtable.add1_Postcondition'' (ALL (this__20::obj). (((this__20 : Object_alloc_27) & (this__20 : Hashtable) & (Hashtable_init this__20)) --> ((Hashtable_table this__20) ~= null)))
+
+formula(forall( [_This__20], or(or(not(Object_alloc_27(_This__20)), not(Hashtable(_This__20)), not(Hashtable_init(_This__20))), not(equal(null, hashtable_table(_This__20)))))).
+
+% comment ''TableAllocHashtable.add1_Postcondition'' (ALL (this__21::obj). (((this__21 : Object_alloc_27) & (this__21 : Hashtable)) --> ((Hashtable_table this__21) : Object_alloc_27)))
+
+formula(forall( [_This__21], or(or(not(Object_alloc_27(_This__21)), not(Hashtable(_This__21))), forall( [_T_ms1_foltrans_65], or(not(equal(_T_ms1_foltrans_65, hashtable_table(_This__21))), Object_alloc_27(_T_ms1_foltrans_65)))))).
+
+% comment ''CoherenceHashtable.add1_Postcondition'' (ALL (this__22::obj). (((this__22 : Object_alloc_27) & (this__22 : Hashtable) & (Hashtable_init this__22)) --> (ALL (v::obj) (k::obj) (i::int). (((0 <= i) & (intless i (Array_length (Hashtable_table this__22)))) --> (((k, v) : (AssocList_content (arrayRead Array_arrayState (Hashtable_table this__22) i))) --> ((Hashtable_h k (Array_length (Hashtable_table this__22))) = i))))))
+
+formula(forall( [_This__22], or(or(not(Object_alloc_27(_This__22)), not(Hashtable(_This__22)), not(Hashtable_init(_This__22))), forall( [_V, _K, _I], or(or(and(_Lteq(_I, 0), not(equal(_I, 0))), forall( [_Fun_flat_foltrans_66], or(exists( [_Fun_flat_foltrans_67], and(equal(_Fun_flat_foltrans_67, hashtable_table(_This__22)), not(equal(_Fun_flat_foltrans_66, array_length(_Fun_flat_foltrans_67))))), _Lteq(_Fun_flat_foltrans_66, _I)))), or(forall( [_T_ms1_foltrans_68_0, _T_ms1_foltrans_68_1], or(not(and(equal(_T_ms1_foltrans_68_0, _K), equal(_T_ms1_foltrans_68_1, _V))), forall( [_T_ms2_foltrans_69], or(forall( [_T_eqof_foltrans_70], or(not(equal(_T_eqof_foltrans_70, hashtable_table(_This__22))), not(equal(_T_ms2_foltrans_69, array_arrayState(_T_eqof_foltrans_70, _I))))), not(AssocList_content(_T_ms2_foltrans_69, _T_ms1_foltrans_68_0, _T_ms1_foltrans_68_1)))))), forall( [_Fun_flat_foltrans_71], or(exists( [_Fun_flat_foltrans_72], and(equal(_Fun_flat_foltrans_72, hashtable_table(_This__22)), not(equal(_Fun_flat_foltrans_71, array_length(_Fun_flat_foltrans_72))))), equal(_I, hashtable_h(_K, _Fun_flat_foltrans_71)))))))))).
+
+% comment ''TableInjectivityHashtable.add1_Postcondition'' (ALL (v::obj) (u::obj). (((u : Object_alloc_27) & (u : Hashtable) & (u ~= null) & (v : Object_alloc_27) & (v : Hashtable) & (v ~= u)) --> ((Hashtable_table u) ~= (Hashtable_table v))))
+
+formula(forall( [_V, _U], or(or(not(Object_alloc_27(_U)), not(Hashtable(_U)), equal(_U, null), not(Object_alloc_27(_V)), not(Hashtable(_V)), equal(_V, _U)), forall( [_T_eqof_foltrans_73], or(not(equal(_T_eqof_foltrans_73, hashtable_table(_U))), not(equal(_T_eqof_foltrans_73, hashtable_table(_V)))))))).
+
+% comment ''TableSizeHashtable.add1_Postcondition'' (ALL (this__23::obj). (((this__23 : Object_alloc_27) & (this__23 : Hashtable) & (Hashtable_init this__23)) --> (intless 0 (Array_length (Hashtable_table this__23)))))
+
+formula(forall( [_This__23], or(or(not(Object_alloc_27(_This__23)), not(Hashtable(_This__23)), not(Hashtable_init(_This__23))), and(forall( [_Fun_flat_foltrans_74], or(exists( [_Fun_flat_foltrans_75], and(equal(_Fun_flat_foltrans_75, hashtable_table(_This__23)), not(equal(_Fun_flat_foltrans_74, array_length(_Fun_flat_foltrans_75))))), _Lteq(0, _Fun_flat_foltrans_74))), forall( [_Fun_flat_foltrans_76], or(not(equal(0, array_length(_Fun_flat_foltrans_76))), not(equal(_Fun_flat_foltrans_76, hashtable_table(_This__23))))))))).
+
+% comment ''Hashtable.add1_Postcondition'' ((Object_alloc_27 Int Hashtable) === (Object_alloc Int Hashtable))
+
+formula(and(forall( [_Z_setinc_foltrans_78], or(or(not(Object_alloc_27(_Z_setinc_foltrans_78)), not(Hashtable(_Z_setinc_foltrans_78))), and(Object_alloc(_Z_setinc_foltrans_78), Hashtable(_Z_setinc_foltrans_78)))), forall( [_Z_setinc_foltrans_77], or(or(not(Object_alloc(_Z_setinc_foltrans_77)), not(Hashtable(_Z_setinc_foltrans_77))), and(Object_alloc_27(_Z_setinc_foltrans_77), Hashtable(_Z_setinc_foltrans_77)))))).
+
+% comment ''Hashtable.add1_Postcondition'' (Object_alloc \<subseteq> Object_alloc_27)
+
+formula(forall( [_Z_setinc_foltrans_79], or(not(Object_alloc(_Z_setinc_foltrans_79)), Object_alloc_27(_Z_setinc_foltrans_79)))).
+
+% comment ''Hashtable.add1_Postcondition'' (ALL (framedObj::obj). (((framedObj : Object_alloc) & (framedObj : Hashtable) & (framedObj ~= this)) --> ((Hashtable_content_29 framedObj) === (Hashtable_content framedObj))))
+
+formula(forall( [_FramedObj], or(or(not(Object_alloc(_FramedObj)), not(Hashtable(_FramedObj)), equal(_FramedObj, this)), and(forall( [_Z_setinc_foltrans_81_0, _Z_setinc_foltrans_81_1], or(not(Hashtable_content_29(_FramedObj, _Z_setinc_foltrans_81_0, _Z_setinc_foltrans_81_1)), Hashtable_content(_FramedObj, _Z_setinc_foltrans_81_0, _Z_setinc_foltrans_81_1))), forall( [_Z_setinc_foltrans_80_0, _Z_setinc_foltrans_80_1], or(not(Hashtable_content(_FramedObj, _Z_setinc_foltrans_80_0, _Z_setinc_foltrans_80_1)), Hashtable_content_29(_FramedObj, _Z_setinc_foltrans_80_0, _Z_setinc_foltrans_80_1))))))).
+
+% comment ''Hashtable.add1_Postcondition'' (ALL (framedObj::obj). (((framedObj : Object_alloc) & (framedObj : Hashtable) & (framedObj ~= this)) --> ((Hashtable_size_28 framedObj) = (Hashtable_size framedObj))))
+
+formula(forall( [_FramedObj], or(or(not(Object_alloc(_FramedObj)), not(Hashtable(_FramedObj)), equal(_FramedObj, this)), forall( [_T_eqof_foltrans_82], or(not(equal(_T_eqof_foltrans_82, hashtable_size_28(_FramedObj))), equal(_T_eqof_foltrans_82, hashtable_size(_FramedObj))))))).
+
+% comment ''TrueBranch'' (intless ((inttimes 4 (Array_length (Hashtable_table this))) div 5) (Hashtable_size_28 this))
+
+formula(and(exists( [_Fun_flat_foltrans_84, _Fun_flat_foltrans_83], and(_Lteq(_Fun_flat_foltrans_84, _Fun_flat_foltrans_83), exists( [_Fun_flat_foltrans_85], and(equal(_Fun_flat_foltrans_84, div(_Fun_flat_foltrans_85, 5)), exists( [_Fun_flat_foltrans_86], and(equal(_Fun_flat_foltrans_85, times(4, _Fun_flat_foltrans_86)), exists( [_Fun_flat_foltrans_87], and(equal(_Fun_flat_foltrans_86, array_length(_Fun_flat_foltrans_87)), equal(_Fun_flat_foltrans_87, hashtable_table(this)))))))), equal(_Fun_flat_foltrans_83, hashtable_size_28(this)))), exists( [_T_eqof_foltrans_88], and(exists( [_Fun_flat_foltrans_89], and(equal(_T_eqof_foltrans_88, div(_Fun_flat_foltrans_89, 5)), exists( [_Fun_flat_foltrans_90], and(equal(_Fun_flat_foltrans_89, times(4, _Fun_flat_foltrans_90)), exists( [_Fun_flat_foltrans_91], and(equal(_Fun_flat_foltrans_90, array_length(_Fun_flat_foltrans_91)), equal(_Fun_flat_foltrans_91, hashtable_table(this)))))))), not(equal(_T_eqof_foltrans_88, hashtable_size_28(this))))))).
+
+end_of_list.
+
+
+list_of_formulae(conjectures).
+% comment ''NullCheckFieldArray_length'' ((Hashtable_table this) ~= null)
+
+formula(not(equal(null, hashtable_table(this)))).end_of_list.
+end_problem.

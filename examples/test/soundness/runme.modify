@@ -1,0 +1,2 @@
+../../../bin/jahob.opt Modify.java -method Modify.modify_foo -usedp spass
+../../../bin/jahob.opt Modify.java -method Modify.modify_bar -usedp spass

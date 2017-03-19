@@ -1,0 +1,3 @@
+([|(comment ''AssumingLoopInv'' (e~:Tree_content));
+(comment '': ProcedurePrecondition'' (ALL x y. (((y~=null) & ((fieldRead Node_parent x) = y)) --> (x:Tree_content))))|] ==>
+    (comment '': _ProcedureEndPostcondition'' ((fieldRead Node_parent e) = null)))

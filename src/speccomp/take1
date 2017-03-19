@@ -1,0 +1,33 @@
+(* intersection grammar *)
+
+expr:
+             | expr PLUS expr     
+             | expr MINUS expr    
+             | expr TIMES expr    
+             | expr DIV expr      
+             | expr LESS expr     
+             | expr GRTR expr     
+             | expr LEQL expr     
+             | expr GEQL expr     
+             | expr EQLS expr     
+             | expr NEQL expr     
+             | expr OR expr       
+             | expr AND expr      
+             | expr IMP expr      
+             | NOT expr           
+             | LPRN expr RPRN    
+             | STR LPRN STR COLONCOLON type_form RPAREN DOT STR COLON STR IMP expr
+             (* "forall(x::obj).x : set_1 -> x!= null" *)
+             | STR LPRN STR COLONCOLON type_form RPAREN DOT LPRN STR LESS INT AND STR GRTR INT RPRN IMP expr
+             (* "forall(i::int). (i<10 & i>0) -> a[i]!=null" *)
+             | INT                                 
+             | STR                                 
+             | NULL   
+             | expr DOT DOT STR DOT STR  (* field access *)   
+             | expr DOT LBRC expr RBRC   (* array element access *)                       
+
+
+(* dont have:
+   method calls
+   reachable
+*)

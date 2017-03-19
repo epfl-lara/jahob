@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt CursorList.java -sastvc -class CursorList -timeout 30 -printcounts -failfast -usedp z3 spass
+ensure_verifies $? "pldi09:CursorList"

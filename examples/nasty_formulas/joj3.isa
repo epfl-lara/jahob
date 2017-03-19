@@ -1,0 +1,4 @@
+[|
+((intless (i_8 :: int) (ArraySet_size :: int)) :: bool)
+|] ==>
+    comment ''InvPreservation'' (((intplus (i_8 :: int) (1 :: int)) :: int) <= (ArraySet_size :: int))

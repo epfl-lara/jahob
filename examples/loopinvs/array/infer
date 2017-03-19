@@ -1,0 +1,1 @@
+/usr/bin/time ../../../bin/jahob.opt -nobackground -method ArraySet.contains ArraySet.java -infer Minimize -usedp cvcl 1>>infer.out 2>>infer.out

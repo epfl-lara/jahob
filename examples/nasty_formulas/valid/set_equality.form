@@ -1,0 +1,28 @@
+[|((PriorityQueue_slength :: int) = (PriorityQueue_length :: int));
+((PriorityQueue_smaxlen :: int) = ((fieldRead (Array_length :: (obj => int)) (PriorityQueue_queue :: obj)) :: int));
+((PriorityQueue_spqueue :: obj set) = ({p. (EX (i::int). (((0 :: int) <= (i :: int)) & (intless i (PriorityQueue_length :: int)) & ((p :: obj) = ((arrayRead (Array_arrayState :: (obj => (int => obj))) (PriorityQueue_queue :: obj) i) :: obj))))} :: obj set));
+((PriorityQueue_init :: bool) = (((PriorityQueue_queue :: obj) ~= (null :: obj)) :: bool));
+(PriorityQueue_init :: bool);
+((e :: obj) ~= (null :: obj));
+(intless (PriorityQueue_slength :: int) (PriorityQueue_smaxlen :: int));
+comment ''PriorityQueue_PrivateInv'' ((PriorityQueue_init :: bool) --> ((0 :: int) <= (PriorityQueue_length :: int)));
+comment ''PriorityQueue_PrivateInv'' ((PriorityQueue_init :: bool) --> ((PriorityQueue_length :: int) <= ((fieldRead (Array_length :: (obj => int)) (PriorityQueue_queue :: obj)) :: int)));
+comment ''PriorityQueue_PrivateInv'' ((PriorityQueue_init :: bool) --> (ALL (i::int). ((((0 :: int) <= (i :: int)) & (intless i (PriorityQueue_length :: int))) --> (((arrayRead (Array_arrayState :: (obj => (int => obj))) (PriorityQueue_queue :: obj) i) :: obj) ~= (null :: obj)))));
+comment ''PriorityQueue_PrivateInv'' ((PriorityQueue_init :: bool) --> (ALL (i::int). ((((PriorityQueue_length :: int) <= (i :: int)) & (intless i (fieldRead (Array_length :: (obj => int)) (PriorityQueue_queue :: obj)))) --> (((arrayRead (Array_arrayState :: (obj => (int => obj))) (PriorityQueue_queue :: obj) i) :: obj) = (null :: obj)))));
+comment ''e_type'' ((e :: obj) : (PriorityQueueElement :: obj set));
+comment ''e_type'' ((e :: obj) : (Object_alloc :: obj set));
+((PriorityQueue_slength_30 :: int) = ((intplus (PriorityQueue_length :: int) (1 :: int)) :: int));
+((0 :: int) <= (i_26 :: int));
+(intless (i_26 :: int) ((intplus (PriorityQueue_length :: int) (1 :: int)) :: int));
+((PriorityQueue_spqueue :: obj set) = ({p. (EX (j::int). (((0 :: int) <= (j :: int)) & (intless j ((intplus (PriorityQueue_length :: int) (1 :: int)) :: int)) & ((j :: int) ~= (i_26 :: int)) & ((p :: obj) = ((arrayRead (Array_arrayState_27 :: (obj => (int => obj))) (PriorityQueue_queue :: obj) j) :: obj))))} :: obj set));
+(ALL (j::int). ((((0 :: int) <= (j :: int)) & (intless j ((intplus (PriorityQueue_length :: int) (1 :: int)) :: int)) & ((j :: int) ~= (i_26 :: int))) --> (((arrayRead (Array_arrayState_27 :: (obj => (int => obj))) (PriorityQueue_queue :: obj) j) :: obj) ~= (null :: obj))));
+(ALL (j::int). (((((intplus (PriorityQueue_length :: int) (1 :: int)) :: int) <= (j :: int)) & (intless j (fieldRead (Array_length :: (obj => int)) (PriorityQueue_queue :: obj)))) --> (((arrayRead (Array_arrayState_27 :: (obj => (int => obj))) (PriorityQueue_queue :: obj) j) :: obj) = (null :: obj))));
+(((0 :: int) < (i_26 :: int)) :: bool);
+comment ''PriorityQueue.parent_PostconditionInCall'' ((0 :: int) <= (result_17 :: int));
+comment ''PriorityQueue.parent_PostconditionInCall'' (intless (result_17 :: int) (i_26 :: int));
+comment ''PriorityQueue.parent_PostconditionInCall'' ((Object_alloc :: obj set) \<subseteq> (Object_alloc_16 :: obj set));
+((intless ((fieldRead (PriorityQueueElement_key :: (obj => int)) ((arrayRead (Array_arrayState_27 :: (obj => (int => obj))) (PriorityQueue_queue :: obj) (result_17 :: int)) :: obj)) :: int) ((fieldRead (PriorityQueueElement_key :: (obj => int)) (e :: obj)) :: int)) :: bool);
+comment ''PriorityQueue.parent_PostconditionInCall'' ((0 :: int) <= (result_9 :: int));
+comment ''PriorityQueue.parent_PostconditionInCall'' (intless (result_9 :: int) (i_26 :: int));
+comment ''PriorityQueue.parent_PostconditionInCall'' ((Object_alloc_16 :: obj set) \<subseteq> (Object_alloc_8 :: obj set))|] ==>
+    comment ''InvPreservation'' ((PriorityQueue_spqueue :: obj set) = ({p__8. (EX (j::int). (((0 :: int) <= (j :: int)) & (intless j ((intplus (PriorityQueue_length :: int) (1 :: int)) :: int)) & ((j :: int) ~= (result_9 :: int)) & ((p__8 :: obj) = ((arrayRead ((arrayWrite (Array_arrayState_27 :: (obj => (int => obj))) (PriorityQueue_queue :: obj) (i_26 :: int) ((arrayRead (Array_arrayState_27 :: (obj => (int => obj))) (PriorityQueue_queue :: obj) (result_9 :: int)) :: obj)) :: (obj => (int => obj))) (PriorityQueue_queue :: obj) j) :: obj))))} :: obj set))

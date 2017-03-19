@@ -1,0 +1,2 @@
+#!/bin/sh
+../../../bin/jahob.opt Client.java Set.java Iterator.java -method $@ -sastvc -bohne -refine -nosplitting -usedp z3 spass 

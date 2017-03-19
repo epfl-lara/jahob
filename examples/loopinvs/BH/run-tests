@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt SDTree.java -class Node -failfast -sastvc -timeout 10 -usedp z3 spass cvcl e isa 2>&1 | tee sd_node.out
+ensure_verifies $? "loopinvs:BH:SDTree"

@@ -1,0 +1,5 @@
+content \<subseteq> (alloc :: obj set) &
+x1 ~: alloc &
+x2 ~: alloc Un {x1} &
+x3 ~: alloc Un {x1} Un {x2} -->
+  cardinality (content Un {x1} Un {x2} Un {x3}) = cardinality content + 3

@@ -1,0 +1,2 @@
+(List_size :: int) = cardinality (List_content :: obj set) -->
+(List_size = 0) = (List_content = {})

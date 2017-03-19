@@ -1,0 +1,1 @@
+../../../bin/jahob.opt -v AssocList.java Node.java -nobackground -method AssocList.update -usedp cvcl $*

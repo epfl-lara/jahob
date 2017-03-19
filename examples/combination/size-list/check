@@ -1,0 +1,1 @@
+../../../bin/jahob.opt SizeList.java -method $@ -bohne -abstractfinal -nobackground -usedp mona bapa:SliceQuantAssms

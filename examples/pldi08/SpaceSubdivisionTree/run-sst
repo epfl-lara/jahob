@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt SpaceSubdivisionTree.java -hidden -class Node -sastvc -timeout 20 -usedp z3 spass isa
+ensure_verifies $? "pldi08:SpaceSubdivisionTree"

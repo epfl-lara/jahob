@@ -1,0 +1,5 @@
+PROVER=e
+../../../bin/jahob.opt -method Test.changeThis Test.java -usedp $PROVER 
+ensure_fails $? "Test.changeThis"
+../../../bin/jahob.opt -method Test.change Test.java -usedp $PROVER 
+ensure_fails $? "Test.change"

@@ -1,0 +1,1 @@
+/usr/bin/time ../../../bin/jahob.opt -timeout 240 Tree.java -failfast -nobackground -sastvc -method Tree.swap -usedp mona

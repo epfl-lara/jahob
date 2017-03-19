@@ -1,0 +1,8 @@
+. check List.add
+ensure_verifies $? "GlobalSinglyLinkedListWithData.add"
+. check List.empty
+ensure_verifies $? "GlobalSinglyLinkedListWithData.empty"
+. check List.getOne
+ensure_verifies $? "GlobalSinglyLinkedListWithData.getOne"
+# . check List.remove
+# ensure_verifies $? "GlobalSinglyLinkedListWithData.remove"

@@ -1,0 +1,4 @@
+[|(ALL (id::obj) (elm::obj). select0 (store0 (arr::obj) id elm) id = elm);
+  (ALL (id1::obj) (id2::obj) (elm::obj) . (id1 ~= id2) --> 
+	((select0 (store0 arr id1 elm) id2) = select0 arr id2))|] ==>
+(select0 (store0 (store0 arr id0 elm1) id0 elm2) id0 = elm2)

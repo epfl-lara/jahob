@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt Tree.java -nobackground -class Tree -timeout 240 -failfast -sastvc -usedp mona isa:TimeOut=10 2>&1 | tee tree.out
+ensure_verifies $? "loopinvs/gtree/Tree.java:Tree"

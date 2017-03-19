@@ -1,0 +1,4 @@
+([|(comment ''AssumingLoopInv'' (n_3:Tree_content));
+(comment ''AssumingLoopInv'' (ptree Node_parent [Node_left, Node_right]));
+(comment ''Tree.content_def'' (Tree_content = {x. ((x=null) | ((Tree_root~=null) & (rtrancl_pt (% x y. ((fieldRead Node_parent x) = y)) x Tree_root)))}))|] ==>
+    (comment ''LoopInvPreserved'' ((fieldRead Node_right n_3) : Tree_content)))

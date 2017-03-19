@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt CircularList.java -class CircularList -timeout 50 -usedp mona cvcl
+ensure_verifies $? "pldi08:CircularList"

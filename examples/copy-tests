@@ -1,0 +1,5 @@
+#!/bin/bash
+WHERE=${HOME}/public_html/jahob/examples/
+cp -r loopinvs/java.util/ArrayList $WHERE
+
+chmod -R a+rx $WHERE

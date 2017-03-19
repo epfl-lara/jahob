@@ -1,0 +1,2 @@
+../../../../bin/jahob.opt Set.java -class Set -usedp mona
+ensure_verifies $? "SimplestSet.add"

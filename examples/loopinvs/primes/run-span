@@ -1,0 +1,1 @@
+/usr/bin/time ../../../bin/jahob.opt Span.java -class Node -timeout 10 -failfast -sastvc -usedp spass cvcl 2>&1 | tee span.out

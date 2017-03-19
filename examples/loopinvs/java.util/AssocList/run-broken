@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt BrokenAssocList.java -sastvc -method AssocList.brokenRecRemove0 -usedp spass:SpassSortGuards=no:TimeOut=30
+ensure_fails $? "loopinvs:java.util:AssocList:BrokenAssocList.brokenRecRemove0"

@@ -1,0 +1,1 @@
+/usr/bin/time ../../../../bin/jahob.opt AssocList.java -failfast -class AssocList -sastvc -usedp z3 spass:TimeOut=5 spass:ArithAxioms:OrderAxioms 2>&1 | tee assoclist.out

@@ -1,0 +1,4 @@
+# this works
+../../../../bin/formDecider.opt init.min -usedp spass
+# but not this
+../../../../bin/formDecider.opt init.min -usedp z3

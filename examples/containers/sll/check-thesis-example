@@ -1,0 +1,3 @@
+#!/bin/sh
+../../../bin/jahob.opt List1.java -sastvc -sast -method List.add -usedp isa:TimeOut=0 | tee sast.txt
+

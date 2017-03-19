@@ -1,0 +1,10 @@
+../../../bin/jahob.opt List.java -method List.add -failfast -timeout 30 -usedp spass:TimeOut=20 mona
+ensure_verifies $? "InstantiatableSinglyLinkedListWithDataAndFirst.add"
+../../../bin/jahob.opt List.java -nobackground -method List.remove -failfast -timeout 30 -usedp spass:TimeOut=20 mona
+ensure_verifies $? "InstantiatableSinglyLinkedListWithDataAndFirst.remove"
+../../../bin/jahob.opt List.java Client.java -method Client.test0 -failfast -sastvc -usedp spass
+ensure_verifies $? "InstantiableClient.test0"
+../../../bin/jahob.opt List.java Client.java -method Client.test1 -failfast -sastvc -usedp spass
+ensure_verifies $? "InstantiableClient.test1"
+../../../bin/jahob.opt List.java Client.java -method Client.test2 -failfast -sastvc -usedp spass
+ensure_verifies $? "InstantiableClient.test1"

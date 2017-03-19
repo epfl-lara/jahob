@@ -1,0 +1,12 @@
+DATA_STRUCTURES="
+datastructures/pldi09/AssociationList/run-tests
+datastructures/pldi09/SinglyLinkedList/run-tests
+datastructures/thesis09/PriorityQueue/run-tests
+datastructures/pldi09/CursorList/run-tests
+datastructures/instantiate/Hashtable/run-tests
+datastructures/pldi09/ArrayList/run-tests
+datastructures/pldi09/CircularList/run-tests
+datastructures/pldi09/BinarySearchTree/run-tests
+"
+
+/usr/bin/time ./run-one-test "$DATA_STRUCTURES" 2>&1 | tee data_structures.out

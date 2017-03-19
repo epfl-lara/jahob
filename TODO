@@ -1,0 +1,806 @@
+-have the ability to turn off the abstraction.
+ parse a simple input language with clean semantics.
+
+-!!!cannot mask array changes in private procedures
+
+ split_mod seems to be invoked from concretized_post
+ but always with same 'callee' boolean, regardless where
+ concretized_post is invoked from (proc.call or end of procedure)
+
+-add dependencies in ast of a procedure to make vcgen self-contained
+ (does not need anything to generate a formula)
+
+-allow declaring invariant as static e.g. static inv foo: "..."
+ and then do not implicitly add "this".  Currently static invariants
+ get annoyingly added "this" even when I want to refer to fields from
+ the current class.
+
+-do example list that is abstracted using next* as the specification
+ variable.  This list is inlined and instantiable, it is data abstraction
+ of the lists used in C system code.  null is empty list. 
+ Public predicates:
+
+  isroot x = ~ EX n. n..next=x
+  content = {y. rtrancl_pt (% p q. next p = q) this y}
+   
+ Note that you must use MONA for this if the list is singly linked, 
+ because you do not have access to the previous variables.
+
+-apparently local vardefs are not put into assumptions at all, which makes them useful
+
+-Jahob should complain if you declare a variable ghost and supply a vardef for it
+ (currrently it seems to assume that it's not a ghost in that case)
+-do I qualify names of invariants with module name?
+-enable a class to hide invariants of another class?
+
+-supply initial values of ghost variables
+-(Karen?) array equality should quantify only over integers in array bounds
+-hasvocing rep:
+  -must implement reentrancy analysis to avod havocing more generally
+
+-havoc rep of C when analyzing any potentially reentrant call inside C,
+ but not transitively, only modulo any preservation on abstract variables
+ of C.
+
+-emit warnings when an assume statement is encountered
+
+-Is this true?
+ % Jahob expands a constructor into a static method that allocates the receiver
+ % object and returns it.  Note that the constructor need not initially 
+ % satisfy the invariants that mention receiver fields.  This
+ % is because the invariants are implicitly quantified over all
+ % allocated receiver objects, and the system assumes that the
+ % receiver object is allocated as part of the constructor
+ % invocation.
+
+-background apparently never says that allocated objects point to
+ allocated objects?!
+
+-for BAPA:
+  do abstraction phase that allows set-valued fields if they
+  are identical expressions.  Verify availabilityPolicy in implib
+
+-when a boolean specvar is not modified by procedure, the opportunities
+ for splitting are greatly reduced.  We should make sure that if
+ the variable is known to be true the constant boolean substitution and
+ boolean specvar expanstion are done before the splitting
+ into conjuncts.  See examples/implib.
+
+-we assign to freshly introduced variables like Object.alloc_k and tmp_k.
+ But then we havoc then when computing the frame of e.g. a loop, which
+ is unnecessary because they are fresh.  This would not happen if we 
+ 
+
+-Bugs Karen found in vcgen:
+  * alloc changes are not propagated to depending variables!
+  * optimization of not changing alloc when new object does not appear in post is hard to prove correct
+  * array allocation did not change allocated object set?
+
+-when we write 
+    content = old content Un {x}
+ then old content becomes
+   old_this..old_content
+ but why is there old in front of this?
+
+-in sll-ghost, it should not be allowed that alloc invariant 
+ is ensured, because the con ghost var is modified from the outside
+ 
+ unless this is justified with claimedby 
+  -- figure out precise policy for claimedby
+
+-syntactic per-object encapsulation that avoids
+ universal quantification in invariants and frame conditions
+
+-allow
+   rtrancl_pt (\<lambda> x y. Node.next x = y) first n
+ to be written as
+   (first,n) : rtrancl {(x,y). Node.next x = y}
+
+-improve robustness of mona to allow e.g. natural specification of sll/List.member function
+ with equality of booleans, as well as empty set constant
+
+-unless we allow passing specification parameters to procedures,
+ loops are more expressive than recursive methods because
+ we cannot introduce local specvars for e.g. tracking the traversal of data structures
+
+-allow writing public readonly specvar.
+
+-implementation of mutable relation on top of a mutable set
+
+-if old is applied to local variables, then they get renamed to old_v and 
+  then those variables are left unconstrained because there is no v in initial state
+
+-"not resolving havoc's yet" -- fix
+
+-in loops, need to add assumptions after havocing objects.
+ in fact, most havocs are a way of approximating sequences of statements,
+ so they should come with standard set of assumptions, like alloc monotonicity,
+ which is currently done only in procedure calls
+
+-often you want to state the postcondition
+   result ~: old Object.alloc
+ This could be done by putting "new" annotation before return type
+
+-better error message for type cast when checking object is not null
+-apparently we resolve private vardefs even if we do not verify any implementation
+ of that module, making modular checking impossible for no reason
+
+-the type and alloc assumptions about local variables are lost in loop
+ desugaring when the variable is havoc-ed because it's in modifies set of a loop
+-similarly, when the fields are havoced, the allocation preservation
+ axioms stop to apply, they would need to be repeated
+
+-cannot write x..(old f) due to parser, but this can be useful in invariants
+
+-fix initial condition checking, see e.g. examples/containers/sll-ghost/List._INIT
+
+-make sure that we are not allowed to make undeclared changes to public static variables
+
+-Pending changes for hiding of objects:
+   1) check at each assignment x.f=y
+      when f is not a private field
+        y : hidden --> x : hidden
+
+    1.5) check assignments to non-private static class variables
+         if x=y and x is non-private static variable, then
+         ~ (y : hidden)
+
+   2) must have a boolean flag for split_mod, because
+      spec and impl modifies clauses of same procedure are different
+   3) when checking at the end, allow changes to hidden
+   4) when doing a procedure call, havoc the changes to hidden objects
+        if the call can be reentrant
+
+   5) do a separate analysis of reentrant calls:
+	look at the preconditions and check if the call can be reentrant
+
+   6) check that hidden objects do not escape:
+       a) though parameters
+       b) at return statements
+
+ but we need to properly qualify the owned set with the current module.
+
+-fix broken old vcgen - esp. for proc calls wrt. alloc
+
+-use assignments in procedure call desugaring instead of renaming
+ -then also implement bounded inlining of procedure calls
+
+-proper reporting of results and proper direction of approximation
+ for model finders
+ 
+  do underapproximating TPTP translation (ground if desperate),
+  then use Paradox
+
+- jahob should report if the user tries to verify a method without specification
+
+-Verify function purity for e.g. hashcode computation.
+ Generate VC:
+  do procedure call, havoc all vars, do same procedure call,
+  assert two results same
+
+-are free invariants added twice, as preconditions and in background?
+ perhaps background should be represented as assume in sastvc translation.
+ Also make background smarter not to generate useless assumptions.
+
+- some writes are allowed for abstract variable, but should be forbidden, because of staticness.
+
+- in public procedures, modify clauses shouldn't mention private fields
+
+-add a way to name groups of invariants and invariants
+
+-inlining of boolean flag variables to make proof obligations more managable
+
+-add keyword for invariants that they can be 'perpetual'
+
+
+-clean up form ast, remove unnecessary things
+
+-Jahob loops on cyclic variable definitions
+
+-interpreter with Karen, also checks the assertions
+
+-fix cvcl to handle div and verify priority queue example
+
+-operational semantics reasoning:
+  * semantic analysis of free invariants
+  * modular analysis of reentrancy to avoid havocing rep
+  * hiding unescaped allocated objects
+
+-sat solver benchmark
+
+-fix miscelaneous diagnostics (for ghost variable usage etc.)
+
+-can we ever hide public variables? use scopes?
+  merge notion of scope and class by allowing public class imports?
+
+-add names for proper objects (for objects of a given dynamic type),
+ not including subclasses, otherwise 'negations of type' preconditions will
+ fail
+
+-does saying 'private vardef' make a difference for private vars?!
+------------------------------------------------------------
+Discussion Charles and Viktor on 13 June 2006:
+
+ * see what desugaring does and should do (-sast -sastvc)
+ * purely functional data structures:
+     new desugaring of constructors: put 'new' inside constructor,
+     not at call site 
+   (this breaks with inheritance, but we don't care)
+ * some policy for representation hiding
+     1) make representation unobservable:
+          prove a sufficient condition
+          develop static analysis for it
+     2) use transitive closure of ownership while
+        assuming modifications do happen
+ * concurrent data structures
+------------------------------------------------------------
+
+
+Q: how to represent desugared version in the same
+   ast without semantic amgiguity?
+   Make it clear whether you should apply pre and post
+   or they are already in asserts.
+
+-soundness bug in that some fields are assumed unchanged even
+ if their objects are owned
+
+-abstract library example
+
+-add preconditions that you cannot modify fields of objects
+ owned by other modules!
+
+ Or make it parameterized with above default?
+
+
+-fix rep_init_forms in vcgen to add initial state of everything
+
+-try analyzing games
+
+  http://javaboutique.internet.com/javasource/j.html
+
+-field assignments to ghost fields, - and to all boolean fields in general
+ otherwise we must write
+     //: init := "fieldWrite init this True";
+
+-interactive/scripting interface for proving Isabelle formulas
+   create a command-line utility to:
+     convert Isabelle to different formats
+     and output them
+     or try to prove them
+
+-if you write "private /*: readonly */" it reports "Java file failed to parse",
+  it should give more meaningful message
+
+-type error occurs because string literals are not treated as objects in Jahob
+
+-add special syntax for initialization fields?
+
+-ordering of provers by command line
+-parsing timeouts for specific provers
+
+-special prover/analysis for modifies clauses
+
+-perhaps introduced shorthand owned(x) for 
+   x..Object.owner = token.C 
+ where C is current class
+
+-construct from ... noteThat "..."
+  allow naming background, tagged assumptions as arguments, 
+   use this when dropping assumptions
+ FIFO policy for assumptions, so that noteThat can be used to reorder them
+
+-can we specify public readonly ghost variables?
+
+-support arrays of int's, bool's, float's
+
+-translations:
+   rewriting higher-order assumptions with beta reduction
+   translations of tuples
+   should we merge TPTP and CVC Lite?
+   BAPA translation
+
+-systematic documentation
+
+-Bohne:
+   handle 'new'
+   handle procedures
+
+-complain if there are duplicate classes
+
+
+-annotation for invariant that holds almost everywhere (even at loop boundaries), not
+ just at procedure boundaries
+
+ -then can use boolean flags more aggresively
+
+-it is evident in analysis of instantitable data structures that forward propagation
+ of inequalities between objects is useful
+
+-some inference for default owners
+
+-regressions
+-high-level analysis
+-distribution
+
+-'this' ocurrences in constructors should be allowed in specifications
+-inlining 'first' header fields in simulation for lists, thus using S1S instead of S2S
+-fix vcgen mystery-print generated invs
+
+-warn if someone writes claimedby for a non-existing class
+
+-instead of making fresh vars at concretization time,
+ track dependencies and havoc them at assignment time
+
+  Also fix apply_defs to actually work!
+
+-eliminating intermediate temporaries to make jast and ast look nicer
+
+-private constdefs and vardefs are not expanded? see containers/gsll-assoc/DupKeysAssocList.java etc.
+
+-ssa form to reduce the size of vc
+
+-lhs translation and handling of +=, ++
+-keep old set variables unexpanded, otherwise
+ we eliminate their benefit
+   * make concretization add assumption equalities instead of substituting
+
+-multiple ocurrences of trees: select one that
+ supports more fields as backbone
+
+-fix mk_class_hierarchy
+
+-allow noteThat ... from ... for proof hints?
+
+-do dropping of useless assumptions already in VC generation
+
+-using data abstraction for
+  1) defining your own analyses with guaranteed soundness
+  2) decomposing properties into different theories
+	example: verifying association lists
+
+-interface to Emina's Kodkod (new version of Alloy)
+
+-NP decision procedure that handles
+ cardinalities specially
+
+-fix final ints to be replaced with value
+ (final initialization variables, are they only in background?)
+
+-resolution of abstract assignables uses same rules as for ordinary assignments, which is bad;
+ we should check for assignability before generating ast and allow all visible variables
+ to be assigned
+
+
+-PLDI:
+   Jame: JameCollection, 
+	 JameResourceSet, 
+	 points-to properties in JameMap
+
+   assoc lists 
+   assoc lists sorted
+   maps via trees working.
+     with sortedness
+
+-data structures with duplicate Node.data values
+ (remove is more interesting):
+ /*: inv "tree [Node.next, Node.data] &
+                               nodes = old nodes - 
+                          {n. rtrancl_pt (% x y. x..Node.next = y) first n &
+                            ~ rtrancl_pt (% x y. x..Node.next = y) n current & 
+                             n..Node.data = o1}"
+                      */
+  and requires
+   //: public static specvar content :: objset
+    /*: private vardefs "content == 
+           {x. EX n. x = n..Node.data & n ~= null &
+                     rtrancl_pt (% x y. x..Node.next = y) first n}" */
+
+    //: private static specvar nodes :: objset
+    /*: private vardefs "nodes == 
+           {n. n ~= null &
+               rtrancl_pt (% x y. x..Node.next = y) first n}" */
+
+    //: invariant "content = {x. EX n. x = n..Node.data & n : nodes}"
+
+
+-conjoin invariants with loops
+
+-enforce that constdefs are static vars
+
+-MONA:
+  -old handling
+  -instantiation
+  -conjuncts - make it work as decision procedure,
+   handle shorthands and their pattern matching
+  -finiteness of sets? rules for proving it?
+
+-Note: only middle layer needs fancy reps,
+ outermost has no reps, innermost can use static reps
+ if it is not based on arrays and other containers
+
+-old alloc set and old owner are not properly replaced at procedure call, which
+ interacts badly with owner's frame condition
+ (was this fixed?!)
+
+-why we need set translations:
+  Isabelle won't do them (Paulson says simplifier should do them)
+  need them even in MONA
+  needed for for AIOOL+
+  needed for Vampire
+-implement DPLL(T) with MONA and our decision procedures
+
+-plus on strings in Java should not become plus
+-make sure redundant "this." in Java code are not necessary
+
+-explicit and implicit modifies clauses for loops
+   implicitly add conjuncts for dynamic rep and from procedure declaration
+
+ and also add invariants to loops (or just use naming)
+  (unless turned off? Could indeed use non-monotinic logic)
+ infer which conjunctions of invariants are preserved!
+
+   --use this as example analysis combination
+
+-rep:
+   OK generate background formula for class tokens
+   OK fix forall to use field
+   OK implement rep check for outside ops
+   OK support incorporporate and release operations
+ what about static variables in owned objects?
+
+-conjoin rep clauses to loop invariants,
+  make sure representations are ok
+-enforce exclusion of representations
+
+-bug in name resolution
+-short circuit and,or
+
+-test loop invariant resolution warnings, they seem to not show up
+
+-use Vampire in combination with more fine-grained modifies
+ clause inference, avoid the pain of writing modifies clauses
+ for fields of individual objects
+
+--------------------------------------------------
+
+
+--------------------------------------------------
+Examples:
+  Jame
+  BufferCache
+  examples from Hob
+  examples from Kevin's paper (analogous versions in GNU CLASSPATH)
+
+-command line option "-interfaceof C" that takes a class and generates
+ a Jahob interface consisting of public specification variables
+ of the class C.
+
+-forbid 'result' in ensures clause if method has unit return type
+
+-cut down generated background
+
+-MONA
+   -grounding for instantiatables if needed
+   -magic for no rep exposure - trees don't overlap
+   -field packing: first and next represented as one field
+    (overapproximate for the start), use string mode when possible
+
+-generate interdata structure examples, revisit BufferCache
+-Vampire backend; use it for interdatastructure properties, and for
+ two-element list example
+-verify association map implementation
+
+-make isabelle treat better cardinalities
+ (assume sets of reachable objects are finite, or write as invariant explicitly)
+
+-multidimensional arrays (allocation, derefence, update)
+
+-dynamic ownership
+
+-modifies clauses:
+   -finer granularity
+
+-allow multiple semicolon-separated 
+ annotations in a single special comments
+
+-public invariants of other methods
+ should not be showed, only assumed?
+
+  -- implement check that this cannot be
+     done for classes that claim the current class ?!
+
+-"this"
+  -guard them with alloc.T
+   -instantiate the universally quantified invariants
+   over "this"
+
+-implement assert, assume, and assignments to uninterpreted abstract
+ variables as Jahob commands within method bodies.
+
+-type inference in formulas: limitted polymorphism.
+ Force explicit quantification: for free variables
+ we know their types, for bound variables require them
+ to be quantified.  Later we will simply add parameterized
+ type variables, and still require explicit types.
+
+  --see my posting.
+
+  But can also just implement shorthands, definitions?
+
+-connection to CVC lite
+
+-generate some 'static invariants' corresponding to the lost type constraints.
+
+ In principle they should work as normal invariants, so perhaps
+ analysis should realize that they are static, independent of state.
+
+ But the user should not need to specify those that follow from Java
+ semantics.
+
+-handling overloading: in Javajast, scan all method names
+ and if they are overloaded generate association list entries.
+ Then apply this association list both in generating methods
+ and in their calls.  For this we need Java type checking
+ to know how to resolve the calls, though we already have
+ that effectively as we generate Jast.
+
+-fast and scalable next.prev checker
+   * examine all files
+   * check if it is preserved
+   * say under what conditions it will be 
+     preserved in the future extensions of the program
+     (generalized modularity)
+
+-specification variables defined in terms of specification
+ variables acyclicly, use topological sort
+
+-the pattern of initializing some object to read-only value,
+ as when constructing a readonly cyclic data structure, is
+ worth capturing in a language, design a Jahob plugin that
+ does that using some sort of specialized typestate.
+
+-share p_headers in impl and spec so they are later not resolved twice?
+
+-make sure we store somewhere the types of 'old' variables.
+ Either we magically recognize them by name, or we
+ introduce a new ast field for procedure contracts, denoting specification
+ variables, like parameters.  Later we can perhaps use
+ specification parameters, too...
+
+-add severity level to warnings, or make some of them fatal
+
+-check for name clashes when unnesting local variables
+
+-semantics of (tree [...]), introduce (isroot [...] r)
+
+-refactor a flag for printing formulas that disambiguates integers,
+ used this for isabell input
+
+-translate constructs such as:
+   for loops - translate into while - trivial
+   while loops with break in the middle - pattern match
+   e+=u:
+     i++, i--   as i+=1, i-=1
+     Introduce notion of Jast location, then translate
+        e+=u
+     as
+        let (ste,loc) = translate_lvalue e in
+	let (stu,resu) = c_exp u in
+	let newval = mk_infix(lval_to_exp loc,+,resu)
+        ste @ stu @ [mk_assign loc newval]
+
+-explicitly quantify over variables to avoid
+ them being misinterpreted, example: using
+ the identifier o which denotes function composition
+
+-later copy constdefs into isabelle, do not expand them.
+ Constdefs are state-independent, unlike private specstatic.
+
+-use notation object@field and array[@]index
+ to denote locations.
+
+-remove implicit this from specifications?
+ Because it is ambiguous what we mean.
+ No, can use C.content if want to denote relation.
+ Also for modifies clauses, and in general when denoting
+ locations.  Writing field means implicit "this@",
+ just like for formulas there is implicit "this..".
+
+ for each rep specification we take the union where
+ "this" ranges over all allocated objects
+
+ also when defining specfield, we naturally are defining
+ its value for 'this', which is no loss of generality
+
+-add standard identifiers so their types are known
+ and there are no warnings for them
+
+-private specfields, which act as shorthands but
+ cannot be used in public specifications
+
+-handling invariants:
+  if we have global invariants and object invariants,
+  when should they hold, e.g. for constructors?
+
+-syntax and semantics of formulas handled?
+-precise semantics of ast
+-notion of ownership
+**************************************************
+Front end
+
+  -generics? Some limitted form. Or just use Object.
+
+  -arrays
+  -field initializer translation
+
+  -assertions
+  -assumptions
+  
+  -error messages including file/class and line  
+  -parser runs through complete code and outputs all occuring errors  
+
+************************************************************
+Analyses
+
+  -vcgen:
+     modifies: do syntactic check 
+       except for currently analyzed abstract vars     
+
+  -uniqueness analysis
+  -back pointer analysis
+
+  -analyzing maps and arrays
+  
+  -analyse only parts of the code necessary to verify method given (in program call)
+
+************************************************************
+Framework
+
+  -refinement conditions, encapsulation
+
+  -parameterized formula shorthands
+
+  -communicating information over syntax trees
+
+  -loop invariants via templates?
+
+  -ubiquitous invariants that hold after every stetement/block
+
+  -typestate checking: do we need a separate analysis,
+   how does vcgen work, what about loop invariants,
+   can unibuitous invariants help?
+
+************************************************************
+Decision procedures
+
+  -BAPA: complexity for quantifier-free case, 
+         interface to linear programming solver
+         simplifications         
+
+  -parameterized formula caching
+
+  -interfaces to Darwin, sets with cardinalities
+   through Darwin
+
+  -incorporating MONA for trees, strings, sets
+
+  -interface to SPASS
+
+  -combination techniques: 
+     finding state of the art
+     abstraction and formula approximation
+
+  -two-variable logic with counting
+  -guarded fixpoint logic
+
+************************************************************
+
+-have static and non-static class invariants
+
+ non-static class invariants are implicitly quantified over all
+ objects
+
+-no constructors for now
+
+
+-translate classes into modules, by eliminating "this",
+ because there is no dynamic dispatch
+
+-verify AVL trees
+
+-decision procedure for total orderings
+
+ verification (in Isabelle?) that procedure implements
+ a total ordering
+
+-constraint-based BA reasoning
+
+-Alex's example:
+  in representation of relation, have no empty sets  
+
+  efficient way to detecting emptiness of a hashset is
+  to keep size field
+
+  also, removeKey - removes all bindings of the key,
+      returns previous set from hashtable, and the
+      implementation simply checks that the returned object
+      was not set, if it was not null, the we know there was
+      at least one element there
+
+  (in code for Adam)
+
+-data structures with splicing: e.g. splicing list segments,
+ useful e.g. when translating commands into sequences of commands
+ to avoid re-traversing.
+
+ Data structures with merge operations, implementing union.
+
+
+************************************************************
+
+check that invariants are initially true - in all plugins
+
+1. verify private procedures defaultly
+
+pale: 
+  make primed return values work
+
+fix benchmarks
+
+vc gen plugin:
+
+set removal from array
+types for arrays in the vc gen plugin
+
+typestate:
+
+extension to arrays and fields (so that we can say 
+A in predic => A.h in predic, a role-like property, without
+resorting to methods, and we can put that in our rep invariant)
+calling private procs
+
+scopes:
+
+more scopes examples
+private sets
+
+general framework:
+
+modifies clause simplification (think it through)
+multiple analyses for one module (write this up - Sep 1, 2004 in book)
+optimization for defaults
+
+is it easy to verify array bounds?
+
+spec browser
+
+benchmarks:
+
+finish annotating water: more scopes, ensemble, h2o modules, 
+  other plugins
+
+Patrick's list of "Things we would like to do":
+
+  -predicate abstraction (Thomas)
+  -synthesize loop invariants -- Karen?
+    vkuncak: invariant templates with 
+             monotonicity computation
+             predefined templates e.g. for local variables
+  -relations
+  -Alloy spec checker
+  -PALE: arrays, fields
+         relations
+         "shape anlalysis for data refinement"
+  -composing analyses at a per-method or func level / pluginlets
+  -new benchmark: calendar, ...
+  -successor to scopes - how should invariants work?
+  -reentrant respinning (?)
+  -private proc fixing
+  -array bounds checking
+  -multiple dispatch
+  -slides from talk
+    vkuncak: from all talks
+  -hashtable spec
+
+-allow overloading, also for constructors, make it also
+ work with -method command line argument

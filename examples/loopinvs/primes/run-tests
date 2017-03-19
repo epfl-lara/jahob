@@ -1,0 +1,3 @@
+#/usr/bin/time -a -o intset.out -- ../../../bin/jahob.opt IntSet.java -nobackground -method IntSet.add -timeout 60 -failfast -sastvc -v -usedp e spass cvcl isa | tee intset.out
+/usr/bin/time ../../../bin/jahob.opt IntSet.java -nobackground -method IntSet.add -timeout 60 -failfast -sastvc -v -usedp e spass cvcl isa 2>>intset.out | tee -a intset.out
+ensure_verifies $? "loopinvs/gtree/Tree.java:Tree"

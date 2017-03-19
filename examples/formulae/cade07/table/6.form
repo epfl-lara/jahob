@@ -1,0 +1,5 @@
+(x :: obj) : C & C1 = (C \<setminus> {x}) &
+cardinality (alloc1 \<setminus> alloc0) <= (1 :: int) &
+cardinality (alloc2 \<setminus> alloc1) <= cardinality C1
+-->
+   cardinality (alloc2 \<setminus> alloc0) <= cardinality C

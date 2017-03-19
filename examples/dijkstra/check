@@ -1,0 +1,2 @@
+# This checks all classes, in particular ones with methods: Vector and Dijkstra.
+../../bin/jahob.opt Dijkstra.java -class Dijkstra -sastvc -usedp cvcl

@@ -1,0 +1,1 @@
+/usr/bin/time ../../../bin/jahob.opt FuncTree.java -method FuncTree.remove -sastvc -usedp spass:SpassSortGuards=no:OrderAxioms:TimeOut=1:Sorting:Filtering=75 spass:SpassSortGuards=no:TimeOut=120

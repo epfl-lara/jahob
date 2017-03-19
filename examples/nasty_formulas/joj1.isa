@@ -1,0 +1,17 @@
+[|((ArraySet_content :: obj set) = ({n. (EX (j::int). (((n :: obj) = ((arrayRead (Array_arrayState :: (obj => (int => obj))) (ArraySet_a :: obj) j) :: obj)) & ((0 :: int) <= (j :: int)) & (intless j (ArraySet_size :: int))))} :: obj set));
+(ALL (xObj::obj). ((xObj :: obj) : (Object :: obj set)));
+(((Array Int ArraySet) :: obj set) = ({null} :: obj set));
+((null :: obj) : (Object_alloc :: obj set));
+(ArraySet_init :: bool);
+((x :: obj) ~= (null :: obj));
+comment ''ArraySet_PrivateInv'' ((ArraySet_init :: bool) --> (((ArraySet_a :: obj) ~= (null :: obj)) & (intless (0 :: int) (fieldRead (Array_length :: (obj => int)) (ArraySet_a :: obj))) & ((0 :: int) <= (ArraySet_size :: int)) & ((ArraySet_size :: int) <= ((fieldRead (Array_length :: (obj => int)) (ArraySet_a :: obj)) :: int))));
+comment ''ArraySet_PrivateInva is part of private rep'' ((ArraySet_init :: bool) --> ((ArraySet_a :: obj) : (ArraySet_hidden :: obj set)));
+comment ''x_type'' ((x :: obj) : (Object :: obj set));
+comment ''x_type'' ((x :: obj) : (Object_alloc :: obj set));
+((0 :: int) <= (i_8 :: int));
+((i_8 :: int) <= (ArraySet_size :: int));
+((content_i_10 :: obj set) = ({n. (EX (j::int). (((n :: obj) = ((arrayRead (Array_arrayState :: (obj => (int => obj))) (ArraySet_a :: obj) j) :: obj)) & ((0 :: int) <= (j :: int)) & (intless j (i_8 :: int))))} :: obj set));
+((x :: obj) ~: (content_i_10 :: obj set));
+((intless (i_8 :: int) (ArraySet_size :: int)) :: bool);
+(~((((arrayRead (Array_arrayState :: (obj => (int => obj))) (ArraySet_a :: obj) (i_8 :: int)) :: obj) = (x :: obj)) :: bool))|] ==>
+    comment ''InvPreservation'' (((intplus (i_8 :: int) (1 :: int)) :: int) <= (ArraySet_size :: int))

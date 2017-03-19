@@ -1,0 +1,4 @@
+card ((A1 :: obj set) \<setminus> A0) <= (k1 :: int) &
+card ((A2 :: obj set) \<setminus> A1) <= (1 :: int) &
+card ((A3 :: obj set) \<setminus> A2) <= (1 :: int) -->
+card ((A3 :: obj set) \<setminus> A0) <= k1 + 2

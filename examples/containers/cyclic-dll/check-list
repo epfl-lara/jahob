@@ -1,0 +1,3 @@
+../../../bin/jahob.opt -method List.init cyclic_dll.java -failfast -usedp mona cvcl
+../../../bin/jahob.opt -method List.add cyclic_dll.java -failfast -usedp mona cvcl
+../../../bin/jahob.opt -method List.member cyclic_dll.java -failfast -usedp mona cvcl

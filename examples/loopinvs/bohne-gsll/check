@@ -1,0 +1,1 @@
+../../../bin/jahob.opt List.java  -method $* -bohne -nobackground -usedp mona

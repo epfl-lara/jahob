@@ -1,0 +1,34 @@
+begin_problem(jahob).
+list_of_descriptions.
+name({* *}).
+author({*  *}).
+status(unknown).
+description({* *}).
+end_of_list.
+
+list_of_symbols.
+
+functions[assocList_data, array_arrayState, hashtable_size, 
+assocList_next, this, 0, null, key, times, pair_key, value, array_length, 
+% THIS IS THE PROBLEM, DIV 
+%div, 
+5, hashtable_table, assocList_key, hashtable_size_28, 4, pair_value, hashtable_h].
+
+predicates[Array, Object_alloc_27, AssocList, Object_alloc, Pair, 
+Hashtable_init, Hashtable_content_29, Hashtable_hidden, Hashtable_content, Object, AssocList_content, Hashtable, _Lteq].
+sorts[int,obj,bool,float,unknown_sort].
+end_of_list.
+
+list_of_formulae(axioms).
+
+formula(forall( [_V_4012], or(or(not(Object_alloc(_V_4012)), not(AssocList(_V_4012)), not(equal(_V_4012, null))), forall( [_Z_setinc_foltrans_2_0, _Z_setinc_foltrans_2_1], not(AssocList_content(_V_4012, _Z_setinc_foltrans_2_0, _Z_setinc_foltrans_2_1)))))).
+
+end_of_list.
+
+
+list_of_formulae(conjectures).
+formula(not(equal(null, hashtable_table(this))))
+
+.end_of_list.
+
+end_problem.

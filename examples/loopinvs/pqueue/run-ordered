@@ -1,0 +1,2 @@
+/usr/bin/time ../../../bin/jahob.opt OrderedPQ.java PriorityQueueElement.java -nobackground -sastvc -class PriorityQueue -usedp z3 isa 2>&1 | tee ordered.out
+ensure_verifies $? "loopinvs:pqueue:OrderedPQ"

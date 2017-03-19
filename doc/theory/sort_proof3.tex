@@ -1,0 +1,233 @@
+\documentclass{article}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{stmaryrd}
+\usepackage{enumerate}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Pre}{\mathcal{P}}
+
+\newcommand{\evaluation}[2][]{\ensuremath{{\llbracket #2\rrbracket}_{#1}}}
+\newcommand{\evaluni}[2][]{\ensuremath{{\llbracket #2\rrbracket^{*}}_{#1}}}
+
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\DeclareMathOperator{\Null}{null}
+
+\title{Why you can  drop sorts}
+\author{}
+
+\begin{document}
+\maketitle
+
+
+We would like to prove in an automated way that multi-sorted first order formulas are valid . But most of the first-order theorem prover do not know about sorts (with the notable exception of SPASS). Sorts can be encoded as unary predicate guards on quantified variables, but this makes the input formulas bigger, and the resolution proofs longer, compared to a multi-sorted resolution proof. Under certain conditions, being able not to worry about sorts lead to a consistent speed-up of the theorem proving process.
+
+Removing sort cannot turn an unsatisfiable formula into a satisfiable one. If a multi-sorted formula is unsatisfiable, there exist a multi-sorted resolution proof of this, since resolution is complete. The same proof can be replayed with sorts erased to prove that the original formula with sorts erased is unsatisfiable. However, the contrary may happen, as it is shown in the next section.
+
+\section{When is it not working}
+
+\subsection{Sub-sorting}
+
+In the presence of subsorting, ignoring sort can be unsound, as suggested by Christoph Weindenbach.
+Consider two sorts $Node$ and $Object$, with $Node$ being a subsort of $Object$. Consider two first-order formulas:
+\begin{eqnarray*}
+        \forall (x:Node).   &x \neq null \Longrightarrow next(x) \neq x\\
+        \exists (y:Object). &y \neq null \land  next(y) = y 
+\end{eqnarray*}
+
+If we strip sorts, this clause set become unsatisfiable, whereas it is satisfiable if we keep sorts.
+
+\subsection{Sorts of differents cardinalities}
+
+Consider two disjoint sorts $S$ and $T$, and consider the following formulas:
+
+\begin{eqnarray*}
+        \forall (x, y : S). &x = y\\
+        \exists (u, v : T). &u \neq v 
+\end{eqnarray*}
+
+This formula set becomes unsatisfiable if sorts are droped, but is satisfiable if they are kept. The first formula collapses the sort $S$ to a single element, and the second expects the sort  $T$ to contain two distincts elements.
+
+
+We will then focus on a situation where the two above counter-examples are excluded : we will consider $n$ pairwise disjoint and equipotent sorts $S_1, \ldots, S_n$.
+
+\section{formalities}
+
+We will introduce two kinds of semantics brackets : $\evaluation{\varphi}{\rho}$ for multi-sorted logic and $\evaluni{\psi^*}{\rho^*}$ for unsorted logic.
+
+\subsection{Tarski semantics for unsorted logic}
+
+\begin{description}
+\item[signature] An unsorted signature $\Sigma$ is given by :
+\begin{itemize}
+\item a set $\V$ of variables 
+\item a set $\Pre$ of predicates, with their arity.
+\item a set $\F$ of function symbols, with their arity.
+\end{itemize}
+
+\item[structure] An unsorted $\Sigma$-structure $\I$ is given by :
+\begin{itemize}
+\item a domain set $X$
+\item a environment, which maps every variables of $\V$ to an element of the domain $X$.
+\item for every predicate $P$ in $\Pre$, of arity $n$, the set $P_{\I}$ of all tuples included in $X^{n}$, defining the tuples on which $P$ is true.
+\item for every function symbol $f$ in $\F$, of arity $n$, the function graph of $f$, that is a set $f_{\I}$ of tuples included in $X^{n+1}$, such that for all $(x_1, \hdots, x_n)$, there exists one and only one $x$ such that  $(x_1, \hdots, x_n, x) \in f_{\I}$ (which means that  $f(x_1, \hdots, x_n) = x$). 
+\end{itemize}
+
+Now, let us fix a an unsorted $\Sigma$-structure $\I$.
+
+\item[interpretation of terms] A term is either a constant, a variable or a function symbol
+\begin{itemize}                                                                                          
+  \item[constants] $\evaluni{c}{\rho^*} = c \in X$
+  \item[variables] if $x \in \V$, then $\evaluni{x}{\rho^*} = \rho(x)$
+  \item[function symbols] if $f \in \F$, then $\evaluni{f(x_1,\ldots,x_n)}{\rho^*} = f(\evaluni{x_1}{\rho^*},\ldots,\evaluni{x_2}{\rho^*})$
+\end{itemize}
+
+\item[interpretation of formulas] 
+
+\begin{eqnarray*}
+\evaluni{P(x_1, \hdots, x_n)}{\rho^*} &=& (\evaluni{x_1}{\rho},\ldots,\evaluni{x_n}{\rho}) \in P\\
+\evaluni{\varphi_1 \land \varphi_2}{\rho^*} &=& \evaluni{\varphi_1}{\rho^*} \land \evaluni{\varphi_2}{\rho^*}\\
+\evaluni{\varphi_1 \lor \varphi_2}{\rho^*} &=& \evaluni{\varphi_1}{\rho^*} \lor \evaluni{\varphi_2}{\rho^*}\\
+\evaluni{¬ \varphi}{\rho^*} &=& ¬ \evaluni{\varphi}{\rho^*}\\
+\evaluni{\exists x. \varphi}{\rho^*} &=& \exists x \in X. \evaluni{\varphi}{\rho^*[x \to a]}\\
+\evaluni{\forall x. \varphi}{\rho^*} &=& \forall x \in X. \evaluni{\varphi}{\rho^*[x \to a]}\\
+\end{eqnarray*}
+
+\end{description}
+
+
+\subsection{Tarski semantics for multi-sorted logic}
+
+We consider the case of an arbitrary number of paiwise disjoint and equipotent (say, countably infinite) sorts $S_1, \hdots, S_n$. 
+
+\begin{description}
+\item[signature] A multi-sorted signature $\Sigma$ is given by :
+\begin{itemize}
+\item a set $\V$ of variable, along with their sort
+\item a set $\Pre$ of predicates, with their types (i.e. the type of the tuples they accept). A type is an expresion of the form $s_1 * \hdots * s_k$, for a predicate of arity $k$. This means that the argument of $P$ must me a tuple in the set $S_{s_1} * \ldots * S_{s_k}$.
+\item a set $\F$ of function symbols, with their types. The type of a function describes the sort of its arguments and of its result. It's an expression of the form  $s_1 * \hdots * s_k \to s_{k+1}$
+\end{itemize}
+
+\item[structure] A multi-sorted $\Sigma$-structure $\I$ is given by :
+\begin{itemize}
+\item for each sort, a domain set $S_i$, with the condition that if $i \neq j$, then $s_i$ and $S_j$ are equipotent and disjoint.
+\item a well-sorted environment $\rho$, which maps every variable to an element of the domain of the corresponding sort.
+\item for every predicate $P$ in $\Pre$, of type  $s_1 * \hdots * s_k$, a set of tuples included in  $s_1 * \hdots * s_k$, defining the tuples on which $P$ is true.
+
+\item for every function symbol $f$ in $\F$, of type $s_1 * \hdots * s_k \to s_{k+1}$, the function graph of $f$, that is a set of tuples included in $S_{s_1} * \hdots * S_{s_k} * S_{s_{k+1}}$.
+\end{itemize}
+
+Terms are interpreted the same way as in unsorted logic.
+
+\item[Interpretation of formulas] All the cases are similar to the uni-sorted case, except : 
+\begin{itemize}
+\item $\evaluation{\exists (x : S_u). \varphi}{\rho} = \exists x \in S_u. \evaluation{\varphi}{\rho[x \to a]}$
+\item $\evaluation{\forall (x : S_u). \varphi}{\rho} = \forall x \in S_u. \evaluation{\varphi}{\rho[x \to a]}$
+\end{itemize}
+
+\end{description}
+
+Note that we want to consider one equality predicate per sort, to avoid equality overloading.
+
+
+\section{Dropping sorts : the case with equality}
+
+
+\subsection{A model theoretic argument}
+
+We are interested in the validity of formulas. We then want to prove that if we take a multi-sorted formula $\varphi$ with equality and strip its sorts to obtain $\varphi^*$, then if $\varphi^*$ is valid,  $\varphi$ is also valid. This is equivalent to :  if $\lnot \varphi^*$ is unsatisfiable then $\lnot \varphi$ is unsatisfiable. Or, if $\lnot \varphi$ is satisfiable then $\lnot \varphi^*$ is satisfiable.
+
+We then want to deduce the existence of a model in the unsorted case from the existence of a model in the multi-sorted case. We derive such unsorted models from the multi-sorted ones. Let then fix a multi-sorted structure $\I$ over the signature $\Sigma$.
+
+Because all the $S_i$ are pairwise equipotent, we can consider a set $S$ and $n$ functions $f_{i}$, for $1 \leq i \leq n$, such that $f_i$ is a bijection from $S_i$ to $S$. $S$ can be one of the $S_i$, for example. This set $S$ will be the domain of the unsorted model $\I^*$.
+
+We now give a way to transform a multi-sorted environment to an unsorted one, and vice versa. In a multi-sorted environmnent $\rho$, say that $\rho(x) = e \in S_i$. In the corresponding unsorted environmnent $\rho^*$, $x$ would be mapped to $f_i(e)$. Conversely, if in a unsorted environment $\rho^*$ the variable $x$, originally of sort $S_i$ were mapped to an element $e$ of $S$, then we can reconstruct the multi-sorted environment $\rho^*$ by mapping $x$ to $f_i^{-1}(e)$. Note that this two transformations are inverse of each other, so we have a bijection between unisorted environmnents and multi-sorted ones.
+
+We will define the same kind of transformation for predicates and function symbols. By Tarskian semantics, each predicate $P$ of type $S_{s_1}*\ldots*S_{s_k}$ is defined in $\I$ by the set of tuples for which it is true : 
+
+$$P_{\I} = \left\{ (x_1,\ldots,x_k) \in S_{s_1}*\ldots*S_{s_k} \mid \evaluation{P(x_1, \ldots, x_k)} = \top \right\}$$ 
+
+We define : 
+
+$$P_{\I^*} = \biggl\{  \bigl(f_{s_1}(x_1),\ldots,f_{s_k}(x_k)\bigr) \in S^k \mid  (x_1,\ldots,x_k) \in S_{s_1}*\ldots*S_{s_k} \land \evaluation{P(x_1, \ldots, x_k)} = \top \biggr\}$$ 
+
+If we define $f_{s_1*\ldots*s_k}(x_1,\ldots,x_k) = \bigl( f_{s_1}(s_1),\ldots, f_{s_k}(x_k) \bigr)$, then $P_{\I^*} = f_{s_1*\ldots*s_k}(P_{\I})$.
+
+%Note that we can reverse-engine the definition :
+%$$\evaluation{P} = \biggl\{  \bigl(f_{s_1}^{-1}(x_1),\ldots,f_{s_k}^{-1}(x_k) \bigr) \in S_{s_1}*\ldots*S_{s_k} \mid (x_1,\ldots,x_k) \in S^k \land \evaluni{P^* (x_1, \ldots, x_k)} = \top \biggr\}$$ 
+
+The same kind of transformation goes for function symbols. Let $g$ be a function symbol of type $s_1*\ldots*s_k \to s_{k+1}$ in $\I$.
+$$g_{\I} = \left\{ (x_1,\ldots,x_{k+1}) \in S_{s_1}*\ldots*S_{s_{k1+1}} \mid \evaluation{g(x_1, \ldots, x_k)} = x_{k+1} \right\}$$ 
+
+we define :
+$$g_{\I^*} = \biggl\{ \bigl(f_{s_1}(x_1),\ldots,f_{s_{k+1}}(x_{k+1})\bigr) \in S^{k+1} \mid  (x_1,\ldots,x_{k+1}) \in S_{s_1}*\ldots*S_{s_{k+1}} \land \evaluation{g(x_1, \ldots, x_k)} = x_{k+1} \biggr\}$$
+
+Again, this means : $g_{\I^*} = f_{s_1*\ldots*s_{k+1}}(g_{\I})$.
+
+%Note that this is defining a functional relation, since the $f_i$ are bijective.
+%and conversely :
+%$$\evaluation{g^*} = \biggl\{ \bigl(f_{s_1}^{-1}(x_1),\ldots,f_{s_{k+1}}^{-1}(x_{k+1})\bigr) \in S_{s_1}*\ldots*S_{s_{k+1}} \mid (x_1,\ldots,x_{k+1}) \in S^{k+1} \land \evaluni{g(x_1, \ldots, x_k)} = x_{k+1} \biggr\}$$
+
+With these definition of $\I^*$, we have the following correspondance between interpretations in $\I$ and in $\I^*$:
+
+\begin{lemma}let $\I$ be a multi-sorted structure, $t$ a multi-sorted term of sort $S_u$,  $\rho$ an multi-sorted environment. Then :
+  $$\evaluni{t}{\rho^*} = f_u\bigl( \evaluation{t}{\rho}\bigr)$$
+\end{lemma}
+
+\begin{proof}
+By induction on the structure of terms. If $t$ is a variable, it follows from the definition of $\rho^*$. If $t$ is a function symbol $g$, we use the induction hypothesis on the arguments. It then follows from the definition of $g^*$.
+\end{proof}
+
+
+We can also define a conversion bewteen sorted an unsorted formulas, where sorts annotation in quantifiers are erased. We build the new structure $\I^*$ such that the following correspondance result holds. 
+
+\begin{theorem} For all formula $\varphi$ and all structure $\I$ over the signature $\Sigma$, and all well-sorted environments $\rho$ :
+  $$ (\I, \rho \models \varphi) \iff (\I^*, \rho^* \models \varphi*) $$
+\end{theorem}
+
+\begin{proof} We can always rewrite $\varphi$ into an equivalent formula without universal quantifiers, by using the fact that $\forall x. \psi$ is equivalent to $¬ (\exists x. ¬ \psi)$. The proof is by induction on $\varphi$.
+\begin{itemize}
+
+\item If $\varphi \equiv (t_1 = t_2)$ where $t_1$ and $t_2$ are terms of sort $S_u$. This is just an application of the previous lemma.
+
+\item If $\varphi \equiv P(x_1,\ldots,x_k)$ where $P$ is a predicate of type $S_{s_1}*\ldots*S_{s_k}$, then we have : 
+  $$\bigl(\evaluation{x_1}{\rho},\ldots,\evaluation{x_k}{\rho}\bigr) \in P_{\I}$$ 
+  Which, by definition of $P^*$, is equivalent to : 
+  $$\bigl(f_{s_1}(\evaluation{x_1}{\rho}),\ldots,f_{s_k}(\evaluation{x_k}{\rho})\bigr) \in P_{\I^*}$$
+  And thanks to the previous lemma, this is also equivalent to :  
+  $$\bigl(\evaluni{x_1}{\rho^*}),\ldots,\evaluni{x_k}{\rho^*} \bigr) \in P_{\I^*}$$
+  Which means that $\I^*, \rho^* \models P(x_1,\ldots,x_k)$.
+
+\item The cases $\varphi \equiv \varphi_1 \land \varphi_2$, $\varphi \equiv \varphi_1 \lor \varphi_2$ and $\varphi \equiv \lnot \varphi'$ are trivial by induction.
+
+\item $\varphi = \exists (z : S_v). \varphi'$.
+  \begin{description}
+    \item[$\Longrightarrow$] Let's assume that $\I, \rho \models \varphi$. Then, there exists an element $e$ of the sort $S_v$ such that $\I, \rho[z \mapsto e] \models \varphi'$. Note that $\rho[z \mapsto e]$ is a well-sorted environment. $(\rho[z \mapsto e])^* = \rho^*[z \mapsto f_v{e}]$, so by induction, $\I^*, \rho^*[z \mapsto f_v(e)] \models \varphi'^{*}$, so $\I^*, \rho^* \models \exists z. \varphi'^*$.
+
+    \item[$\Longleftarrow$] Let's assume that $\I^*, \rho^* \models \varphi^*$. Then, there exists $e$ in the domain $S$ of $\I^*$ such that $\I^*, \rho[z \mapsto e] \models \varphi'^*$. In $\varphi$, the variable $z$ has the sort $S_v$. Let us introduce a new environmnent $\rho' = \rho[z \mapsto f_v^{-1}(e)]$. It is a well-sorted environment, and $\rho'^* = \rho^*[z \mapsto e]$. Therefore, by induction hypothesis, $\I, \rho' \models \varphi'$, and then $\I, \rho \models  \exists (z : S_v). \varphi'$.
+\end{description}
+      
+\end{itemize}
+
+\end{proof}
+
+\end{document}

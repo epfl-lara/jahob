@@ -1,0 +1,7 @@
+([|(ALL t_1. (fol_reach_1 t_1 (Node_parent t_1)));
+(ALL t1_1 t2_1 t3_1. (((fol_reach_1 t1_1 t2_1) & (fol_reach_1 t2_1 t3_1)) --> (fol_reach_1 t1_1 t3_1)));
+(ALL t1_1 t2_1. ((((Node_parent t1_1) = null) & ((Node_right t2_1) = t1_1)) --> (t1_1=null)));
+(ALL t_1. (((Node_parent (Node_right t_1)) = t_1) | ((Node_right t_1) = null)));
+((n_3=null) | ((Tree_root~=null) & (fol_reach_1 n_3 Tree_root) & (fol_reach_1 Tree_root (bp_q2_1 n_3))));
+(ALL t_1. ((bp_q2_1 t_1) = null))|] ==>
+    (((Node_right n_3) = null) | ((Tree_root~=null) & (fol_reach_1 (Node_right n_3) Tree_root) & (fol_reach_1 Tree_root (bp_q2_1 (Node_right n_3))))))

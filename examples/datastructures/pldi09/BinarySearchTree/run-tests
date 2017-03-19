@@ -1,0 +1,2 @@
+/usr/bin/time ../../../../bin/jahob.opt BinarySearchTree.java -nobackground -class BinarySearchTree -timeout 50 -sastvc -printcounts -failfast -usedp mona spass z3
+ensure_verifies $? "pldi09:BinarySearchTree"

@@ -1,0 +1,2 @@
+#!/bin/sh
+../../../bin/jahob.opt List.java Node.java -bohne -abstractfinal -sastvc $* -usedp mona z3 cvcl bapa:fullbapa:SliceQuantAssms

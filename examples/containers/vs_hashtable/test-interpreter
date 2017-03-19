@@ -1,0 +1,1 @@
+/usr/bin/time -a -o interpret.out -- ../../../bin/jahob.opt AssocList.java -class AssocList -interpret -noverify | tee interpret.out

@@ -1,0 +1,13 @@
+jhb="../../bin/jahob.opt List.java -nobackground -sastvc"
+$jhb -method List.addNew -usedp spass mona bapa
+ensure_verifies $? "combination List.addNew"
+$jhb -method List.member -usedp spass mona bapa
+ensure_verifies $? "combination List.member"
+$jhb -method List.getSize -usedp spass mona bapa
+ensure_verifies $? "combination List.getSize"
+../../bin/jahob.opt List.java -nobackground -method List.init -usedp spass mona bapa
+ensure_verifies $? "combination List.init"
+$jhb -method List._INIT -usedp spass mona bapa
+ensure_verifies $? "combination List._INIT"
+$jhb -method List.addBroken -usedp spass mona bapa
+ensure_fails $? "combination List.addBroken"

@@ -1,0 +1,1 @@
+/usr/bin/time ../../../bin/jahob.opt List.java Node.java -interpret -class List -noverify | tee out

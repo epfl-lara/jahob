@@ -1,0 +1,8 @@
+../../../bin/jahob.opt Resolve.java -method Resolve.work -usedp spass
+ensure_verifies $? "Resolve.work"
+../../../bin/jahob.opt Resolve.java -method Resolve.worknot -usedp spass
+ensure_fails $? "Resolve.worknot"
+../../../bin/jahob.opt Resolve.java -method Resolve.iwork -usedp spass
+ensure_verifies $? "Resolve.iwork"
+../../../bin/jahob.opt Resolve.java -method Resolve.iworknot -usedp spass
+ensure_fails $? "Resolve.iwork"

@@ -1,0 +1,1 @@
+../../../bin/jahob.opt Node.java BinaryTree.java -method BinaryTree.remove -v -failfast -timeout 120 $@ -usedp spass:Filtering=70:TimeOut=10 mona cvcl:TimeOut=20 spass:TimeOut=20

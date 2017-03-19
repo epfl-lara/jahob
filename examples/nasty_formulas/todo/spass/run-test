@@ -1,0 +1,4 @@
+# this works
+../../../../bin/formDecider.opt add.form -usedp z3
+# but not this - THE PROBLEM IS IN SPASS-3.0 which does not like 'div' to be declared as function symbol
+../../../../bin/formDecider.opt add.form -usedp spass

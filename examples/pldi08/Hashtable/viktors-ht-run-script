@@ -1,0 +1,1 @@
+../../../bin/jahob.opt Hashtable.java -hidden -sastvc -method Hashtable.remove -failfast -usedp z3 spass:TimeOut=20 spass:SpassSortGuards=no:OrderAxioms:ArithAxioms:TimeOut=20

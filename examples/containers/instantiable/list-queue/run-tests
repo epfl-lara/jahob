@@ -1,0 +1,2 @@
+../../../../bin/jahob.opt Queue.java -sastvc -class Queue -usedp spass e
+ensure_verifies $? "InstantiatableQueue"

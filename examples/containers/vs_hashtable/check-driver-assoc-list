@@ -1,0 +1,1 @@
+../../../bin/jahob.opt AssocList.java -failfast -method AssocList.testDriver -sastvc -usedp cvcl

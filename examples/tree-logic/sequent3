@@ -1,0 +1,25 @@
+([|(comment ''List.reachParent_def'' ((List_reachParent :: (obj => (obj=>bool))) = ((% (a::obj) (b::obj). ((rtrancl_pt :: ((obj => (obj=>bool)) => (obj => (obj=>bool)))) (% (x::obj) (y::obj). (((fieldRead (Node_prev :: (obj=>obj)) x) :: obj) = (y::obj))) a b)) :: (obj=>obj=>bool))));
+(comment ''List.content_def'' ((List_content :: obj set) = ({x. (((x::obj) ~= (null::obj)) & ((rtrancl_pt :: ((obj => (obj=>bool)) => (obj => (obj=>bool)))) (% (v::obj) (w::obj). (((fieldRead (Node_prev :: (obj=>obj)) v) :: obj) = (w::obj))) x (List_first::obj)))} :: obj set)));
+(((fieldRead Node_next null) :: obj) = (null::obj));
+(((fieldRead Node_prev null) :: obj) = (null::obj));
+(ALL (xObj::obj). ((xObj::obj) : (Object :: obj set)));
+(comment ''ProcedurePrecondition'' ((n::obj) ~= (null::obj)));
+(comment ''ProcedurePrecondition'' ((pos::obj) : (List_content :: obj set)));
+(comment ''ProcedurePrecondition'' ((n::obj) ~: (List_content :: obj set)));
+(comment '': ProcedurePrecondition'' ((ptree :: ((obj=>obj) => (((obj=>obj) list) => bool))) (Node_prev :: (obj=>obj)) [(Node_next :: (obj=>obj))]));
+(comment ''AssumingLoopInv'' ((ptree :: ((obj=>obj) => (((obj=>obj) list) => bool))) (Node_prev :: (obj=>obj)) [(Node_next :: (obj=>obj))]));
+(comment ''AssumingLoopInv'' ((List_reachParent :: (obj => (obj=>bool))) (pos::obj) (List_first::obj)));
+(comment ''AssumingLoopInv'' ((List_reachParent :: (obj => (obj=>bool))) (e_2::obj) (List_first::obj)));
+(comment ''AssumingLoopInv'' ((List_reachParent :: (obj => (obj=>bool))) (pos::obj) (e_2::obj)));
+(comment ''AssumingLoopInv'' ((List_reachParent :: (obj => (obj=>bool))) (pos::obj) null));
+(comment ''AssumingLoopInv'' ((List_reachParent :: (obj => (obj=>bool))) (e_2::obj) null));
+(comment ''AssumingLoopInv'' ((List_reachParent :: (obj => (obj=>bool))) (List_first::obj) null));
+(comment ''AssumingLoopInv'' (((e_2::obj) ~= (List_first::obj)) --> ((prevNode_2::obj) ~= (null::obj))));
+(comment ''AssumingLoopInv'' (((prevNode_2::obj) ~= (null::obj)) --> (((List_reachParent :: (obj => (obj=>bool))) (prevNode_2::obj) (List_first::obj)) & (((fieldRead (Node_next :: (obj=>obj)) (prevNode_2::obj)) :: obj) = (e_2::obj)))));
+(comment ''LoopConditionFalse'' (~(((e_2::obj) ~= (pos::obj)) :: bool)));
+((pos::obj) = (e_2::obj));
+(comment ''TrueBranch'' (((prevNode_2::obj) = (null::obj)) :: bool));
+((prevNode_2::obj) = (null::obj));
+(comment ''List.content_def'' ((List_content_1 :: obj set) = ({x. (((x::obj) ~= (null::obj)) & ((rtrancl_pt :: ((obj => (obj=>bool)) => (obj => (obj=>bool)))) (% (v::obj) (w::obj). (((fieldRead ((fieldWrite (Node_prev :: (obj=>obj)) (n::obj) null) :: (obj=>obj)) v) :: obj) = (w::obj))) x (n::obj)))} :: obj set)))|] ==>
+
+(((ALL v_5. ((((fieldWrite Node_prev n null) ((fieldWrite Node_next n List_first) v_5)) = v_5) | (((fieldWrite Node_next n List_first) v_5) = null))) )))

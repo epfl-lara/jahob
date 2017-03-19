@@ -1,0 +1,2 @@
+../../../bin/jahob.opt DLL.java Node.java -interpret -method DLL.addLast -method DLL.isEmpty -method DLL.remove -method DLL.driver -noverify >& out
+

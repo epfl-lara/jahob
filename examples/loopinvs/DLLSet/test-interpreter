@@ -1,0 +1,2 @@
+/usr/bin/time -a -o interpret.out -- ../../../bin/jahob.opt DLLSet.java -class DLLSet -interpret -noverify | tee interpret.out
+#/usr/bin/time ../../../bin/jahob.opt DLLSet.java -class DLLSet -interpret -noverify 2>>interpret.out | tee -a interpret.out

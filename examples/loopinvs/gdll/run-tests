@@ -1,0 +1,39 @@
+/usr/bin/time ../../../bin/jahob.opt DLL.java -nobackground -method DLL.clearShouldNotVerify -usedp mona
+ensure_fails $? "DLL.clearShouldNotVerify"
+VERIFY="../../../bin/jahob.opt DLL.java -sastvc -nobackground"
+$VERIFY -method DLL._INIT -usedp cvcl
+ensure_verifies $? "DLL._INIT"
+$VERIFY -method DLL.getFirst -usedp mona
+ensure_verifies $? "DLL.getFirst"
+$VERIFY -method DLL.getLast -usedp mona
+ensure_verifies $? "DLL.getLast"
+$VERIFY -method DLL.addLast -usedp mona
+ensure_verifies $? "DLL.addLast"
+$VERIFY -method DLL.removeFirst -usedp mona
+ensure_verifies $? "DLL.removeFirst"
+$VERIFY -method DLL.removeLast -usedp mona
+ensure_verifies $? "DLL.removeLast"
+$VERIFY -method DLL.addFirst -usedp mona
+ensure_verifies $? "DLL.addFirst"
+$VERIFY -method DLL.addLast -usedp mona
+ensure_verifies $? "DLL.addLast"
+$VERIFY -method DLL.contains -usedp mona
+ensure_verifies $? "DLL.contains"
+$VERIFY -method DLL.size -usedp mona
+ensure_verifies $? "DLL.size"
+$VERIFY -method DLL.add -usedp mona
+ensure_verifies $? "DLL.add"
+$VERIFY -method DLL.remove -usedp mona
+ensure_verifies $? "DLL.remove"
+$VERIFY -method DLL.clear -usedp mona
+ensure_verifies $? "DLL.clear"
+$VERIFY -method DLL.get -usedp mona
+ensure_verifies $? "DLL.get"
+$VERIFY -method DLL.removeAt -usedp mona
+ensure_verifies $? "DLL.removeAt"
+$VERIFY -method DLL.addAt -usedp mona
+ensure_verifies $? "DLL.addAt"
+$VERIFY -method DLL.indexOf -usedp z3 mona
+ensure_verifies $? "DLL.indexOf"
+$VERIFY -method DLL.isEmpty -usedp mona
+ensure_verifies $? "DLL.isEmpty"

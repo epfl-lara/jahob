@@ -1,0 +1,202 @@
+# for profiling:
+# OCAMLC=ocamlcp -p f
+OCAMLC=ocamlc.opt
+OCAMLOPT=ocamlopt.opt
+OCAMLDEP=ocamldep.opt
+OCAMLDOC=ocamldoc
+DIRS=bapa decision form isabelle coq tptp \
+     main mona \
+     util smtlib
+INCLUDES=-I ast -I bapa -I decision -I form -I isabelle -I coq -I tptp \
+	-I main -I mona -I presburger \
+	-I util -I smtlib 
+OCAMLFLAGS=$(INCLUDES)    # add other options for ocamlc here
+OCAMLOPTFLAGS=$(INCLUDES)  # add other options for ocamlopt here
+OCAMLYACC=ocamlyacc
+OCAMLYACCFLAGS=
+OCAMLLEX=ocamllex
+BIN=../bin
+DOC=../doc
+LIB=../lib
+DOC_SRC=*/*.ml */*.mli
+DEP_DOT_FILE=$(DOC)/depend/dependencies.dot
+DEP_PS_FILE=$(DOC)/depend/dependencies.ps
+DEP_PDF_FILE=$(DOC)/depend/dependencies.pdf
+
+all: clean depend $(BIN)/formDecider
+
+COMMON_FILES=util/util.cmo util/debug.cmo \
+	main/common.cmo main/cmdLine.cmo
+
+# ------------------------------------------------------------
+# form/
+# ------------------------------------------------------------
+
+form/yaccForm.output form/yaccForm.mli form/yaccForm.ml: form/yaccForm.mly
+	$(OCAMLYACC) $(OCAMLYACCFLAGS) form/yaccForm.mly
+
+form/lexForm.ml: form/lexForm.mll
+	$(OCAMLLEX) form/lexForm.mll
+
+form/yaccForm.cmo: form/yaccForm.cmi
+
+FORM_FILES=form/form.cmo form/typeVars.cmo form/mlPrintForm.cmo form/printForm.cmo form/formUtil.cmo \
+	form/parsingFormAux.cmo \
+	form/yaccForm.cmo form/lexForm.cmo \
+	form/parseForm.cmo form/typeReconstruct.cmo form/termRewrite.cmo \
+	coq/printFormCoq.cmo form/folTranslation.cmo 
+
+# ------------------------------------------------------------
+# isabelle/
+# ------------------------------------------------------------
+
+ISABELLE_FILES=isabelle/vclemmas.cmo isabelle/isabelle.cmo 
+
+# ------------------------------------------------------------
+# Coq/
+# ------------------------------------------------------------
+
+COQ_FILES=coq/coq.cmo 
+
+# ------------------------------------------------------------
+# TPTP/
+# ------------------------------------------------------------
+
+TPTP_FILES=tptp/assumpSort.cmo tptp/tptpPrettyPrinter.cmo tptp/spassPrettyPrinter.cmo
+
+# ------------------------------------------------------------
+#                        DECISION PROCEDURES
+# ------------------------------------------------------------
+
+# ------------------------------------------------------------
+# mona/
+# ------------------------------------------------------------
+
+MONA_FILES=mona/monaForm.cmo mona/monaPrint.cmo mona/monaUtil.cmo \
+	mona/monaConvert.cmo mona/mona.cmo
+
+# ------------------------------------------------------------
+# bapa/
+# ------------------------------------------------------------
+
+BAPA_FILES= $(PRES_FILES) $(SMTLIB_FILES) \
+	bapa/alpha.cmo bapa/formbapa.cmo bapa/bapaform.cmo \
+	bapa/nlogn.cmo bapa/qfbapa.cmo bapa/bapa.cmo
+
+# ------------------------------------------------------------
+# smtlib/
+# ------------------------------------------------------------
+
+SMTLIB_FILES=smtlib/smtPrint.cmo smtlib/smtTranslate.cmo \
+	smtlib/smtCvcl.cmo
+
+# ------------------------------------------------------------
+# decision/
+# ------------------------------------------------------------
+
+DECISION_FILES=$(FORM_FILES) \
+	$(ISABELLE_FILES) $(COQ_FILES) $(MONA_FILES) \
+	$(BAPA_FILES) $(SIMPLIFY_FILES) $(TPTP_FILES) \
+	decision/slice.cmo decision/decider.cmo decision/idecider.cmo \
+	decision/cachedDecider.cmo
+
+# ------------------------------------------------------------
+# main/
+# ------------------------------------------------------------
+
+$(BIN)/formDecider: $(COMMON_FILES) $(DECISION_FILES) main/formDecider.cmo
+	$(OCAMLC) -o $@ $(OCAMLFLAGS) unix.cma str.cma \
+	$(COMMON_FILES) $(DECISION_FILES) main/formDecider.cmo $(CCOPTS)
+
+# ------------------------------------------------------------
+# $(BIN)/timed_command
+# ------------------------------------------------------------
+
+$(BIN)/timed_command: unix-utils/timed_command.c
+	gcc -o $(BIN)/timed_command unix-utils/timed_command.c
+
+# ------------------------------------------------------------
+# Common rules
+# ------------------------------------------------------------
+.SUFFIXES: .ml .mli .cmi .cmo .mly .mll
+
+.ml.annot:
+	$(OCAMLC) $(OCAMLFLAGS) -c -g $<
+
+.mli.cmi:
+	$(OCAMLC) $(OCAMLFLAGS) -c $<
+
+.ml.cmo:
+	$(OCAMLC) $(OCAMLFLAGS) -c $<
+
+# Clean up
+cleanast:
+	cd ast; \
+	rm -f *.cm[iox] *.annot
+
+cleanbapa:
+	cd bapa; \
+	rm -f *.cm[iox] *.annot
+
+cleandecision:
+	cd decision; \
+	rm -f *.cm[iox] *.annot
+
+cleanform:
+	rm -f $(BIN)/testForm; \
+	cd form; \
+	rm -f *.cm[iox] *.annot \
+	rm -f yaccForm.ml yaccForm.mli lexForm.ml
+
+cleanmona:
+	rm -f $(BIN)/testmona; \
+	cd mona; \
+	rm -f *.cm[iox] *.annot \
+
+cleanparspec:
+	cd parspec; \
+	rm -f *.cm[iox] *.annot \
+	rm -f yaccSpec.ml yaccSpec.mli lexSpec.ml
+
+cleanmain:
+	cd main; \
+	rm -f *.cm[iox] *.annot
+
+cleanpres:
+	cd presburger; \
+	rm -f *.cm[iox] *.annot
+
+cleanutil:
+	cd util; \
+	rm -f *.cm[iox] *.annot
+
+cleansimplify:
+	cd simplify; \
+	rm -f *.cm[iox] *.annot
+
+cleansmtlib:
+	cd smtlib; \
+	rm -f *.cm[iox] *.annot
+
+cleanisabelle:
+	cd isabelle; \
+	rm -f *.cm[iox] *.annot
+
+cleantptp:
+	cd tptp; \
+	rm -f *.cm[iox] *.o *.annot
+
+clean: cleanast cleanbapa cleandecision cleanform cleanparspec \
+	cleanmona cleanpres cleanutil \
+	cleanmain cleanisabelle cleansimplify cleansmtlib \
+	cleantptp
+
+# Dependencies
+beforedepend: form/yaccForm.mli form/yaccForm.ml form/lexForm.ml
+
+depend: beforedepend
+	(for d in $(DIRS); \
+	do $(OCAMLDEP) $(INCLUDES) $$d/*.mli $$d/*.ml; \
+	done) > .depend
+
+-include .depend

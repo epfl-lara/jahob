@@ -1,0 +1,14 @@
+../../../bin/formDecider.opt  spass-beats-others.txt -usedp spass
+ensure_verifies $? "SPASS Beats others"
+../../../bin/formDecider.opt  wonder1.thy -usedp spass
+ensure_verifies $? "wonder1 (spass beats others)"
+../../../bin/formDecider.opt  wonder2.thy -usedp spass
+ensure_verifies $? "wonder2 (spass beats others)"
+../../../bin/formDecider.opt  false-implies2.txt -usedp vampire
+ensure_verifies $? "false implies everyting 2"
+../../../bin/formDecider.opt  false-implies1.txt -usedp vampire
+ensure_verifies $? "false implies everyting 1"
+../../../bin/formDecider.opt two_true_booleans_equal.thy -usedp e
+ensure_verifies $? "two true bool variables"
+../../../bin/formDecider.opt map-array.isa -usedp e
+ensure_verifies $? "map array"

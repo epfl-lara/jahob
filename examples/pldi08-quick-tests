@@ -1,0 +1,10 @@
+PLDI_TESTS="
+pldi08/SinglyLinkedList/run-tests
+pldi08/AssociationList/run-al
+pldi08/PriorityQueue/run-pq
+pldi08/CursorList/run-tests
+pldi08/SpaceSubdivisionTree/run-sst
+pldi08/Hashtable/run-ht
+"
+
+/usr/bin/time ./run-one-test "$PLDI_TESTS" 2>&1 | tee pldi-quick.out

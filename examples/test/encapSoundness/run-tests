@@ -1,0 +1,33 @@
+PROVER=e
+../../../bin/jahob.opt -class Encap0 Encap0.java -usedp $PROVER 
+ensure_fails $? "Encap0"
+../../../bin/jahob.opt -class Encap1 Encap1.java -usedp $PROVER 
+ensure_fails $? "Encap1"
+../../../bin/jahob.opt -class Encap2 Encap2.java -usedp $PROVER 
+ensure_fails $? "Encap2"
+../../../bin/jahob.opt -class Encap3 Encap3.java -usedp $PROVER 
+ensure_fails $? "Encap3"
+../../../bin/jahob.opt -class Encap4 Encap4.java -usedp $PROVER 
+ensure_fails $? "Encap4"
+../../../bin/jahob.opt -class Encap5 Encap5.java -usedp $PROVER 
+ensure_fails $? "Encap5"
+../../../bin/jahob.opt -class Encap6 Encap6.java -usedp $PROVER 
+ensure_fails $? "Encap6"
+../../../bin/jahob.opt -class Encap7 Encap7.java -usedp $PROVER 
+ensure_fails $? "Encap7"
+../../../bin/jahob.opt -class Encap8 Encap8.java -usedp $PROVER 
+ensure_fails $? "Encap8"
+../../../bin/jahob.opt -class Encap9 Encap9.java -usedp $PROVER 
+ensure_fails $? "Encap9"
+../../../bin/jahob.opt -class Encap10 Encap10.java -usedp $PROVER 
+ensure_fails $? "Encap10"
+../../../bin/jahob.opt -class Encap11 Encap11.java -usedp $PROVER 
+ensure_fails $? "Encap11"
+../../../bin/jahob.opt -class Encap12 Encap12.java -usedp $PROVER 
+ensure_fails $? "Encap12"
+../../../bin/jahob.opt -class Encap13 Encap13.java -usedp $PROVER 
+ensure_fails $? "Encap13"
+../../../bin/jahob.opt -class Encap14 Encap14.java -usedp $PROVER 
+ensure_fails $? "Encap14"
+../../../bin/jahob.opt -class Encap15 Encap15.java -usedp $PROVER 
+ensure_fails $? "Encap15"

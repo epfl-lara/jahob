@@ -1,0 +1,130 @@
+class Node {
+
+    private Node[] edges = null;
+    private int maxEdges;
+    private int numEdges = 0;
+    Node parent;
+    private boolean visited = false;
+    //: public static ghost specvar root :: obj;
+
+//    private static int nnid = 0;
+//    private int nid;
+
+    /*:
+      public specvar neighbours :: objset;
+      public ghost specvar init :: bool = "False";
+      private vardefs
+        "neighbours == {n. \<exists> j. 0 <= j & j < numEdges & edges.[j] = n}";
+
+      private invariant numberEdges : "numEdges = Card neighbours";
+     */
+
+
+    public Node(int maxArity)
+    /*:
+      requires "maxArity > 0"
+      modifies maxEdges, edges, numEdges
+      ensures "neighbours = {} & maxEdges = maxArity"
+     */
+    {
+        maxEdges = maxArity;
+	edges = new /*: hidden */ Node[maxEdges];
+	numEdges = 0;
+        //: init := "True";
+// 	nid = nnid;
+// 	nnid = nnid + 1;
+    }
+
+    public void addEdge(Node n)
+    /*:
+      requires "init & n ~= null & n..init & numEdges < maxEdges"
+      modifies edges, numEdges
+      ensures "neighbours = old neighbours Un {n}"
+     */
+    {
+        edges[numEdges] = n;
+        numEdges = numEdges + 1;
+    }
+
+    public void compute()
+    /*:
+      requires "init"
+      modifies root, visited
+      ensures "ALL x y. ((x..visited & y : x..neighbours) --> y..visited)"
+     */
+    {
+	makeRoot();
+
+	int i = 0;
+ 
+	while (i < numEdges()) {
+	    edge(i).span(this);
+	    i = i + 1;
+	}
+    }
+
+    private void makeRoot()
+    /*:
+      requires "init"
+      modifies visited
+      ensures "root = this & visited"
+     */
+    {
+	visited = true;
+        //: root := "this";
+    }
+
+    private boolean visit(Node p)
+    /*:
+      requires "init & p ~= null & p..init & p..visited"
+      modifies visited, parent
+      ensures "visited
+               & (old visited --> (result = False & parent = old parent))
+               & ((not (old visited)) --> (parent = p & result = True))"
+     */
+    {
+	if (!visited) {
+	    visited = true;
+	    parent = p;
+
+	    return true;
+	}
+	return false;
+    }
+
+    private void span(Node p)
+    /*:
+      requires "init & p ~= null & p..init & p..visited & this : p..neighbours"
+      ensures "True"//"All x. (x : neighbours --> x..visited)"
+     */
+    {
+	if (!visit(p)) {
+            return;
+	}
+
+	int i = 0;
+ 
+	while (i < numEdges()) {
+	    edge(i).span(this);
+	    i = i + 1;
+	}
+    }
+
+    private int numEdges()
+    /*:
+      requires "init"
+      ensures "result = numEdges"
+     */
+    {
+	return numEdges;
+    }
+
+    private Node edge(int i)
+    /*:
+      requires "init & 0 <= i & i < numEdges"
+      ensures "result = edges.[i]"
+     */
+    {
+	return edges[i];
+    }
+}

@@ -1,0 +1,3 @@
+/usr/bin/time ../../../../bin/jahob.opt List.java -class List -failfast -usedp mona cvcl 2>&1 | tee list.out
+ensure_verifies $? "containers:global:circular-list:List"
+

@@ -1,0 +1,7 @@
+*.thy
+*.v
+*.in
+*.out
+*.smt
+*.isa
+archive/*.isa

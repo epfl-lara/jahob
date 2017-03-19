@@ -1,0 +1,12 @@
+/usr/bin/time ../../../../bin/jahob.opt Hashtable.java -hidden -sastvc -method Hashtable.compute_hash -failfast -usedp spass:SpassSortGuards=no:OrderAxioms:ArithAxioms:TimeOut=30
+ensure_verifies $? "loopinvs:java.util:Hashtable.compute_hash"
+/usr/bin/time ../../../../bin/jahob.opt Hashtable.java -hidden -sastvc -method Hashtable.bucketContainsKey -failfast -usedp spass:SpassSortGuards=no:OrderAxioms:ArithAxioms:TimeOut=30
+ensure_verifies $? "loopinvs:java.util:Hashtable.bucketContainsKey"
+/usr/bin/time ../../../../bin/jahob.opt Hashtable.java -hidden -sastvc -method Hashtable.containsKey0 -failfast -usedp spass:SpassSortGuards=no:OrderAxioms:ArithAxioms cvcl
+ensure_verifies $? "loopinvs:java.util:Hashtable.containsKey0"
+/usr/bin/time ../../../../bin/jahob.opt Hashtable.java -hidden -sastvc -method Hashtable.containsKey -failfast -usedp spass:SpassSortGuards=no:OrderAxioms:ArithAxioms:TimeOut=30
+ensure_verifies $? "loopinvs:java.util:Hashtable.containsKey"
+/usr/bin/time ../../../../bin/jahob.opt Hashtable.java -hidden -sastvc -method Hashtable.get -failfast -usedp spass:SpassSortGuards=no:OrderAxioms:ArithAxioms:TimeOut=30
+ensure_verifies $? "loopinvs:java.util:Hashtable.get"
+/usr/bin/time ../../../../bin/jahob.opt Hashtable.java -hidden -sastvc -method Hashtable.isEmpty -failfast -usedp spass:SpassSortGuards=no:OrderAxioms:ArithAxioms:TimeOut=30
+ensure_verifies $? "loopinvs:java.util:Hashtable.isEmpty"

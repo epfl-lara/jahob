@@ -1,0 +1,1 @@
+../../bin/jahob.opt DLL.java -method DLL.remove -usedp mona

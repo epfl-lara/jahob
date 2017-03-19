@@ -1,0 +1,4 @@
+/usr/bin/time ../../../bin/jahob.opt Hashtable.java -hidden -sastvc -class Hashtable -timeout 50 -usedp z3 spass:SpassSortGuards=no:OrderAxioms:ArithAxioms isa
+ensure_verifies $? "pldi08:Hashtable"
+
+

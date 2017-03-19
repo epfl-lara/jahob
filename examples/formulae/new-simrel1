@@ -1,0 +1,5 @@
+(~(x \<subseteq> R) & card x = 1 --> 
+ R1 = R \<union> x & S1 = S & P = R Un S & k = card R)
+-->
+(~(x \<subseteq> P) & card x = 1 --> 
+ P1 = P Un x & k1 = k + 1 & P1 = R1 Un S1 & k1 = card R1)

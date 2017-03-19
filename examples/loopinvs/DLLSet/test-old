@@ -1,0 +1,1 @@
+ ../../../bin/jahob.opt Old.java -class Old -interpret -noverify

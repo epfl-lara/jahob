@@ -1,0 +1,1 @@
+ ../../../bin/jahob.opt Aliasing.java -class Aliasing -interpret -noverify

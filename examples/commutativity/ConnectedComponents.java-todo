@@ -1,0 +1,129 @@
+class Node {
+    private static int nnid = 0;
+
+    private Node[] edges = null;
+    private int maxEdges;
+    private int numEdges = 0;
+    private int id;
+    private Node parent;
+    /*:
+      public specvar neighbours :: objset;
+      public ghost specvar init :: bool = "False";
+      private vardefs "neighbours == {n. \<exists> j.
+                       (0 <= j & j < numEdges & edges.[j] = n)}";
+
+      private invariant maxEdges : "init --> maxEdges >= 0";
+      private invariant posEdges : "numEdges >= 0";
+      private invariant numberEdges : "numEdges = Card neighbours";
+      private invariant definedNeighbours :
+          "init --> (ALL n.(n : neighbours --> n ~= null))";
+     */
+
+
+    public Node(int maxArity)
+    /*:
+      requires "maxArity > 0"
+      modifies maxEdges, edges, numEdges, id, nnid, init
+      ensures "neighbours = {} & maxEdges = maxArity & id = old nnid
+               & nnid = nnid + 1 & init"
+     */
+    {
+        maxEdges = maxArity;
+	edges = new /*: hidden */ Node[maxEdges];
+	numEdges = 0;
+        id = nnid;
+        nnid = nnid + 1;
+        //: init := "True";
+    }
+
+    public void addEdge(Node n)
+    /*:
+      requires "init & n ~= null & n..init & numEdges < maxEdges"
+      modifies edges, numEdges
+      ensures "neighbours = old neighbours Un {n}"
+     */
+    {
+        edges[numEdges] = n;
+        numEdges = numEdges + 1;
+    }
+
+    public void compute()
+    /*:
+      requires "init"
+      modifies parent
+      ensures "True"
+     */
+    {
+        parent = this;
+        lookup(parent());
+    }
+
+    private boolean make_parent(Node p)
+    /*:
+      requires "init"
+      modifies parent
+      ensures "parent <= old parent & parent <= p"
+     */
+    {
+	if (p.parent().id < parent.parent().id()) {
+	    parent = p.parent();
+	    return true;
+	}
+	return false;
+    }
+
+    private void lookup(Node p)
+    /*:
+      requires "init"
+      modifies parent
+      ensures "parent..id <= p..id & parent..id <= (old parent)..id
+             & (ALL n. n : neighbours --> (n..parent..id <= parent..id
+             & n..parent..id <= p..id & n..parent..id <= (old n..parent)..id))"
+     */
+    {
+        if (make_parent(p)) {
+            int i = 0;
+            
+            while (i < numEdges()) {
+                edge(i).lookup(p);
+                i = i + 1;
+            }
+        }
+    }
+
+    private int numEdges()
+    /*:
+      requires "init"
+      ensures "numEdges"
+     */
+    {
+	return numEdges;
+    }
+
+    private Node parent()
+    /*:
+      requires "init"
+      ensures "result = parent"
+     */
+    {
+	return parent;
+    }
+
+    private int id()
+    /*:
+      requires "init"
+      ensures "result = id"
+     */
+    {
+	return id;
+    }
+
+    private Node edge(int i)
+    /*:
+      requires "init"
+      ensures "result = edges.[i]"
+     */
+    {
+	return edges[i];
+    }
+}

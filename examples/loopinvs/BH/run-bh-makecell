@@ -1,0 +1,1 @@
+../../../bin/jahob.opt BarnesHut.java -method Node.makeCell -v -failfast -sastvc -usedp spass cvcl e isa | tee bh.out

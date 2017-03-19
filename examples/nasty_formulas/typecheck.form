@@ -1,0 +1,8 @@
+((ALL (b::obj). b : books --> b ~= null) &
+ (ALL (b::obj) (p::obj). (b,p) : (loanedTo :: (obj * obj) set) --> b : books & p : persons) &
+ (b1 ::obj) : books -->
+  (books1 = books - {b1} -->
+    b1 ~= null &
+      (loanedTo1 = loanedTo - {(b,p). b = b1} -->
+        (ALL (b::obj). b : books1 --> b ~= null) &
+        (ALL (b::obj) (p::obj). (b,p) : loanedTo1 --> b : books1 & p : persons))))

@@ -1,0 +1,1 @@
+../../../bin/jahob.opt FuncTree2.java -sastvc -method FuncTree.remove_max1 -usedp spass:SortImpactStat:OrderAxioms:TimeOut=10

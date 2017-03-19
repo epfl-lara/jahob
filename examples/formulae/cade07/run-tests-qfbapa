@@ -1,0 +1,6 @@
+../../../bin/formDecider.opt -v -timeout 60 isEmpty.form -usedp bapa:qfbapa
+../../../bin/formDecider.opt -v -timeout 60 add.form -usedp bapa:qfbapa
+../../../bin/formDecider.opt -v -timeout 60 addOld.form -usedp bapa:qfbapa
+../../../bin/formDecider.opt -v -timeout 60 addNew.form -usedp bapa:qfbapa
+../../../bin/formDecider.opt -v -timeout 60 addNewNoHint.form -usedp bapa:qfbapa
+../../../bin/formDecider.opt -v -timeout 60 manyAdds.form -usedp bapa:qfbapa

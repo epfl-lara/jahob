@@ -1,0 +1,16 @@
+#!/bin/bash
+
+TEST_SCRIPTS="
+containers/array/run-tests 
+containers/gdll/run-tests 
+loopinvs/bohne-gsll/run-tests
+test/soundness/run-tests 
+test/skolem/run-tests
+test/small/run-tests
+test/resolve/run-tests
+test/split/run-tests
+test/choose/run-tests
+"
+
+
+/usr/bin/time ./run-one-test "$TEST_SCRIPTS"

@@ -1,0 +1,1 @@
+../../../bin/formDecider.opt -v -timeout 60 ha-insert3.form -usedp bapa:fullbapa

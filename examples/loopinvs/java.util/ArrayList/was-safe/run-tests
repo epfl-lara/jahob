@@ -1,0 +1,1 @@
+../../../../bin/jahob.opt ArrayList.java  -failfast -sastvc -hidden -timeout 60 -class ArrayList -usedp z3:TimeOut=3 e cvcl

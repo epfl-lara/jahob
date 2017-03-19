@@ -1,0 +1,21 @@
+PROVER=e
+# --------- 19 -------------
+../../../bin/jahob.opt -method Soundness.test19 List.java Soundness.java Node.java -usedp $PROVER:OrderAxioms:ArithAxioms
+ensure_fails $? "test19-fo"
+../../../bin/jahob.opt -method Soundness.test19 List.java Soundness.java Node.java -usedp bapa:fullbapa
+ensure_fails $? "test19-fullbapa"
+../../../bin/jahob.opt -method Soundness.test19 List.java Soundness.java Node.java -usedp bapa:qfbapa
+ensure_fails $? "test19-qfbapa"
+# --------- 20 -------------
+../../../bin/jahob.opt -v -method Soundness.test20 List.java Soundness.java Node.java -usedp $PROVER:OrderAxioms:ArithAxioms
+ensure_verifies $? "test20-fo"
+../../../bin/jahob.opt -v -method Soundness.test20 List.java Soundness.java Node.java -usedp bapa:qfbapa
+ensure_verifies $? "test20-qfbapa"
+# --------- 21 -------------
+../../../bin/jahob.opt -v -method Soundness.test21 List.java Soundness.java Node.java -usedp bapa:qfbapa
+ensure_verifies $? "test21"
+# --------- 22 -------------
+../../../bin/jahob.opt -v -method Soundness.test22 List.java Soundness.java Node.java -usedp bapa:fullbapa
+ensure_fails $? "test22-fullbapa"
+../../../bin/jahob.opt -v -method Soundness.test22 List.java Soundness.java Node.java -usedp bapa:qfbapa
+ensure_fails $? "test22-qfbapa"

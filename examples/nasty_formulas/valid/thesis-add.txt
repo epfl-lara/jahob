@@ -1,0 +1,15 @@
+[|
+(List_inlist = (% this. {n. ((rtrancl_pt (% x y. ((Node_next x) = y)) (fieldRead List_first this) n) & (n ~= null))}));
+comment ''List_PrivateInv ProcedurePrecondition'' (tree [List_first, Node_next]);
+comment ''thisNotNull'' (this ~= null);
+comment ''thisType'' (this : List);
+comment ''thisType'' (this : Object_alloc);
+comment ''AllocatedObject'' (tmp_1_12 ~= null);
+comment ''AllocatedObject'' (tmp_1_12 ~: Object_alloc);
+comment ''AllocatedObject'' (tmp_1_12 : Node);
+comment ''AllocatedObject'' (ALL y. ((fieldRead Node_data y) ~= tmp_1_12));
+comment ''AllocatedObject'' (ALL y. ((fieldRead Node_next y) ~= tmp_1_12));
+comment ''AllocatedObject'' (ALL y. ((fieldRead List_first y) ~= tmp_1_12));
+(List_inlist_2 = (% this__5. {n__6. ((rtrancl_pt (% x y. (((fieldWrite Node_next tmp_1_12 (fieldRead List_first this)) x) = y)) (fieldRead (fieldWrite List_first this tmp_1_12) this__5) n__6) & (n__6 ~= null))}))
+|] ==>
+    comment ''thisInlistInserted'' ((fieldRead List_inlist_2 this) = ((fieldRead List_inlist this) Un {tmp_1_12}))

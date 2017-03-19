@@ -1,0 +1,2 @@
+../../../bin/jahob.opt -simpcall SimpleHashtable.java AssocList.java -method Hashtable.remove -hidden -sastvc -usedp  spass:OrderAxioms:TimeOut=5:SpassSortGuards=no:Sorting:Filtering=50 spass:OrderAxioms:ArithAxioms:TimeOut=5:SpassSortGuards=no
+ensure_verifies $? "Instantiable Hash Table"

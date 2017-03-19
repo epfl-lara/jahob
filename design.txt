@@ -1,0 +1,98 @@
+
+-why doesn't isabelle import types unqualified?
+  Mystery of unrecognized 'object' constructor.
+
+-allow spec variables in classes
+
+-using "this" in specifications, and implicitly using instance variables
+
+ resolve all variables, in the context of a class.
+
+ make contract fields mutable
+
+- handling of constants (public final static with literal initializer,
+     or literal initializers in general)
+
+   -assertions in Java input
+
+   - forbid overloading
+
+-have speifications of form
+
+  class Foo implements Bar /*: with S = "...";  
+                                    T = "...";   */
+            implements Baz /*: with A = "...";  
+                                    B = "...";   */
+
+-check that dynamic calls are to final classes or to interfaces
+
+--------------------------------------------------
+
+-in formulas, dot is used only for name resolution and is
+ replaced with _ in isabelle formulas
+
+-use 
+
+Classes and Interfaces
+--------------------------------------------------
+
+* Classes always talk about concrete state, they have no
+  specification variables.
+
+  Each method has a precondition and a postcondition specified in the
+  class, and expressed in terms of concrete variables and parameters.
+
+  Class invariants are implicitly conjoined to pre and post.
+
+  When checking implementation, we check it against
+  the supplied contract.
+
+* Interfaces introduce abstract (specification) variables.
+
+* When checking classes against interfaces, we check that the concrete
+  contract in the class implies the concretization of the abstract
+  conctract in the interface (using variance and contravariance).
+
+------------------------------------------------------------
+Design decisions:
+
+* use subsets of existing languages as front-ends,
+  focus on ocaml front-end first
+    * students learning it will know implementation language
+    * have algebraic data types
+* embedd additional information in 
+  external files .mla - abstraction file
+  and in comments:  
+    * ml - ocaml, embedd loop invariants and extra declarations
+           in ocamldoc syntax
+    * mli - interfaces, embedd pre and postconditions also
+            based on ocamldoc.
+            Also specvars.
+
+* enforcing the concept of local variables, new statements
+  etc. in ocaml
+
+* use one AST for ocaml source, another one for intermediate
+  representation
+
+* do not use ocaml parser, because it has Q licence
+
+* for now: no exceptions, concurrency, higher-order functions,
+  dynamic dispatch, class loading
+
+* in main intermediate representation:
+ - no nested functions
+ - local variables are per function
+ - allow block-local, nested, pure let bindings
+ - use loops with exit in middle, to model naturally 
+   side-effecting conditions
+ - have match for alternatives (but not deep patern matching)
+ - have redundancy if it helps like:
+     * both nondeterministic choice and if, and match
+       helps analysis like determinism analysis
+     * both specification statement and assume/assert
+       to avoid manual renaming, those are stated in terms
+       of primed/unprimed
+ - no specific construct for deterministic update for now
+
+
